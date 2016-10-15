@@ -1,0 +1,401 @@
+@import "./grid.scss";
+@import "./animated.scss";
+@import "./var.scss";
+
+[contenteditable='true']{
+  &:focus{
+    outline: 1px dotted $primaryColor;
+  }
+}
+
+#_plekan{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  z-index: 99;
+}
+
+._plekan_arena{
+  // -----------------------------------
+  padding-top: 100px;
+  .plekan-change-language{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-bottom: 100px;
+    padding: 20px 0;
+    min-height: 74px;
+    background-color: #fff;
+    z-index: 11;
+    border-bottom: 1px solid #ddd;
+    span{
+      float: left;
+      margin-right: 10px;
+      margin-top: 6px;
+    }
+    select{
+      display: inline-block;
+      float: left;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: thick;
+    }
+    .open-translate-arena{
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -25px;
+      margin-left: -25px;
+      text-align: center;
+      button{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border:1px solid #ccc;
+        background-color: #fff;
+        outline: thick;
+        font-size: 20px;
+        color: #444;
+        i{
+        }
+      }
+    }
+  }
+  // -----------------------------------
+  .translate-mode{
+    width: 100%!important;
+    padding-left: 80px;
+    .translate-mode-column{
+      width: 50%;
+      float: left;
+      padding: 10px;
+    }
+  }
+  // 
+  .plekan-row-list{
+    padding: 10px;
+    span.sortable-chosen,span.sortable-ghost{
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: #111;
+      *{
+        display: none;
+        text-indent: -99999999px;
+      }
+    }
+
+    &.empty{
+      position: relative;
+      padding: 40px;
+      text-align: center;
+      background-color: #ccc;
+      background: linear-gradient(270deg, $primaryColor, #3f702d, #76b91a, #3e5b6e);
+      background-size: 800% 800%;
+      // animation: gradiendAnimation 30s ease infinite;
+      &:after{
+        content: "Arena";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+        color: #FFF;
+      }
+      span.sortable-chosen,span.sortable-ghost{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: transparent!important;
+        outline: 3px dotted $primaryColor;
+        z-index: 12;
+      }
+      &.translate{
+        &:after{
+          content: "Translate";
+        }
+      }
+    }
+ 
+    .plekan-row-item{
+      position: relative;
+      margin-bottom: 10px;
+      // background-color: #ccc;
+      &:hover{
+        .plekan-tools{
+          display: block;
+        }
+      }
+      .plekan-tools{
+        position: absolute;
+        width: 60px;
+        left: -60px;
+        display: none;
+        top: -10px;
+        span{
+          display: block;
+          color: #FFF;
+          width: 50px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          margin-right: 10px;
+          font-size: 16px;
+          background-color: $primaryColor;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/*------------------------------------------*/
+.editor-arena{
+  .editor{
+    width: auto;
+    height: 40px;
+    background-color: $primaryColor;
+    position: fixed;
+    // display: none;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    transform: scale(0);
+    .create-link{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #444;
+      top: 0;
+      left: 0;
+      padding-right: 39px;
+      display: none;
+      &.active{
+        display: block;
+      }
+      input{
+        width: 100%;
+        height: 100%;
+        padding-left: 10px;
+      }
+      button{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 40px;
+        border:1px solid #ddd;
+        background-color: #fff;
+      }
+    }
+    &.active{
+      transition: all 300ms;
+      transform: scale(1);
+    }
+    a{
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      color: #FFF;
+      text-align: center;
+      line-height: 40px;
+      border-left: 1px solid #5B598C;
+      i{
+        background-color: #ccc;
+      }
+    }
+  }
+  .editable-elements-button{
+    position: absolute;
+    left: 0;
+    top: 0;
+    border:0;
+    background-color: $primaryColor;
+    z-index: 11;
+    color: #FFF;
+    padding: 10px 20px;
+    visibility: hidden;
+  }
+  .editable-element-fields-container{
+    .editable-element-fields{
+      padding: 4px 0;
+      position: relative;
+      padding-left: 120px;
+      span{
+        width: 100px;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(0,-50%);
+      }
+      input{
+        width: 100%;
+        height: 32px;
+        padding-left: 10px;
+        outline: thick;
+      }
+    }
+  }
+  
+}
+
+/* ------------------------------------- */
+   ._plekan_list{
+     position: fixed;
+     width: 200px;
+     height: 100%;
+     background-color: #f2f2f2;
+     right: 0;
+     padding: 10px;
+     top: 0; 
+     border-left: 1px solid #ccc;
+     transition: all .3s;
+     z-index: 12;
+     .openModuleList{
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+        border:0;
+        background-color: #f2f2f2;
+        font-size: 20px;
+        position: absolute;
+        left: -40px;
+        top: 80px;
+        border: 1px solid #ccc;
+        border-right: 0 ;
+      }
+     span{
+       display: block;
+       width: 100%;
+       background-color: #fff;
+       padding: 5px;
+       float: none;
+       cursor: pointer;
+       margin-bottom: 10px;
+       img{
+         width: 100%;
+       }
+     }
+     &.active{
+      right: 0;
+     }
+     &.deactive{
+      right: -200px;
+      .openModuleList{
+        i{
+          transform: rotate(-180deg);
+        }
+      }
+     }
+  }
+
+/*------------------------------------------*/
+.plekan-modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+  z-index: 14;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  .modal-arena-layout{
+    position: absolute;
+    max-width: 700px;
+    width: 100%;
+    min-height: 300px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+    .modal-arena{
+      background-color: #fff;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0px 0px 63px 3px rgba(0,0,0,0.75);
+      header{
+        .title{
+          font-size: 20px;
+          color: $primaryColor;
+          margin-bottom: 10px;
+          border-bottom: 1px solid $primaryColor;
+        }
+      }
+      footer{
+        margin-top: 15px;
+        button{
+          float: right;
+          padding: 10px 20px;
+          border:0;
+          background-color: $primaryColor;
+          color: #FFF;
+        }
+      }
+    
+    }
+  }
+}
+
+
+// 
+
+.edit-modal{
+  .plekan-edit-as-html-modal-body{
+    textarea{
+      width: 100%;
+      min-height: 300px;
+      max-height: 400px;
+      resize: none;
+      outline: #FFF;
+      border:0;
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+  }
+}
+
+.plekan-save{
+  float: right;
+  display: inline-block;
+  border:0;
+  background-color: $primaryColor;
+  color: #FFF;
+  padding: 10px 50px;  
+}
+
+@keyframes gradiendAnimation { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
+
+// pre {
+//     display: none;
+//     white-space: pre-wrap;       /* Since CSS 2.1 */
+//     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+//     white-space: -pre-wrap;      /* Opera 4-6 */
+//     white-space: -o-pre-wrap;    /* Opera 7 */
+//     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+// }
+

@@ -1,0 +1,10 @@
+$primaryColor 	: #6b69a4;
+$textColor 	   	: #444;
+$borderColor     : #dadada;
+
+button{
+	outline: thick;
+	&:hover{
+		opacity: .9;
+	}
+}

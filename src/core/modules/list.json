@@ -1,0 +1,12 @@
+[
+	{
+		"name" 		: "twocloumn",
+		"group" 		: "text",
+		"thumbnail" 	: "http://fifa17news.com/wp-content/uploads/2015/08/FIFA-17-Image-2-200x120.jpg"
+	},
+	{
+		"name" 		: "imagetext",
+		"group" 		: "image",
+		"thumbnail" 	: "http://gifzui.com/media/2016/07/gifzui-1469409476-image-200x120.gif"
+	}
+]
