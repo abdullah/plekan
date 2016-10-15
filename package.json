@@ -9,7 +9,7 @@
     "build": "node build/build.js",
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
     "releasemin": "NODE_ENV=min && webpack --progress --hide-modules --config  ./build/webpack.release.js",
-    "start": "node server/index.js"
+    "start": "node web/index.js"
   },
   "dependencies": {
     "selo": "^1.0.1",
