@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="plekan-container">
+    <!-- <div class="plekan-container">
       <input v-model="language" name="">
       <button @click="showEditor">Show editor</button>
       <hr>
@@ -10,10 +10,10 @@
           {{pre}}
         </pre>
       </div>
-    </div>   
+    </div> -->   
     <transition enter-active-class="animated fadeInUp custom-classes-transition"
     leave-active-class="animated fadeOutDown custom-classes-transition">
-      <plekan v-if="show" :rows="mockup"></plekan>
+      <plekan v-show="show" :rows="mockup"></plekan>
     </transition>
   </div>
 </template>
@@ -27,7 +27,7 @@
   export default {
     data () {
       return {
-      	show:false,
+      	show:true,
         mockup: mockup,
         language: "tr,en,rs",
         pre : null
@@ -37,8 +37,11 @@
     },
     beforeMount() {
     },
+    created(){
+      this.showEditor()
+    },
     mounted() {
-		
+		  
 
     },
     beforeDestroy() {
