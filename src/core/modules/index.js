@@ -1,9 +1,19 @@
-import list from './list.json';
+import imagetext from './imagetext.vue'
+import twocolumn from './twocloumn.vue'
 
-var componentList = {};
+;(function () {
+	var modules = 	{
+		imagetext,
+		twocolumn
+	}
 
-Object.keys(list).map(e => {
-	componentList[list[e].name] = require('./'+list[e].name)
-})
+  /*----------------------------------------------------*/
+  if (typeof exports == "object") {
+    module.exports = modules
+  } else if (typeof define == "function" && define.amd) {
+    define([], function(){ return modules })
+  } else if (window) {
+    window.modules = modules
+  }
 
-export default componentList
+})()

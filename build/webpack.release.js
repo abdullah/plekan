@@ -17,7 +17,8 @@ var env = process.env.NODE_ENV === 'testing'
 var version = require('../package.json').version;
 
 baseWebpackConfig.entry = {
-  'plekanbuilder':'./src/plekan.js',
+  'plekan':'./src/plekan.js',
+  'plekanmodules' : './src/core/modules/index.js'
 }
 
 var assetsPath = path.join(config.release.assetsRoot, config.release.assetsSubDirectory)
@@ -32,7 +33,7 @@ var mergeResult = merge(baseWebpackConfig, {
   output: {
     path:'release',
     filename: '[name].js',
-    library: 'plekan',
+    library: '[name]',
     libraryTarget: 'umd'
   },
   vue: {
@@ -45,6 +46,7 @@ var mergeResult = merge(baseWebpackConfig, {
     loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
   },
   plugins: [
+    // new closeEmit(),
     // http://vuejs.github.io/vue-loader/workflow/production.html
     new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({

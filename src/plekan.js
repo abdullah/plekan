@@ -1,9 +1,9 @@
 import plekancomponent from 'components/plekan'
 import store from 'store'
-import modules from 'core/modules'
-import moduleList from 'core/modules/list.json'
 import mediumEditor from 'core/medium_editor.js'
 import 'src/helper'
+import moduleList from 'core/modules/list.json'
+import 'src/assets/style/app.scss'
 
 ;(function () {
 
@@ -14,6 +14,7 @@ import 'src/helper'
     defaultLanguage : "",
     rows : [],
     save : null,
+    modules:null,
   }
 
   plekan.install = function (Vue, options) {
@@ -41,7 +42,7 @@ import 'src/helper'
     * Set contents language
     */
     moduleList.map(m => {
-      Vue.component(m.name , modules[m.name])
+      Vue.component(m.name , options.modules[m.name])
       m.contents = m.contents || {};
       store.state.languages.map(l => {
         m.contents[l] = {}

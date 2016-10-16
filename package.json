@@ -12,10 +12,11 @@
     "start": "node web/index.js"
   },
   "dependencies": {
+    "archiver": "^1.1.0",
+    "express": "^4.13.3",
     "selo": "^1.0.1",
     "sortablejs": "^1.4.2",
     "uuid": "^2.0.3",
-    "express": "^4.13.3",
     "vue": "^2.0.1"
   },
   "devDependencies": {
