@@ -13,31 +13,24 @@ var env = process.env.NODE_ENV === 'testing'
 
 
 
-/*
-*@TODO: Versiyonlama için burasını kullanabiliriz...
-*/
-
-var argv = require('minimist')(process.argv.slice(2));
-
-
 
 var version = require('../package.json').version;
 
 baseWebpackConfig.entry = {
-  'plekanbuilder': argv.custom ? './src/_plekan.js' :'./src/plekan.js',
+  'plekanbuilder':'./src/plekan.js',
 }
 
 var assetsPath = path.join(config.release.assetsRoot, config.release.assetsSubDirectory)
 
-rm('-rf', assetsPath)
-mkdir('-p', assetsPath)
-cp('-R', 'static/', assetsPath)
+// rm('-rf', assetsPath)
+// mkdir('-p', assetsPath)
+// cp('-R', 'static/', assetsPath)
 
 
 var mergeResult = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
-    path:'customrelease',
+    path:'release',
     filename: '[name].js',
     library: 'plekan',
     libraryTarget: 'umd'
