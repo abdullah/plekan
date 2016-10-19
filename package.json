@@ -13,7 +13,9 @@
   "dependencies": {
     "archiver": "^1.1.0",
     "archiver-json": "^0.1.1",
+    "body-parser": "^1.15.2",
     "express": "^4.13.3",
+    "md5": "^2.2.1",
     "selo": "^1.0.1",
     "sortablejs": "^1.4.2",
     "uuid": "^2.0.3",

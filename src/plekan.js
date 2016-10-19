@@ -42,12 +42,13 @@ import plekanComponentMixin from 'core/mixin.js'
     */
     var mlist = JSON.parse(JSON.stringify(moduleList));
     
-    options.customComponents.map(c => {
-      mlist.push(c.info)
-      options.modules[c.info.name] = c.component  
-    }) 
+    if (typeof options.customComponents == "Array") {
+      options.customComponents.map(c => {
+        mlist.push(c.info)
+        options.modules[c.info.name] = c.component  
+      }) 
+    }
 
-    console.log(options.modules)
     
     var tmpDelete = [];
     mlist.map((m,i) => {
