@@ -3,18 +3,15 @@
     
     <div class="plekan-change-language plekan-clearfix">
       <div class="plekan-container">
-        <!--  -->
-        <div class="plekan-pull-left" v-show="translateMode">
+        <div class="plekan-pull-left">
           <span>Preview Language</span>
           <select  v-model="store.state.currentLanguge">
             <option v-for="l in languages" :value="l">{{l}}</option>
           </select>
         </div>
-        <!--  -->
         <div class="open-translate-arena">
           <button @click="openTranslateMode"><i class="fa fa-language"></i></button>
         </div>
-        <!--  -->
         <div class="plekan-pull-right" v-show="translateMode">
           <span>Translate Language</span>
           <select  v-model="store.state.translateLanguage">
@@ -22,12 +19,10 @@
           </select>
           
         </div>
-        <!--  -->
       </div> 
     </div> 
 
     <div :class="{'translate-mode' : translateMode}" class="plekan-container">
-      <!-- ************************************************************ -->
         <div class="translate-mode-column">
           <div :class="{empty: !rows.length}" 
               class="plekan-row-list" id="plekan_sortable_list">
@@ -40,34 +35,29 @@
               </div>
               <component  
                           :is="r.name" 
-                          :index="key" 
+                          :index="key"
+                          :store="store" 
                           :displayLanguage="currentLanguge">
               </component>
             </div>
           </div>
         </div> 
-      <!-- ************************************************************ -->
         <div class="translate-mode-column" v-if="translateMode">
           <div :class="{'empty translate': !rows.length}" 
               class="plekan-row-list" id="plekan_sortable_list">
             <div class="plekan-row-item" v-for="(r,key) in rows" :key="r.index">
               <div class="plekan-tools">
-                <!-- <span class="plekan-move-row"><i class="fa fa-hand-grab-o"></i></span> -->
                 <span @click="editAsHTMLRow(r,key,translateLanguage)"><i class="fa fa-html5"></i></span>
-                <!-- <span @click="deleteRow(r,key)"><i class="fa fa-remove"></i></span> -->
-                <!-- <span @click="dublicateRow(r,key)"><i class="fa fa-copy"></i></span> -->
               </div>
               <component  
                           :is="r.name" 
-                          :index="key" 
+                          :index="key"
+                          :store="store" 
                           :displayLanguage="translateLanguage">
               </component>
             </div>
           </div>
         </div> 
-      <!-- ************************************************************ -->
-
-      <!-- ************************************************************ -->
      <transition
         enter-active-class="animated fadeInUp custom-classes-transition"
         leave-active-class="animated fadeOutDown custom-classes-transition">
@@ -75,7 +65,6 @@
           <header slot="header">
             <div class="title">Edit As Html</div>
           </header>
-          <!-- <pre>{{elementEditableProperties}}</pre> -->
           <div slot="body" class="plekan-edit-as-html-modal-body">
             <textarea v-model="editableRow.contents[editableRowLanguage].html"></textarea>
           </div>
@@ -88,11 +77,16 @@
 
     <div class="plekan-container">
       <hr>
-      <button class="plekan-save" @click="saveRows">Save</button>
+      <!-- <button class="plekan-save" @click="saveRows">Save</button> -->
+      <button v-for="b in $plekan_buttons" 
+              :class="b.class" 
+              @click="b.callback(store.state.rows)">
+              {{b.text}}
+      </button>
+      <!-- <pre>
+        {{store.state.rows}}
+      </pre> -->
     </div>
-    <pre>
-      <!-- {{store.state.rows}} -->
-    </pre>
   </div>
 </template>
 
@@ -141,6 +135,8 @@
         }
       }
     },
+    created(){
+    },
     mounted(){
       /*
       * Sortable options init
@@ -152,23 +148,8 @@
         onAdd:this.onAdd,
         onEnd:this.onEnd,
       });
-
-      
-
     },
     methods:{
-      saveRows(){
-        var tmprows = JSON.parse(JSON.stringify(this.store.state.rows));
-
-        tmprows.map(r => {
-          Object.keys(r.contents).map(c => {
-            r.contents[c].html.replace(/contenteditable="true"/gm,"")
-          })
-        })
-
-        this.$plekanSave(tmprows)
-
-      },
       openTranslateMode(){
         this.translateMode = !this.translateMode;
       },

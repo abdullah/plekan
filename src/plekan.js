@@ -4,6 +4,7 @@ import mediumEditor from 'core/medium_editor.js'
 import 'src/helper'
 import moduleList from 'core/modules/list.json'
 import 'src/assets/style/app.scss'
+import plekanComponentMixin from 'core/mixin.js'
 
 ;(function () {
 
@@ -13,8 +14,8 @@ import 'src/assets/style/app.scss'
     languages       : [],
     defaultLanguage : "",
     rows : [],
-    save : null,
     modules:null,
+    customComponents:null
   }
 
   plekan.install = function (Vue, options) {
@@ -30,42 +31,60 @@ import 'src/assets/style/app.scss'
     *@TODO : Validate template for existing ????? 
     */
     store.init('languages',options.languages);
-  
     /*
     * İnit rows
     */
     if (options.rows) {
       store.init("rows", options.rows);
     }
-
     /*
     * Set contents language
     */
-    moduleList.map(m => {
-      Vue.component(m.name , options.modules[m.name])
-      m.contents = m.contents || {};
-      store.state.languages.map(l => {
-        m.contents[l] = {}
-        m.contents[l]["html"] = ""
-        m.contents[l]["fields"] = {}
-      })
+    var mlist = JSON.parse(JSON.stringify(moduleList));
+    
+    options.customComponents.map(c => {
+      mlist.push(c.info)
+      options.modules[c.info.name] = c.component  
+    }) 
 
+    console.log(options.modules)
+    
+    var tmpDelete = [];
+    mlist.map((m,i) => {
+      if (options.modules[m.name]) {
+        Vue.component(m.name , options.modules[m.name])
+        m.contents = m.contents || {};
+        store.state.languages.map(l => {
+          m.contents[l] = {}
+          m.contents[l]["html"] = ""
+          m.contents[l]["fields"] = {}
+        })
+      }else{
+        tmpDelete.push(i)
+      }
+    });
+    /*
+    * Remove extra list item
+    */
+    mlist.map((e,i) => { 
+      if (tmpDelete.indexOf(i) != -1) {
+        mlist.splice(i, 1);
+      }
     });
 
-    store.init('moduleList',moduleList);
+    store.init('moduleList',mlist);
     store.init('currentLanguge',options.defaultLanguage);
     store.init('translateLanguage',options.languages[1]);
 
-
-    Vue.prototype.$plekanSave = options.save
+    Vue.prototype.$plekan_buttons = options.plekan_buttons
 
   }
 
   /*----------------------------------------------------*/
   if (typeof exports == "object") {
-    module.exports = plekan
+    module.exports = {plekan,plekanComponentMixin}
   } else if (typeof define == "function" && define.amd) {
-    define([], function(){ return plekan })
+    define([], function(){ return {plekan,plekanComponentMixin} })
   } else if (window.Vue) {
     Vue.use(plekan)
   }

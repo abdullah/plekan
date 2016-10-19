@@ -8,16 +8,17 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
-    "releasemin": "NODE_ENV=min && webpack --progress --hide-modules --config  ./build/webpack.release.js",
     "start": "node web/index.js"
   },
   "dependencies": {
     "archiver": "^1.1.0",
+    "archiver-json": "^0.1.1",
     "express": "^4.13.3",
     "selo": "^1.0.1",
     "sortablejs": "^1.4.2",
     "uuid": "^2.0.3",
-    "vue": "^2.0.1"
+    "vue": "^2.0.1",
+    "vue-resource": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

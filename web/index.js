@@ -1,12 +1,20 @@
 
-const express = require('express');
-const app = express();
-
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 5000;
+var express = require('express');
+var app 	= express();
+var HOST 	= process.env.HOST || 'localhost';
+var PORT 	= process.env.PORT || 5000;
 var webpack = require('webpack');
-var fs = require('fs');
+var fs 		= require('fs');
 var release = require('../build/webpack.release.js');
+var bodyParser 			= require('body-parser')
+var WebpackZipGenerate  = require('./WebpackZipGenerate.js')
+var modulesGenerate 	= require('./modulesGenerate.js')
+var archiver 			= require('archiver');
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -14,62 +22,64 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-var archiver = require('archiver');
-
-
-
-// app.use('/', express.static(__dirname + '/../dist'));
-
-var archive = archiver.create('zip', {store:true}); 
-
-
-function closeEmit(cc) {
-	this.cc = cc
-}
-
-closeEmit.prototype.apply = function (compiler) {
-	compiler.plugin('emit', (compilation, cb, res) => {
-		this.cc(compilation.assets)
-	});
-}
+app.use(require('connect-history-api-fallback')())
+app.use(express.static('dist'));
 
 
 
 
-app.get('/',function (req,res) {
+app.post('/',function (req,res) {
+	
+	var listFromClient = req.body.map( e => e.name)
+	console.log(listFromClient);
+	if (!listFromClient.length) {
+		
+		res.writeHead(400, {
+	        'Content-Type': 'application/json',
+	    });
+
+		res.end(JSON.stringify({status:false}))
+
+		return
+	}
 
 	res.writeHead(200, {
         'Content-Type': 'application/zip',
-        'Content-disposition': 'attachment; filename=myFile.zip'
+        'Content-disposition': 'attachment; filename=plekan.zip'
     });
-
-    // var zip = Archiver('zip');
 	
+	var archive = archiver.create('zip', {store:true}); 
+	    archive.pipe(res);
+    /*
+    * Generate module files for the webpack release config
+    */
+	var filename = modulesGenerate(listFromClient);
 
+	release.entry["plekanmodules"] = filename
+	release.plugins.push(new WebpackZipGenerate())
 
-    // Send the file to the page output.
-    archive.pipe(res);
+	webpack(release,function (stats,err) {
+	
+		var assets = stats.assets
 
-    // Create archive with some files. Two dynamic, one static. Put #2 in a sub folder.
-    
+		Object.keys(assets).map(function (file) {
+			var asset = assets[file];
+			var content = asset.source();
 
-	release.plugins.push(new closeEmit(function (e) {
-		Object.keys(e).map(function (f) {
-			archive.append( e[f].toString(), { name: f })
+			if(!Buffer.isBuffer(content)){
+				content = new Buffer(content, "utf-8");
+			}
+
+			archive.append( content, { name: file })
 		})
-
+		
+		archive.append( fs.createReadStream(__dirname+"/../release/index.html"), { name: "index.html" })
+		archive.append( fs.createReadStream(__dirname+"/../node_modules/vue/dist/vue.min.js"), { name: "vue.js" })
+		archive.directory( __dirname+"/../static","static")
 		archive.finalize()
-
-	}))
-
-	webpack(release,function (err,stats) {
-		// console.log(stats)
 	})
 
-
 })
-
 
 app.listen(PORT, function () {
   console.log(`Web service is listening on ${HOST}:${PORT}!`);

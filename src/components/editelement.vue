@@ -25,6 +25,7 @@
       return {
         event : null,
         getElementPropertyArray   : [
+          {title : "Text", prop  : "text" , placeholder : "Text"},
           {title : "Source", prop  : "src" , placeholder : "source link"},
           {title : "Alt Title", prop  : "alt", placeholder : "when the image error loaded shown text "},
           {title : "Link", prop  : "href" , placeholder : "source link"},

@@ -1,0 +1,91 @@
+body{
+	padding: 0;
+	margin: 0;
+	.compileButton{
+		border:0;
+		background-color: #1396F1;
+		// border: 2px solid #1396F1;
+		color: #fff;
+		padding: 10px 20px;
+		float: right;
+		font-weight: bold;
+	}
+}
+header{
+	width: 100%;
+	height: auto;
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+	&:after,&:before{
+		content: '';
+		display: table;
+		clear: both;
+		float: none;
+	}
+	.logo{
+		width: 100px;
+		float: left;
+		height: 44px;
+		background-color: #ccc;
+		img{
+			width: 100%;
+		}
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+		margin-right: 30px;
+		li{
+			float: right;
+			list-style: none;
+			a{
+				font-size: 15px;
+				display: inline-block;
+				padding: 10px ;
+				color: #444;
+			}
+		}
+	}
+}
+.modules-list{
+	padding: 0;
+	margin: 0;
+	li{
+		float: left;
+		list-style: none;
+		margin-right: 10px;
+		width: 200px;
+		height: 200px;
+		background-color: #ccc;
+		background-repeat: no-repeat;
+		background-position: center;
+        background-size: cover;
+        position: relative;
+        .isChecked{
+        	position: absolute;
+        	width: 100%;
+        	height: 100%;
+        	background-color: rgba(0,0,0,.4);
+        	display: none;
+        	i{
+				position: absolute;
+				top: 50%;        		
+				left: 50%;
+				color: #FFF;
+				font-size: 40px;
+		        transform: translate(-50%,-50%);
+        	}
+        	&.active{
+        		display: block;
+        	}
+        }
+		input{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 4;
+			background-color: #ccc;
+			opacity: 0;
+		}
+	}
+}

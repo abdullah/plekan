@@ -1,12 +1,10 @@
-import store from 'store'
 
 var DEFAULT_CONTENT = `<div contenteditable="true">DEFAULT</div>`
 
 export default {
-    props: ['index', 'displayLanguage'],
+    props: ['store','index', 'displayLanguage'],
     data() {
         return {
-            store: store,
             DEFAULT_CONTENT: DEFAULT_CONTENT,
             activeEditor:false,
             updatable:null,

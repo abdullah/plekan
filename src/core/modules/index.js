@@ -1,10 +1,10 @@
 import imagetext from './imagetext.vue'
-import twocolumn from './twocloumn.vue'
+import twocloumn from './twocloumn.vue'
 
 ;(function () {
 	var modules = 	{
 		imagetext,
-		twocolumn
+		twocloumn
 	}
 
   /*----------------------------------------------------*/

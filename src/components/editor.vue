@@ -65,7 +65,6 @@
 
             if (parents) {
               var st = document.getElementById('_plekan').scrollTop
-              console.log(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop )
               this.editableModalElement = target
               editButton.style.display = "block"
               editButton.style.visibility = "visible"
