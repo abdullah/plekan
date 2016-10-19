@@ -72,13 +72,14 @@ Script tag'i ile eklediğinizde plekan objesi window nesnesine eşitlenir
 
 Olay listesi : 
 
- - OnAdd - (It will be in the future) -> ( rows object of store )
- - OnDelete (It will be in the future)
- - OnDuplicate (It will be in the future)
- - OnChange (It will be in the future)
- - OnInit (It will be in the future)
- - OnFileUploaded (It will be in the future)
- - OnSourceChange (It will be in the future)
+     OnAdd(addedObject: row,list) 
+     OnDelete(deletedObject: row,list)
+     OnDuplicate(copyObject: row , list)
+     OnChange(changeRow: row , list) 
+     OnSort(row,newIndex,OldIndex,list)
+     OnInit(void)
+     OnFileUploaded(file,row,list)
+     OnSourceChange(row,list)
 
 Olayları iki farklı şekilde yakalayabilirsiniz.
 

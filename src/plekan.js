@@ -41,7 +41,6 @@ import plekanComponentMixin from 'core/mixin.js'
     * Set contents language
     */
     var mlist = JSON.parse(JSON.stringify(moduleList));
-    
     if (typeof options.customComponents == "Array") {
       options.customComponents.map(c => {
         mlist.push(c.info)
