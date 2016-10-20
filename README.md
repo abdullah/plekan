@@ -2,7 +2,7 @@
 
 > Plekan modern çok dil destekli, özelleştirilebilir **Vue.js** tabanlı bir içerik üreticidir.
 
-NOTE: Plekan **Vue.js  2.x**  üzerini destekler
+NOTE: Plekan **Vue.js  2.x**  üzerini destekler.
 
 #Kurulum
 
@@ -18,12 +18,52 @@ Plekan kurulumdan sonra elinizde 3 farklı nesne olacaktır;
  2. plekanComponentMixin
  3. plekanModules
 
-**plekan** : Editörün çalışması için gereken çekirdek kodu içerin nesnedir.
+**plekan** : Editörün çalışması için gereken çekirdek kodu içeren nesnedir.
 **plekanModules** : Plekan ile birlikte gelen modül listesinin olduğu nesnedir. İsterseniz liste içindeki modülleri filtereleyip gösterebilirsiniz. 
 >NOT: **plekanModules** içindeki listeyi filterelemeniz dosya boyutunu değiştirmez.
 
 **plekanComponentMixin** : Bazı durumlarda plekanModules ile gelen modüllerin dışında kendi modüllerinizi yazmak isteyebilirsiniz . Bu durumda bu nesne size yardımcı olacaktır. 
 
+
+###Row objesi 
+
+    [
+	    {
+	      "name": "slider",
+	      "group": "text",
+	      "thumbnail": "thumbnail.png",
+	      "contents": {
+	        "tr": {
+	          "html": <String>,
+	          "fields": <Object>
+	        },
+	        "en": {
+	          "html": <String>,
+	          "fields": <Object>
+	        },
+	        .....
+	      "index": "2d89be50-914d-11e6-998c-5f394fa01a63"
+	    },
+	    .....
+    ]
+
+Plekan'nın üreteceği her bir row ( bunlar ekrandaki her bir satıra/modüle denk gelir ) yukarda görüldüğü gibi bir obje olacaktır. Nesne içeriği : 
+
+**name** : Row'un ait olduğu modül ismi
+**group** : Row'un ait olduğu modülün grubu
+**contents** : Row'un içerdiği html ve row'a özel alanlar
+> NOT : Content's içerisindeki bütün alanlar (contents özelliğide dahil) dinamik olarak oluşturulur . Her dil özelliğinin içinde html ve fields adında  iki alt özellik daha bulunur.
+
+**html** : Row'un tamamının dirty html'ini içerir   (Dile özel)
+**fields**: Row'a ait resim,yazı,liste vb alanları içerir. Bu özellik plekan tarafından dinamik olarak desteklensede dinamik olarak oluşturulmaz oluşturmak için özel modül yazma kısmına bakınız. 
+
+>Plekan kurulumundan sonra gelen **plekanModules** objesindeki row'ların fields özellikleri dolu olabilir veya olmayabilir  ^^
+
+>Fields objesini mobil cihazlar için kullanabilirsiniz bunun sebebi mobil cihazlar birçok  html etiketlerini render edemez mesela  `img` etiketi (Android için). Bir blog postumuz olduğunu düşünürsek bu row'ları mobilde sağlıklı bir şekilde göstermek için image kaynağının çıplak olması gerekmektedir bu tür bir durumda **fields** objesi yardımcı olacaktır. Bu kısım opsiyoneldir ve sizin bunu handle etmeniz gerekmektedir  ama işe yarar bişey :)
+
+**index** : Dinamik olarak oluşturulan benzersiz row kimliğidir buraya dokunmayın veya değiştirmeyin .
+
+ 
 #Kullanma
 
 ####Geleneksel yöntem
@@ -146,7 +186,7 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
 
 
     <template>
-      <div class="twocloumn" v-html="content"></div>
+      <div class="plekan" v-html="content"></div>
     </template>
     
     <script>
@@ -155,7 +195,7 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
       var DEFAULT_CONTENT = `
     	<div class="plekan-clearfix">
     		<h2 contenteditable="true" class="twocloumn-title">Title</h2>
-          <div contenteditable="true" class="twocloumn-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <div contenteditable="true" class="twocloumn-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit,  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
           <div class="plekan-row">
             <div class="plekan-xs-6">
@@ -185,10 +225,10 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
 
 Özel bir komponent yazmak için **plekan** ile birlikte gelen **plekanComponentMixin** mixin'inin kullanmanız gerekecektir, bu mixin modülün güncellenmesi hangi dilin aktif olduğunu ve daha önceden bu modül ile yazılmış row'u parse etmesi için gereken mantıksal kısmı içerir. Dikkat edilmesi gereken kısımlar;
 	
-**v-html="content"** :  olarak belirtilen kısım mixin tarafından oluşturulur,
+**v-html="content"** :  olarak belirtilen kısımdaki content objesi mixin tarafından oluşturulur,
 **DEFAULT_CONTENT** : bu değişken modülün varsayılan olarak gösterilecek içeriğidir
-**contenteditable="true"**  :  üzerinde değişiklik yapılacak kısımlar bu şekilde ayarlanmalıdır. 
-> NOT: Bu kısım her zaman **true** olarak kalmalıdır  seçenek nesnesinde özel bir save butonu ile plekan tarafından hazırlanmış row'lara ulaşabilir daha sonra bu row'ları  şu şekilde kayıt edebilirsiniz : 
+**contenteditable="true"**  :  üzerinde değişiklik yapılacak kısımlar bu şekilde ayarlanmalıdır.  Geri kalan kısmı biz hallediceğiz.
+> NOT:  `contenteditable` kısmı her zaman **true** olarak kalmalıdır  seçenek nesnesinde özel bir save butonu ile plekan tarafından hazırlanmış row'lara ulaşabilir daha sonra bu row'ları  şu şekilde kayıt edebilirsiniz : 
 
 
 
