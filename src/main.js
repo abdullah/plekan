@@ -16,7 +16,7 @@ Vue.use(plekan,{
   languages : ["tr","en"],
   modules:modules,
   // rows : mockup
-  thumbnailPath : "static/",
+  thumbnailPath : "/static/",
   plekan_buttons : {
   	save : {
   		text : "Save",

@@ -12,7 +12,7 @@
         </ul>
       </div>
     </header>
-<!--     <div class="plekan-container">
+    <div class="plekan-container">
       <div class="intro">
         <h1>WTF is doing this ?</h1>
         <h3>Plekan is a minimalist content builder </h3>
@@ -32,7 +32,7 @@
       <ul class="modules-list">
           <li 
             v-for="l in listOfModules" 
-            :style="{ backgroundImage: 'url(' + l.thumbnail + ')' }">
+            :style="{ backgroundImage: 'url(static/' + l.thumbnail + ')' }">
             <input type="checkbox" v-model="l.chekced" >
             <div class="isChecked" :class="{active:l.chekced}">
               <i class="fa fa-check"></i>
@@ -45,13 +45,6 @@
       <button class="compileButton" 
         @click="compile">@compile
       </button>
-    </div> -->
-
-    <div class="plekan-container" v-if="rows.length">
-    <h1>RESULT</h1>
-<pre>
-  {{rows}}
-</pre>
     </div>
 
     <transition enter-active-class="animated fadeInUp custom-classes-transition"
