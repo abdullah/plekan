@@ -8,12 +8,12 @@ NOTE: Plekan **Vue.js  2.x**  üzerini destekler.
 
     npm i plekan --save
 
-Plekan içerisinde 100'den fazla modül ile birlikte gelir. İsterseniz bu modülleri özelleştirebilir ve sadeleştirebilirsiniz 
+Plekan içerisinde ~~100~~'den fazla modül ile birlikte gelir. İsterseniz bu modülleri özelleştirebilir ve sadeleştirebilirsiniz 
 
 #Çekirdek yapıyı anlama 
 
 Plekan kurulumdan sonra elinizde 3 farklı nesne olacaktır;
-	
+  
  1. plekan 
  2. plekanComponentMixin
  3. plekanModules
@@ -28,23 +28,23 @@ Plekan kurulumdan sonra elinizde 3 farklı nesne olacaktır;
 ###Row objesi 
 
     [
-	    {
-	      "name": "slider",
-	      "group": "text",
-	      "thumbnail": "thumbnail.png",
-	      "contents": {
-	        "tr": {
-	          "html": <String>,
-	          "fields": <Object>
-	        },
-	        "en": {
-	          "html": <String>,
-	          "fields": <Object>
-	        },
-	        .....
-	      "index": "2d89be50-914d-11e6-998c-5f394fa01a63"
-	    },
-	    .....
+      {
+        "name": "slider",
+        "group": "text",
+        "thumbnail": "thumbnail.png",
+        "contents": {
+          "tr": {
+            "html": <String>,
+            "fields": <Object>
+          },
+          "en": {
+            "html": <String>,
+            "fields": <Object>
+          },
+          .....
+        "index": "2d89be50-914d-11e6-998c-5f394fa01a63"
+      },
+      .....
     ]
 
 Plekan'nın üreteceği her bir row ( bunlar ekrandaki her bir satıra/modüle denk gelir ) yukarda görüldüğü gibi bir obje olacaktır. Nesne içeriği : 
@@ -67,27 +67,27 @@ Plekan'nın üreteceği her bir row ( bunlar ekrandaki her bir satıra/modüle d
 #Kullanma
 
 ####Geleneksel yöntem
-	
-	//Stil dosyaları için
-	<link rel=stylesheet href="./static/plekan.css">
-	.....
-	<div id="app">
-		<plekan></plekan>
-	</div>
-	.....
-	//Js dosyaları için
-	<script src="path/vue.js"></script>
+  
+  //Stil dosyaları için
+  <link rel=stylesheet href="./static/plekan.css">
+  .....
+  <div id="app">
+    <plekan></plekan>
+  </div>
+  .....
+  //Js dosyaları için
+  <script src="path/vue.js"></script>
     <script src="path/plekan.js"></script>
     <script src="path/plekanmodules.js"></script>
-	
-	Vue.use(plekan.editor,{
-	  defaultLanguage : "tr",
-	  languages : ["tr","en"],
-	  modules:plekanmodules,
-	})
-	new Vue({
-	  el: '#app'
-	})
+  
+  Vue.use(plekan.editor,{
+    defaultLanguage : "tr",
+    languages : ["tr","en"],
+    modules:plekanmodules,
+  })
+  new Vue({
+    el: '#app'
+  })
 
 En basit şekilde plekan'ı yukarda gördüğünüz şekilde aktif hale getirebilirsiniz. Vue örneğine eklentiyi kullanması için kayıt işlemi yapıldıktan sonra `<plekan></plekan>` komponentine global olarak ulaşmak mümkündür bu kısımdan sonra istediğiniz kısıma komponent'i yerleştirebilirsiniz.
 
@@ -97,15 +97,15 @@ Script tag'i ile eklediğinizde plekan objesi window nesnesine eşitlenir
 
     import {editor} from './plekan.'
     import plekanmodules from './plekan/plekanmodules'
-	
-	Vue.use(plekan.editor,{
-	  defaultLanguage : "tr",
-	  languages : ["tr","en"],
-	  modules:plekanmodules,
-	})
-	new Vue({
-	  el: '#app'
-	})
+  
+  Vue.use(plekan.editor,{
+    defaultLanguage : "tr",
+    languages : ["tr","en"],
+    modules:plekanmodules,
+  })
+  new Vue({
+    el: '#app'
+  })
 
 
 ##Olay yakalama
@@ -124,15 +124,15 @@ Olay listesi :
 Olayları iki farklı şekilde yakalayabilirsiniz.
 
 Yöntem bir :
-	Global nesne üzerinden `this.$onAdd = //function` 
+  Global nesne üzerinden `this.$onAdd = //function` 
 
 Yöntem iki :
-	>Giriş nesnesi üzerinden 
+  >Giriş nesnesi üzerinden 
    
     Vue.use(plekan.editor,{
-	...
-	onAdd : // function   	
-	})
+  ...
+  onAdd : // function     
+  })
 
  
 
@@ -155,31 +155,48 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
       OnFileUploaded : function(){},
       OnSourceChange : function(){},
       plekan_buttons : { // Özel düğmeler
-      	save : {
-      		text : "Save",
-      		class:"plekan-footer-button cancel",
-      		callback : function (e) {
-      			console.log(e)
-      		}
-      	},
-      	cancel : {
-      		text : "Cancel",
-      		class:"plekan-footer-button save",
-      		callback : function (e) {
-      			console.log(e)
-      		}
-      	}
+        save : {
+          text : "Save",
+          class:"plekan-footer-button cancel",
+          callback : function (e) {
+            console.log(e)
+          }
+        },
+        cancel : {
+          text : "Cancel",
+          class:"plekan-footer-button save",
+          callback : function (e) {
+            console.log(e)
+          }
+        }
       }
     })
 
 
-**customComponents**,  **modules**, **defaultLanguage**, **languages**, **rows** seçenekleri dışında diğer opsiyonlara global nesneden ulaşabilir, işleyişi değiştirebilirsiniz . Örnek ;
-
- 
+**customComponents**,  **modules**, **defaultLanguage**, **languages**, **rows** seçenekleri dışında diğer opsiyonlara global nesneden ulaşabilir, işleyişi değiştirebilirsiniz 
 
     this.$plekan_buttons.cancel.callback =  (e) => {
-       // Şunu yap
+           // Şunu yap
     }
+    
+---
+
+#### Rows objesini ayarlama
+
+Rows özelliği daha önceden plekan aracılığıyla oluşturulmuş row dizisidir. Tekrar düzenlemek için bu diziyi iki farklı şekilde plekan'a tanıtabilirsiniz :  [Dynamic Props](https://vuejs.org/guide/components.html#Dynamic-Props)
+
+>NOT : Yöntem iki bir defalığına giriş aşamasında bu objeyi alır tekrar tekrar rows objesi geçmek istiyorsanız yöntem biri kullanın.
+
+#####Yöntem 1
+
+    <plekan :rows="rows"></plekan>
+
+#####Yöntem 2
+     Vue.use(plekan,{
+     ....
+     rows: rows
+     ....
+     })
 
 #### Özel modül yazma
 ##### Vue componenti olarak
@@ -193,8 +210,8 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
       import {mixinComponent} from 'plekan'
       
       var DEFAULT_CONTENT = `
-    	<div class="plekan-clearfix">
-    		<h2 contenteditable="true" class="twocloumn-title">Title</h2>
+      <div class="plekan-clearfix">
+        <h2 contenteditable="true" class="twocloumn-title">Title</h2>
           <div contenteditable="true" class="twocloumn-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit,  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
           <div class="plekan-row">
@@ -207,10 +224,10 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
               </p>
             </div>
           </div>
-    	</div>
+      </div>
       `
       export default {
-      	mixins:[ mixinComponent ],
+        mixins:[ mixinComponent ],
         data () {
           return {
             DEFAULT_CONTENT : DEFAULT_CONTENT
@@ -224,7 +241,7 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
 
 
 Özel bir komponent yazmak için **plekan** ile birlikte gelen **plekanComponentMixin** mixin'inin kullanmanız gerekecektir, bu mixin modülün güncellenmesi hangi dilin aktif olduğunu ve daha önceden bu modül ile yazılmış row'u parse etmesi için gereken mantıksal kısmı içerir. Dikkat edilmesi gereken kısımlar;
-	
+  
 **v-html="content"** :  olarak belirtilen kısımdaki content objesi mixin tarafından oluşturulur,
 **DEFAULT_CONTENT** : bu değişken modülün varsayılan olarak gösterilecek içeriğidir
 **contenteditable="true"**  :  üzerinde değişiklik yapılacak kısımlar bu şekilde ayarlanmalıdır.  Geri kalan kısmı biz hallediceğiz.
@@ -232,7 +249,7 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
 
 
 
-	this.$plekan_buttons.save.callback = (e) =>  {
+  this.$plekan_buttons.save.callback = (e) =>  {
 
     var tmprows = JSON.parse(JSON.stringify(e));
     tmprows.map(r => {
@@ -245,7 +262,6 @@ Seçenek nesnesi plekan'nın görünümü ve özelleştirilmesi için birçok pa
     }
    ----
 
-#### Row objesini ayarlama
 
 
 ## Build Setup
