@@ -6,13 +6,13 @@
           <img src="~assets/logo.png" alt="">
         </div>
         <ul>
-            <li><a href="">Github</a></li>
+            <!-- <li><a href="">Github</a></li> -->
             <li><a href="" @click.prevent="show = true">Try Plekan</a></li>
-            <li><a href="">Customize</a></li>
+            <!-- <li><a href="">Customize</a></li> -->
         </ul>
       </div>
     </header>
-    <div class="plekan-container">
+<!--     <div class="plekan-container">
       <div class="intro">
         <h1>WTF is doing this ?</h1>
         <h3>Plekan is a minimalist content builder </h3>
@@ -39,13 +39,19 @@
             </div>
           </li>
       </ul>
-      <!-- {{listOfModules}} -->
     </div>
     <div class="plekan-container">
       <hr>
       <button class="compileButton" 
         @click="compile">@compile
       </button>
+    </div> -->
+
+    <div class="plekan-container" v-if="rows.length">
+    <h1>RESULT</h1>
+<pre>
+  {{rows}}
+</pre>
     </div>
 
     <transition enter-active-class="animated fadeInUp custom-classes-transition"
@@ -63,6 +69,7 @@
       return {
         show:true,
         listOfModules:listOfModules,
+        rows:[]
       }
     },
     created(){
@@ -85,13 +92,13 @@
           })
         })
 
-        console.log(JSON.stringify(tmprows))
-
-      }
-
-      this.$plekan_buttons.cancel.callback =  (e) => {
+        this.rows = tmprows
         this.show = false
       }
+
+      // this.$plekan_buttons.cancel.callback =  (e) => {
+      //   this.show = false
+      // }
 
     },
     methods:{

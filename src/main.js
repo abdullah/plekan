@@ -16,6 +16,7 @@ Vue.use(plekan,{
   languages : ["tr","en"],
   modules:modules,
   // rows : mockup
+  thumbnailPath : "static/",
   plekan_buttons : {
   	save : {
   		text : "Save",
@@ -24,13 +25,13 @@ Vue.use(plekan,{
   			console.log(e)
   		}
   	},
-  	cancel : {
-  		text : "Cancel",
-  		class:"plekan-footer-button save",
-  		callback : function (e) {
-  			console.log(e)
-  		}
-  	}
+  	// cancel : {
+  	// 	text : "Cancel",
+  	// 	class:"plekan-footer-button save",
+  	// 	callback : function (e) {
+  	// 		console.log(e)
+  	// 	}
+  	// }
   }
 })
 

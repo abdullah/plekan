@@ -77,6 +77,7 @@ import plekanComponentMixin from 'core/mixin.js'
     store.init('translateLanguage',options.languages[1]);
 
     Vue.prototype.$plekan_buttons = options.plekan_buttons
+    Vue.prototype.$thumbnailPath = options.thumbnailPath
 
   }
 

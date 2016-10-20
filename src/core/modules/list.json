@@ -2,11 +2,11 @@
 	{
 		"name" 		: "twocloumn",
 		"group" 		: "text",
-		"thumbnail" 	: "/static/twocolumn.png"
+		"thumbnail" 	: "twocolumn.png"
 	},
 	{
 		"name" 		: "imagetext",
 		"group" 		: "image",
-		"thumbnail" 	: "/static/imagetext.png"
+		"thumbnail" 	: "imagetext.png"
 	}
 ]
