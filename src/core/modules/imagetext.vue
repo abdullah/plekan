@@ -7,7 +7,7 @@
 
   var DEFAULT_CONTENT = `
   <div>
-    <img width="100%" src="http://news.nationalgeographic.com/content/dam/news/2016/04/06/elephants%20southern%20africa/Elephants-Southern-Africa.adapt.768.1.jpg" alt=""/>
+    <img width="100%" src="http://d39kbiy71leyho.cloudfront.net/wp-content/uploads/2016/05/09170020/cats-politics-TN.jpg" alt=""/>
   </div>
   `
   export default {
@@ -18,7 +18,7 @@
       }
     },
     updated(){
-      this.me.contents[this.displayLanguage].fields["src"] = this.$el.querySelector('img').src
+      // this.me.contents[this.displayLanguage].fields["src"] = this.$el.querySelector('img').src
     }
   }
 </script>

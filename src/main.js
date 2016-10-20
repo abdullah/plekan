@@ -20,7 +20,7 @@ Vue.use(plekan,{
   plekan_buttons : {
   	save : {
   		text : "Save",
-  		class:"plekan-footer-button cancel",
+  		class:"plekan-footer-button save",
   		callback : function (e) {
   			console.log(e)
   		}

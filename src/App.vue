@@ -32,7 +32,7 @@
       <ul class="modules-list">
           <li 
             v-for="l in listOfModules" 
-            :style="{ backgroundImage: 'url(static/' + l.thumbnail + ')' }">
+            :style="{ backgroundImage: 'url(' + $plekanutils.makeUrl(l.thumbnail,$thumbnailPath) + ')' }">
             <input type="checkbox" v-model="l.chekced" >
             <div class="isChecked" :class="{active:l.chekced}">
               <i class="fa fa-check"></i>

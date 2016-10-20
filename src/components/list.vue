@@ -3,7 +3,8 @@
     <button @click="openModuleList" class="openModuleList"><i class="fa fa-angle-left"></i></button>
     <div id="_plekan_sortable_list">
       <span class="plekan-list-item" v-for="(l,key) in list" href="#" v-bind:data-index="key">   
-        <img class="plekan-move-row" :src="$thumbnailPath + l.thumbnail"/>
+        <img class="plekan-move-row" 
+          :src="$plekanutils.makeUrl(l.thumbnail,$thumbnailPath)"/>
       </span>
     </div>
   </div>

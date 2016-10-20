@@ -42,6 +42,7 @@
     },
     mounted() {
 
+
       this.event = new CustomEvent('domupdated');
 
       let el = this.element

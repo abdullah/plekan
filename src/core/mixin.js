@@ -75,10 +75,24 @@ export default {
             this.updateHTML()
         },false);
 
+       
 
     },
     updated() {
         this.setEditable()
+        /*
+        * Error an image
+        *@TODO : Check image 
+        */
+        var els = document.querySelectorAll("img");
+
+        Object.keys(els).map(e => {
+          els[e].addEventListener('error',function () {
+             els[e].src = "http://www.pressedfortimelincoln.co.uk/wp-content/uploads/2013/05/placeholder1-1024x768.png"
+        },false); 
+
+        })
+        
     },
     methods: {
         setEditable() {

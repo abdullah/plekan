@@ -79,6 +79,21 @@ import plekanComponentMixin from 'core/mixin.js'
     Vue.prototype.$plekan_buttons = options.plekan_buttons
     Vue.prototype.$thumbnailPath = options.thumbnailPath
 
+    /*
+    * Source : 
+    * http://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript
+    */
+    Vue.prototype.$plekanutils = {
+      makeUrl(url,prefix){
+        var RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+        if(RegExp.test(url)){
+            return url;
+        }else{
+            return prefix + url;
+        }
+      },
+    } 
+
   }
 
   /*----------------------------------------------------*/
