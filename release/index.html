@@ -12,7 +12,19 @@
 	<body>
 		
 		<div id="app">
-			<plekan></plekan>
+			<!-- <plekan></plekan> -->
+			<transition enter-active-class="animated fadeInUp custom-classes-transition"
+	    	leave-active-class="animated fadeOutDown custom-classes-transition">
+	     		 <plekan v-show="show"></plekan>
+	   		 </transition>
+	   		<!-- result -->
+			<div class="plekan-container">
+			<a href="" @click.prevent="show = true">Try again</a>
+			<h1>RESULT</h1> 
+				<pre>
+					{{rows}}
+				</pre>
+			</div>
 		</div>
 
 		<script  type="text/x-template" id="xx">
@@ -60,19 +72,40 @@
 			  			console.log(e)
 			  		}
 			  	},
-			  	cancel : {
-			  		text : "Cancel",
-			  		class:"plekan-footer-button save",
-			  		callback : function (e) {
-			  			console.log(e)
-			  		}
-			  	}
+			  	// cancel : {
+			  	// 	text : "Cancel",
+			  	// 	class:"plekan-footer-button save",
+			  	// 	callback : function (e) {
+			  	// 		console.log(e)
+			  	// 	}
+			  	// }
 			  }
 			})
 
 			new Vue({
 			  el: '#app',
+			  data:function () {
+			  	return {
+			  		show:true,
+			  		rows:[]
+			  	}
+			  },
 			  mounted(){
+
+
+			      this.$plekan_buttons.save.callback = function (e)  {
+
+			        var tmprows = JSON.parse(JSON.stringify(e));
+			        tmprows.map(function (r)   {
+			          Object.keys(r.contents).map(function (c) {
+			            r.contents[c].html.replace(/contenteditable="true"/gm,"")
+			          })
+			        })
+
+			        this.rows = tmprows
+			        this.show = false
+			      }.bind(this)
+			  	
 			  },
 			})
 
