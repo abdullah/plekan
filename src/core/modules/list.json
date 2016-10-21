@@ -5,8 +5,28 @@
 		"thumbnail" 	: "twocolumn.png"
 	},
 	{
+		"name" 		: "thereimagetext",
+		"group" 		: "image",
+		"thumbnail" 	: "thereimagetext.png"
+	},
+	{
+		"name" 		: "youtubeembed",
+		"group" 		: "image",
+		"thumbnail" 	: "youtubeembed.png"
+	},
+	{
+		"name" 		: "imageontext",
+		"group" 		: "image",
+		"thumbnail" 	: "imageontext.png"
+	},
+	{
 		"name" 		: "imagetext",
 		"group" 		: "image",
 		"thumbnail" 	: "http://d39kbiy71leyho.cloudfront.net/wp-content/uploads/2016/05/09170020/cats-politics-TN.jpg"
+	},
+	{
+		"name" 		: "gap",
+		"group" 		: "image",
+		"thumbnail" 	: "gap.png"
 	}
 ]

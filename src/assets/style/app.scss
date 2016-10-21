@@ -33,6 +33,9 @@
     background-color: #fff;
     z-index: 11;
     border-bottom: 1px solid #ddd;
+    -webkit-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+-moz-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
     span{
       float: left;
       margin-right: 10px;
@@ -282,6 +285,16 @@
      border-left: 1px solid #ccc;
      transition: all .3s;
      z-index: 12;
+         -webkit-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+-moz-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+     ._plekan_list_title{
+       text-align: center;
+       background-color: transparent;
+       border-bottom: 1px solid #ddd;
+       padding-bottom: 15px;
+       display: inline-block;
+     }
      .openModuleList{
         width: 40px;
         height: 40px;

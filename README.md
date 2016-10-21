@@ -276,7 +276,17 @@ Vue.use(plekan,{
     }
    ----
 
+####Yapılacaklar
 
+ 1. Editör butonları çoğaltılcak
+ 2. Editör butonları özelleştirilebilecek
+ 3. Dosya Yükleme
+ 4. Modül gruplama
+ 5. Kısayol Tuşları
+ 6. Kod vurgulama
+ 7. Font değiştirme
+ 8. İkon ekleme
+ 
 
 ## Build Setup
 

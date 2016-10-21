@@ -30,6 +30,7 @@
           {title : "Alt Title", prop  : "alt", placeholder : "when the image error loaded shown text "},
           {title : "Link", prop  : "href" , placeholder : "source link"},
           {title : "Title", prop  : "title" , placeholder : "title text"},
+          {title : "Width", prop  : "width" , placeholder : "Width of video"},
         ],
         elementEditableProperties : {}
       }

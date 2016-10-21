@@ -6,18 +6,14 @@
   import mixinComponent from 'core/mixin'
   var DEFAULT_CONTENT = `
 	<div class="plekan-clearfix">
-		<h2 contenteditable="true" class="twocloumn-title">Title</h2>
-      <div contenteditable="true" class="twocloumn-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
-      <div class="plekan-row">
-        <div class="plekan-xs-6">
-          <img width="100%" src="http://scitechdaily.com/images/Universe-Collide_01.jpg" alt="">
-        </div>
-        <div class="plekan-xs-6" contenteditable="true">
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
+		<h2 contenteditable="true" class="twocloumn-title">Schiaparelli kayıp</h2>
+      <div contenteditable="true" class="twocloumn-text">ESA, Schiaparelli’nin Mars’a önceki günkü inişi sırasında beklenenden farklı hareket ettiğini açıkladı. Kurumun gezegenlerle ilgili çalışmalarından sorumlu Andrea Accomazzo, robota ne olduğunu bilemediklerini itiraf etti.
+
+        <p>Keşif robotunu fırlatan uydudan gelen veriler, robotun, paraşütünü çok erken açtığını gösteriyor.</p>
+
+        Ayrıca robotun yüzeye iyice yaklaştığında kendisini yere oturtmaya yarayacak roketleri de beklenenden çok daha kısa süre çalıştırdığı tahmin ediliyor.
+
+        BBC Türkçe’deki habere göre ESA henüz robotun inerken parçalanıp parçalanmadığını kesin olarak belirleyemedi ama iyimser de değil. Uzmanlar, verileri incelemeye ve küçük bir ihtimal de olsa gezegen yüzeyine oturduysa diye Schiaparelli’ye sinyaller yollamaya devam ediyor. Şu anda ESA’nın bütün yapabileceği, Schiaparelli’nin inişe 1 dakika kalana kadar, kendisini fırlatan TGO adlı uyduya gönderdiği verileri taramak suretiyle anlayabilmek.
       </div>
 	</div>
   `
@@ -29,12 +25,16 @@
       }
     },
     updated(){
-      this.me.contents[this.displayLanguage].fields["src"] = this.$el.querySelector('img').src
+      // this.me.contents[this.displayLanguage].fields["src"] = this.$el.querySelector('img').src
     }
   }
 </script>
 <style>
+  .twocloumn-title{
+    padding-left: 30px;
+  }
   .twocloumn-text{
     margin-bottom: 29px;
+    padding-left: 30px;
   }
 </style>

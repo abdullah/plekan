@@ -1,5 +1,6 @@
 <template>
   <div class="_plekan_list animated active">
+    <span class="_plekan_list_title">Component List</span>
     <button @click="openModuleList" class="openModuleList"><i class="fa fa-angle-left"></i></button>
     <div id="_plekan_sortable_list">
       <span class="plekan-list-item" v-for="(l,key) in list" href="#" v-bind:data-index="key">   

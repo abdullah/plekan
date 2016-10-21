@@ -10,6 +10,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
 
+
 /* eslint-disable no-new */
 Vue.use(plekan,{
   defaultLanguage : "tr",

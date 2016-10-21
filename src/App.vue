@@ -47,7 +47,8 @@
       </button>
     </div>
 
-    <transition enter-active-class="animated fadeInUp custom-classes-transition"
+    <transition 
+    enter-active-class="animated fadeInUp custom-classes-transition"
     leave-active-class="animated fadeOutDown custom-classes-transition">
       <plekan v-show="show"></plekan>
     </transition>

@@ -53,14 +53,12 @@
         let editButtonHeight  = editButton.clientHeight
 
         let target,tagname,calc,parents;
-
-        document.addEventListener('mousemove',e => {
+        document.addEventListener('mouseover',e => {
           target  = e.target;
           tagname = target.tagName;
           calc    = target.getBoundingClientRect();
 
           if (editableTag.indexOf(tagname) != -1) {
-            
             parents = hasParent(e.target,'plekan-row-item')
 
             if (parents) {
