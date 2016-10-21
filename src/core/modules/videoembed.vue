@@ -8,7 +8,7 @@
   var DEFAULT_CONTENT = `
   <div class="videoembed">
     <div class="plekan-xs-6">
-      <img src="sunset" width="100%" alt="" />
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/KLZJ8BdBEoM" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="plekan-xs-6">
     <h3 contenteditable="true">Vue 2.0 is Here!</h3>

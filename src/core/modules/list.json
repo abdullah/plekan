@@ -12,15 +12,10 @@
 	{
 		"name" 		: "videoembed",
 		"group" 		: "image",
-		"thumbnail" 	: "videoembed.png"
+		"thumbnail" 	: "youtubeembed.png"
 	},
 	{
 		"name" 		: "imageontext",
-		"group" 		: "image",
-		"thumbnail" 	: "imageontext.png"
-	},
-	{
-		"name" 		: "imagetext",
 		"group" 		: "image",
 		"thumbnail" 	: "imageontext.png"
 	},
