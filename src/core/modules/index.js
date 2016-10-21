@@ -1,6 +1,6 @@
 import imagetext from './imagetext.vue'
 import twocloumn from './twocloumn.vue'
-import youtubeembed from './youtubeembed.vue'
+import videoembed from './videoembed.vue'
 import imageontext from './imageontext.vue'
 import gap from './gap.vue'
 import thereimagetext from './thereimagetext.vue'
@@ -11,7 +11,7 @@ import thereimagetext from './thereimagetext.vue'
     thereimagetext,
     imageontext,
     gap,
-		youtubeembed,
+		videoembed,
 		twocloumn
 	}
 

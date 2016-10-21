@@ -10,9 +10,9 @@
 		"thumbnail" 	: "thereimagetext.png"
 	},
 	{
-		"name" 		: "youtubeembed",
+		"name" 		: "videoembed",
 		"group" 		: "image",
-		"thumbnail" 	: "youtubeembed.png"
+		"thumbnail" 	: "videoembed.png"
 	},
 	{
 		"name" 		: "imageontext",
