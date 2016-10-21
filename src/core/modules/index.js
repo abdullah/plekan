@@ -8,10 +8,10 @@ import thereimagetext from './thereimagetext.vue'
 ;(function () {
 	var modules = 	{
     imagetext,
-    thereimagetext,
-    imageontext,
-    gap,
-		videoembed,
+    // thereimagetext,
+    // imageontext,
+    // gap,
+		// videoembed,
 		twocloumn
 	}
 
