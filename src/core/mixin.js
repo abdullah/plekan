@@ -96,15 +96,12 @@ export default {
     },
     methods: {
         setEditable() {
-            let els = this.$el.querySelectorAll("[contenteditable='true']");
-            Object.keys(els).map(index =>  {
-                els[index].onblur = (evt) => {
-                    if (!this.updatable) {
-                        this.updateHTML()
-                        window.editorElement.classList.remove('active');
-                    }
+            this.$el.onblur = (evt) => {
+                if (!this.updatable) {
+                    this.updateHTML()
+                    window.editorElement.classList.remove('active');
                 }
-            })
+            }
 
         },
         updateHTML(){

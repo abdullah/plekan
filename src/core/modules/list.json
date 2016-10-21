@@ -1,27 +1,48 @@
 [
+	
 	{
-		"name" 		: "twocloumn",
+		"name" 		: "videoandtext",
 		"group" 		: "text",
-		"thumbnail" 	: "twocolumn.png"
+		"thumbnail" :"1.png"
 	},
 	{
-		"name" 		: "thereimagetext",
-		"group" 		: "image",
-		"thumbnail" 	: "thereimagetext.png"
+		"name" 		: "imagetextreverse",
+		"group" 		: "text",
+		"thumbnail" :"8.png"
 	},
 	{
-		"name" 		: "videoembed",
-		"group" 		: "image",
-		"thumbnail" 	: "youtubeembed.png"
+		"name" 		: "pvideo",
+		"group" 		: "text",
+		"thumbnail" :"7.png"
+	},
+	{
+		"name" 		: "twocolumntext",
+		"group" 		: "text",
+		"thumbnail" :"6.png"
+	},
+	{
+		"name" 		: "onlyimage",
+		"group" 		: "text",
+		"thumbnail" :"5.png"
 	},
 	{
 		"name" 		: "imageontext",
-		"group" 		: "image",
-		"thumbnail" 	: "imageontext.png"
+		"group" 		: "text",
+		"thumbnail" :"4.png"
 	},
 	{
-		"name" 		: "gap",
-		"group" 		: "image",
-		"thumbnail" 	: "gap.png"
+		"name" 		: "threeimage",
+		"group" 		: "text",
+		"thumbnail" :"3.png"
+	},
+	{
+		"name" 		: "twoimage",
+		"group" 		: "text",
+		"thumbnail" :"2.png"
+	},
+	{
+		"name" 		: "imagetext",
+		"group" 		: "text",
+		"thumbnail" :"9.png"
 	}
 ]

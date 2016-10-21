@@ -1,0 +1,69 @@
+
+.plekan-template{
+	&:after,&:before{
+		content: "";
+		clear: both;
+		display: table;
+		float: none;
+	}	
+}
+
+section.plekan-image-text,section.plekan-image-text-reverse{
+	img{
+		display: block;
+		margin: auto;
+		width: 100%;
+	}
+}
+
+section.plekan-video{
+	blockquote{
+		font-style: italic;
+	}
+}
+section.plekan-two-column-text{
+}
+
+section.plekan-only-image{
+	img{
+		width: 100%;
+	}
+}
+section.plekan-image-on-text{
+	position: relative;
+	img{
+		width: 100%;
+	}
+	p{
+		position: absolute;
+		background-color: rgba(0,0,0,.6);
+		top: 50%;
+		left: 50%;
+		width: 100%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        padding: 10px;
+        color: #FFF;
+        font-size: 30px;
+        font-weight: 100;
+	}
+}
+section.plekan-three-image{
+	img{
+		max-width: 100%;
+		margin: auto;
+	}
+	.desc{
+		text-align: center;
+		line-height: normal;
+		margin-top: 4px;
+	}
+}
+section.plekan-two-image{
+	img{
+		max-width: 100%;
+	}
+}
+section.plekan-video-and-text{
+	
+}

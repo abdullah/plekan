@@ -1,55 +1,29 @@
 <template>
-  <div class="imageontext" v-html="content"></div>
+  <div class="plekan-template" v-html="content" contenteditable="true"></div>
 </template>
+
 
 <script>
   import mixinComponent from 'core/mixin'
 
   var DEFAULT_CONTENT = `
-  <div class="imageontext">
-    <div class="image-layer">
-      <img src="/static/sunset.png" alt="" />
-      <div class="text">
-          <span contenteditable="true">Lorem ipsum dolor.</span>
+    <section class="plekan-image-text">
+      <div class="plekan-xs-12 plekan-sm-12 plekan-md-6 plekan-lg-6">
+        <img src="/static/component/1.png" alt="">
       </div>
-    </div>
-  </div>
+      <div class="plekan-xs-12 plekan-sm-12 plekan-md-6 plekan-lg-6">
+        <p>
+          Elephants are large mammals of the family Elephantidae and the order Proboscidea. Two species are traditionally recognised, the African elephant (Loxodonta africana) and the Asian elephant (Elephas maximus), although some evidence suggests that African bush elephants and African forest elephants are separate species (L. africana and L. cyclotis respectively). Elephants are scattered throughout sub-Saharan Africa, South Asia, and Southeast Asia. Elephantidae is the only surviving family of the order Proboscidea;          </p>
+      </div>
+    </section>
   `
+
   export default {
     mixins:[ mixinComponent ],
     data () {
       return {
         DEFAULT_CONTENT : DEFAULT_CONTENT
       }
-    },
-    updated(){
-      // this.me.contents[this.displayLanguage].fields["src"] = this.$el.querySelector('img').src
     }
   }
 </script>
-
-<style lang="scss">
-   .imageontext{
-      position: relative;
-      .image-layer{
-        width: 100%; 
-      }
-     img{
-       width: 100% ;
-       display: block;
-     }
-     .text{
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%,-50%);   
-       color: #FFF;
-       background-color: rgba(0,0,0,.5);
-       width: 100%;
-       text-align: center;
-       font-weight: 100!important;
-       padding: 4px;
-       font-size: 40px;
-     }
-   }
-</style>

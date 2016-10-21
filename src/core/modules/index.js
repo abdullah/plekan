@@ -1,18 +1,24 @@
 import imagetext from './imagetext.vue'
-import twocloumn from './twocloumn.vue'
-import videoembed from './videoembed.vue'
+import imagetextreverse from './imagetextreverse.vue'
+import pvideo from './pvideo.vue'
+import twocolumntext from './twocolumntext.vue'
+import onlyimage from './onlyimage.vue'
 import imageontext from './imageontext.vue'
-import gap from './gap.vue'
-import thereimagetext from './thereimagetext.vue'
+import threeimage from './threeimage.vue'
+import twoimage from './twoimage.vue'
+import videoandtext from './videoandtext.vue'
 
 ;(function () {
 	var modules = 	{
-    imagetext,
-    thereimagetext,
-    imageontext,
-    gap,
-		videoembed,
-		twocloumn
+    imagetext ,
+    imagetextreverse ,
+    pvideo ,
+    twocolumntext ,
+    onlyimage ,
+    imageontext ,
+    threeimage ,
+    twoimage ,
+    videoandtext ,
 	}
 
   /*----------------------------------------------------*/
