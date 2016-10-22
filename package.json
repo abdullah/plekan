@@ -1,6 +1,6 @@
 {
   "name": "plekan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue.js project",
   "author": "Abdullah Marax <abdullah.mara@bodevoffice.com>",
   "scripts": {
@@ -9,6 +9,7 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
     "start": "node web/index.js"
   },
+  "main":"release/plekan.js",
   "dependencies": {
     "archiver": "^1.1.0",
     "archiver-json": "^0.1.1",
