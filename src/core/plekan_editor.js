@@ -26,12 +26,27 @@ window.onload = () => {
 	window.sel = null;
 
 	document.addEventListener('selectionEnd',function () {
-		// @TODO : Disabled overflow out of window
+		
+
 		editorElement.classList.add('active');
+		
 
+		// This operation disabled overflow for  out of window
 
-		editorElement.style.left = left+(width/2)-(tw/2)+'px';
-		editorElement.style.top = top-th+'px';
+		var _left = left+(width/2)-(tw/2);
+		var _top = top-th;
+		
+		_left = _left <= 10 ? 10: _left;
+		_top = _top <= 10 ? 10: _top;
+	
+		var possibleLeft = window.innerWidth - tw - 10;
+
+		_left = _left > possibleLeft  ? possibleLeft : _left;
+
+		editorElement.style.left = _left+'px';
+		editorElement.style.top = _top;+'px'
+		
+
 
 		sel = selo.saveSelection()
 

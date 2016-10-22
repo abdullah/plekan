@@ -1,6 +1,6 @@
 import plekancomponent from 'components/plekan'
 import store from 'store'
-import mediumEditor from 'core/medium_editor.js'
+import plekanEditor from 'core/plekan_editor.js'
 import 'src/helper'
 import moduleList from 'core/modules/list.json'
 import 'src/assets/style/app.scss'
