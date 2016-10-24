@@ -9,7 +9,7 @@
         <a href="" data-type="createLink" class="fa fa-link"></a>
         <a href="" data-type="insertOrderedList" class="fa fa-list-ol"></a>
         <a href="" data-type="insertUnorderedList" class="fa fa-list-ul"></a>
-        <div class="create-link" v-show="createLinkShow">
+        <div class="create-link">
           <input v-model="linktext" placeholder="http://example.com">
           <button @click="createLink"><i class="fa fa-check"></i></button>
         </div>  
@@ -34,8 +34,6 @@
       return {
         editableModal: false,
         editableModalElement: null,
-
-        createLinkShow: false,
         linktext : ""
       }
     },
@@ -94,7 +92,6 @@
 
             if (cmd == 'createLink') {
               document.querySelector('.create-link').classList.add('active')
-              this.createLinkShow = true
             }else{
               this.exec(cmd)
             }
@@ -127,7 +124,7 @@
         // @TODO : text to link 
         this.exec('createLink',this.linktext)
         this.linktext = ""
-        this.createLinkShow = false
+        document.querySelector('.create-link').classList.remove('active')
       },
       exec(cmd,val = false) {
         selo.restoreSelection(sel)

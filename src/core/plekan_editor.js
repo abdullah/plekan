@@ -44,7 +44,7 @@ window.onload = () => {
 		_left = _left > possibleLeft  ? possibleLeft : _left;
 
 		editorElement.style.left = _left+'px';
-		editorElement.style.top = _top;+'px'
+		editorElement.style.top = _top+'px'
 		
 
 

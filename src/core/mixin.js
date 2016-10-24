@@ -100,6 +100,8 @@ export default {
                 if (!this.updatable) {
                     this.updateHTML()
                     window.editorElement.classList.remove('active');
+                    // Link content 
+                    // document.querySelector('.create-link').classList.remove('active')
                 }
             }
 
