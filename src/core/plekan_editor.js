@@ -18,17 +18,20 @@ window.onload = () => {
 	var left,top,width,gb,tw,th;
 
 	window.editorElement = document.querySelector('.editor');
+	window.editorElementDynamic = document.querySelector('.dynamic-editor');
+	window.editorElementStable = document.querySelector('.stable-editor');
 
-	if (window.editorElement) {
-		tw 		= editorElement.clientWidth;
-		th 		= editorElement.clientHeight;
+	if (window.editorElementDynamic) {
+		tw 		= editorElementDynamic.clientWidth;
+		th 		= editorElementDynamic.clientHeight;
 	}
+	
 	window.sel = null;
 
 	document.addEventListener('selectionEnd',function () {
 		
 
-		editorElement.classList.add('active');
+		editorElementDynamic.classList.add('active');
 		
 
 		// This operation disabled overflow for  out of window
@@ -43,10 +46,8 @@ window.onload = () => {
 
 		_left = _left > possibleLeft  ? possibleLeft : _left;
 
-		editorElement.style.left = _left+'px';
-		editorElement.style.top = _top+'px'
-		
-
+		editorElementDynamic.style.left = _left+'px';
+		editorElementDynamic.style.top = _top+'px'
 
 		sel = selo.saveSelection()
 
@@ -59,10 +60,13 @@ window.onload = () => {
 		top 	= gb.top
 		width 	= gb.width
 
-		if (editorElement.className.indexOf('active') == -1) {
-			editorElement.style.left = left+(width/2)-(tw/2)+'px';
-			editorElement.style.top = top-th+'px';
+		if (editorElementDynamic.className.indexOf('active') == -1) {
+			editorElementDynamic.style.left = left+(width/2)-(tw/2)+'px';
+			editorElementDynamic.style.top = top-th+'px';
 		}
+
+		sel = selo.saveSelection()
+
 	});
 
 	document.addEventListener('selectionBeforeStart',function () {

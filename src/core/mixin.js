@@ -96,12 +96,16 @@ export default {
     },
     methods: {
         setEditable() {
+            this.$el.onfocus = (evt) => {
+                window.editorElementStable.classList.add('active')
+            }
+
             this.$el.onblur = (evt) => {
                 if (!this.updatable) {
                     this.updateHTML()
-                    window.editorElement.classList.remove('active');
+                    window.editorElementDynamic.classList.remove('active');
+                    window.editorElementStable.classList.remove('active')
                     // Link content 
-                    // document.querySelector('.create-link').classList.remove('active')
                 }
             }
 

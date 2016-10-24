@@ -166,8 +166,8 @@
       }
       .plekan-tools{
         position: absolute;
-        width: 60px;
-        left: -60px;
+        width: 48px;
+        left: -48px;
         display: none;
         top: -0px;
         // background-color: rgba(107, 105,164,.8);
@@ -195,56 +195,72 @@
 /*------------------------------------------*/
 .editor-arena{
   .editor{
-    width: auto;
-    height: 40px;
-    background-color: $primaryColor;
-    position: fixed;
-    // display: none;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
-    transform: scale(0);
-    .create-link{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: #444;
-      top: 0;
-      left: 0;
-      padding-right: 39px;
-      display: none;
-      &.active{
-        display: block;
-      }
-      input{
+    .dynamic-editor,.stable-editor{
+       width: auto;
+      height: auto;
+      background-color: $primaryColor;
+      position: fixed;
+      // display: none;
+      top: 120px;
+      left: 20px;
+      z-index: 10;
+      transform: scale(0);
+      .create-link{
+        position: absolute;
         width: 100%;
         height: 100%;
-        padding-left: 10px;
-      }
-      button{
-        position: absolute;
-        right: 0;
+        background-color: #444;
         top: 0;
-        height: 100%;
-        width: 40px;
-        border:1px solid #ddd;
-        background-color: #fff;
+        left: 0;
+        padding-right: 39px;
+        display: none;
+        &.active{
+          display: block;
+        }
+        input{
+          width: 100%;
+          height: 100%;
+          padding-left: 10px;
+        }
+        button{
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 40px;
+          border:1px solid #ddd;
+          background-color: #fff;
+        }
       }
-    }
-    &.active{
-      transition: all 300ms;
-      transform: scale(1);
-    }
-    a{
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      color: #FFF;
-      text-align: center;
-      line-height: 40px;
-      border-left: 1px solid #5B598C;
-      i{
-        background-color: #ccc;
+      a{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        color: #FFF;
+        text-align: center;
+        line-height: 40px;
+        border-left: 1px solid #5B598C;
+        i{
+          background-color: #ccc;
+        }
+      }
+      &.active{
+        transition: all 300ms;
+        transform: scale(1);
+      }
+      &.stable-editor{
+        transform: scale(1);
+        opacity: 0;
+        animation-name: fadeOutLeft;
+        animation-duration: .0s!important;
+        &.active{
+          animation-duration: .2s!important;
+          animation-name: fadeInLeft;
+        }
+        a{
+
+          display: block;
+        }
       }
     }
   }
@@ -295,9 +311,7 @@
      border-left: 1px solid #ccc;
      transition: all .3s;
      z-index: 12;
-         -webkit-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
--moz-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
-box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+     box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
      ._plekan_list_title{
        text-align: center;
        background-color: transparent;

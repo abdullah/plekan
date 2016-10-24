@@ -1,0 +1,71 @@
+{
+	"stick":[
+		{
+			"code" : "bold",
+			"tooltip" : "Bold",
+			"icon" : "fa fa-bold"
+		},
+		{
+			"code" : "italic",
+			"tooltip" : "italic",
+			"icon" : "fa fa-italic"
+		},
+		{
+			"code" : "justifyLeft",
+			"tooltip" : "justifyLeft",
+			"icon" : "fa fa-align-left"
+		},
+		{
+			"code" : "justifyCenter",
+			"tooltip" : "justifyCenter",
+			"icon" : "fa fa-align-center"
+		},
+		{
+			"code" : "justifyRight",
+			"tooltip" : "justifyRight",
+			"icon" : "fa fa-align-right"
+		},
+		{
+			"code" : "createLink",
+			"tooltip" : "createLink",
+			"icon" : "fa fa-link"
+		}
+	],
+	"stable": [
+		{
+			"code" : "insertOrderedList",
+			"tooltip" : "insertOrderedList",
+			"icon" : "fa fa-list-ol"
+		},
+		{
+			"code" : "formatBlock",
+			"tooltip" : "formatBlock",
+			"icon" : "fa fa-heading"
+		},
+		{
+			"code" : "insertUnorderedList",
+			"tooltip" : "insertUnorderedList",
+			"icon" : "fa fa-list-ul"
+		},
+		{
+			"code" : "superscript",
+			"tooltip" : "superscript",
+			"icon" : "fa fa-superscript"
+		},
+		{
+			"code" : "subscript",
+			"tooltip" : "subscript",
+			"icon" : "fa fa-subscript"
+		},
+		{
+			"code" : "strikeThrough",
+			"tooltip" : "strikeThrough",
+			"icon" : "fa fa-strikethrough"
+		},
+		{
+			"code" : "underline",
+			"tooltip" : "underline",
+			"icon" : "fa fa-underline"
+		}
+	]
+}
