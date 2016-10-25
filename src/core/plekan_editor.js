@@ -29,7 +29,6 @@ window.onload = () => {
 	window.sel = null;
 
 	document.addEventListener('selectionEnd',function () {
-		
 
 		editorElementDynamic.classList.add('active');
 		
@@ -49,6 +48,7 @@ window.onload = () => {
 		editorElementDynamic.style.left = _left+'px';
 		editorElementDynamic.style.top = _top+'px'
 
+		setActiveEditorButtons();
 		sel = selo.saveSelection()
 
 	})
@@ -72,7 +72,6 @@ window.onload = () => {
 	document.addEventListener('selectionBeforeStart',function () {
 	});
 	
-
 }
 
 

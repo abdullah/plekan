@@ -15,7 +15,8 @@ import plekanComponentMixin from 'core/mixin.js'
     defaultLanguage : "",
     rows : [],
     modules:null,
-    customComponents:null
+    customComponents:null,
+    cs_editor_buttons:[]
   }
 
   plekan.install = function (Vue, options) {
@@ -77,6 +78,7 @@ import plekanComponentMixin from 'core/mixin.js'
     store.init('translateLanguage',options.languages[1]);
 
     Vue.prototype.$plekan_buttons = options.plekan_buttons
+    Vue.prototype.$cs_editor_buttons = options.cs_editor_buttons
     Vue.prototype.$thumbnailPath = options.thumbnailPath
 
     /*

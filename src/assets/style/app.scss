@@ -3,11 +3,7 @@
 @import "./var.scss";
 @import "./modules.scss";
 
-[contenteditable='true']{
-  &:focus{
-    outline: 1px dotted $primaryColor;
-  }
-}
+
 
 #_plekan{
   position: fixed;
@@ -18,11 +14,15 @@
   overflow: auto;
   z-index: 99;
   background-color: #fff;
+  [contenteditable='true']{
+    &:focus{
+      outline: 1px dotted $primaryColor;
+    }
+  }
   *{
     // outline: thick;
   }
 }
-
 ._plekan_arena{
   // -----------------------------------
   padding-top: 100px;
@@ -36,7 +36,7 @@
     min-height: 74px;
     background-color: #fff;
     z-index: 11;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $borderColorLight;
     box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
     span{
       float: left;
@@ -50,10 +50,10 @@
       padding: 6px 12px;
       font-size: 14px;
       line-height: 1.42857143;
-      color: #555;
+      color: $textColorDark;
       background-color: #fff;
       background-image: none;
-      border: 1px solid #ccc;
+      border: 1px solid $borderColorLight;
       border-radius: 4px;
       outline: thick;
     }
@@ -71,11 +71,11 @@
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        border:1px solid #ccc;
+        border:1px solid $borderColorLight;
         background-color: #fff;
         outline: thick;
         font-size: 20px;
-        color: #444;
+        color: $textColorDark;
         i{
         }
       }
@@ -84,7 +84,7 @@
   // -----------------------------------
   .translate-mode{
     width: 100%!important;
-    padding-left: 80px;
+    padding-left: 100px;
     .translate-mode-column{
       width: 50%;
       float: left;
@@ -174,7 +174,7 @@
         overflow: hidden;
         span{
           display: block;
-          color: #FFF;
+          color: $textColorLight;
           width: 40px;
           height: 40px;
           text-align: center;
@@ -191,78 +191,141 @@
     }
   }
 }
-
 /*------------------------------------------*/
 .editor-arena{
   .editor{
-    .dynamic-editor,.stable-editor{
-       width: auto;
-      height: auto;
-      background-color: $primaryColor;
-      position: fixed;
-      // display: none;
-      top: 120px;
-      left: 20px;
-      z-index: 10;
-      transform: scale(0);
-      .create-link{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #444;
-        top: 0;
-        left: 0;
-        padding-right: 39px;
-        display: none;
-        &.active{
-          display: block;
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        z-index: 9;
+        position: fixed;
+        border-radius: 24px;
+        li {
+          clear: left;
+          a {
+            display: block;
+            overflow: hidden;
+            float: left;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+            background-color: #262625;
+            &.active{
+              background-color: #444;
+            }
+          }
+          ul{
+            list-style-type: none; 
+            float: left;
+            display: none;
+            padding: 0;
+            margin-left: 0px;
+            border-bottom: 0;
+            margin-top: 0px;
+            padding-left: 50px;
+            z-index: -1;
+            animation-duration: .2s!important;
+            animation-name: fadeInLeft;
+            
+            &:before{
+              content: "";
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              left: 0;
+              top: 0;
+              border: 1px solid #fff!important;
+              border-radius: 24px;
+            }
+            li{
+              display: inline; 
+              clear: none !important;
+            }
+          }
+          &:hover{
+            ul{
+              display: block;
+            }
+          }
         }
-        input{
-          width: 100%;
-          height: 100%;
-          padding-left: 10px;
+        &.dynamic-editor{
+          position: fixed;
+          top: 100px;
+          left: 100px;
+          transform: scale(0);
+          border-right: 0 ;
+          &.active{
+            transform: scale(1);
+            transition: all .2s;
+          }
+          li{
+            display: inline;
+            clear: left!important;
+            &.create-link{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: inherit;
+              top: 0;
+              left: 0;
+              padding-right: 39px;
+              display: none;
+              border-radius: 24px;
+              overflow: hidden;
+              background-color: #262625;
+              &.active{
+                display: block;
+              }
+              input{
+                width: 100%;
+                height: 100%;
+                padding-left: 10px;
+                background: inherit;
+                border:0;
+                color: #FFF;
+              }
+              button{
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 40px;
+                border:0;
+                background: inherit;
+                color: #ccc;
+                &:before{
+                  content: "";
+                  width: 1px;
+                  height: 20px;
+                  position: absolute;
+                  left: 0;
+                  top: 50%;
+                  margin-top: -10px;
+                  background-color: #ccc;
+                }
+              }
+            }
+          }
         }
-        button{
-          position: absolute;
-          right: 0;
-          top: 0;
-          height: 100%;
-          width: 40px;
-          border:1px solid #ddd;
-          background-color: #fff;
+        &.stable-editor{
+          top: 120px;
+          left: 20px;
+          animation-name: fadeOutLeft;
+          animation-duration: .0s!important;
+          border-bottom: 0;
+          
+          &.active{
+            animation-duration: .2s!important;
+            animation-name: fadeInLeft;
+          }
         }
       }
-      a{
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        color: #FFF;
-        text-align: center;
-        line-height: 40px;
-        border-left: 1px solid #5B598C;
-        i{
-          background-color: #ccc;
-        }
-      }
-      &.active{
-        transition: all 300ms;
-        transform: scale(1);
-      }
-      &.stable-editor{
-        transform: scale(1);
-        opacity: 0;
-        animation-name: fadeOutLeft;
-        animation-duration: .0s!important;
-        &.active{
-          animation-duration: .2s!important;
-          animation-name: fadeInLeft;
-        }
-        a{
 
-          display: block;
-        }
-      }
-    }
   }
   .editable-elements-button{
     position: absolute;
@@ -298,7 +361,6 @@
   }
   
 }
-
 /* ------------------------------------- */
    ._plekan_list{
      position: fixed;
@@ -308,14 +370,14 @@
      right: 0;
      padding: 10px;
      top: 0; 
-     border-left: 1px solid #ccc;
+     border-left: 1px solid $borderColorLight;
      transition: all .3s;
      z-index: 12;
      box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
      ._plekan_list_title{
        text-align: center;
        background-color: transparent;
-       border-bottom: 1px solid #ddd;
+       border-bottom: 1px solid $borderColorLight;
        padding-bottom: 15px;
        display: inline-block;
      }
@@ -329,7 +391,7 @@
         position: absolute;
         left: -40px;
         top: 80px;
-        border: 1px solid #ccc;
+        border: 1px solid $borderColorLight;
         border-right: 0 ;
       }
      span{
@@ -403,10 +465,7 @@
     }
   }
 }
-
-
 // 
-
 .edit-modal{
   .plekan-edit-as-html-modal-body{
     textarea{
@@ -449,8 +508,6 @@
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-
-
 
 pre {
   white-space: pre-wrap;       /* Since CSS 2.1 */

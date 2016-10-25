@@ -1,23 +1,48 @@
 <template>
   <section class="editor-arena">
       <div class="editor">
-        <div class="dynamic-editor animated">
-          <a href="" v-for="b in editorButtons.stick" 
-          :data-type="b.code"
-          :class="b.icon"
-          ></a>
-          <div class="create-link">
-            <input v-model="linktext" placeholder="http://example.com">
-            <button @click="createLink"><i class="fa fa-check"></i></button>
-          </div>  
-        </div>
-        <!-- -->
-        <div class="stable-editor animated">
-           <a href="" v-for="b in editorButtons.stable" 
+        <ul class="dynamic-editor animated">
+          <li v-for="b in editorButtons.stick" >
+            <a href=""
             :data-type="b.code"
+            :data-tagname="b.tagname"
+            :data-value="b.value"
             :class="b.icon"
             ></a>
-        </div>
+          </li>
+          <li class="create-link">
+            <input v-model="linktext" placeholder="http://example.com">
+            <button @click="createLink"><i class="fa fa-check"></i></button>
+          </li>  
+        </ul>
+        <!-- -->
+        <ul class="stable-editor animated">
+           <li v-for="b in editorButtons.stable">
+             <a href=""  
+              :data-type="b.code"
+              :data-tagname="b.tagname"
+              :data-value="b.value"
+              :class="b.icon"
+              ></a>
+               <ul class="submenu" v-if="b.sub">
+                 <li v-for="s in b.sub">
+                   <a href=""  
+                    :data-type="s.code"
+                    :data-tagname="s.tagname"
+                    :data-value="s.value"
+                    :class="s.icon"
+                    ></a>
+                 </li>
+              </ul>
+           </li>
+
+            <!-- <a href="" v-for="(b,key) in $cs_editor_buttons" 
+            :data-type="b.code || 'custom'"
+            :data-tagname="s.tagname"
+            :data-index="key"
+            :class="b.class"
+            ></a> -->
+        </ul>
       </div>
       <!--  -->
       <button class="editable-elements-button" @click="openEditElement">Edit</button>
@@ -28,21 +53,6 @@
           <editelement v-if="editableModal" :element="editableModalElement"></editelement>    
       </transition>
       <!--  -->
-      <transition
-        enter-active-class="animated fadeInUp custom-classes-transition"
-        leave-active-class="animated fadeOutDown custom-classes-transition">
-         <modal v-if="headingModal" class="edit-modal">
-          <header slot="header">
-            <!-- <div class="title">Edit As Html</div> -->
-          </header>
-          <div slot="body" class="plekan-edit-as-html-modal-body">
-            <!-- <textarea v-model="editableRow.contents[editableRowLanguage].html"></textarea> -->
-          </div>
-          <footer slot="footer" class="plekan-clearfix">
-            <!-- <button @click.prevent="saveEditAsHtml">Save HTML</button> -->
-          </footer>
-        </modal>
-      </transition>
   </section>
 </template>
 
@@ -109,6 +119,7 @@
         var editorItem = document.querySelectorAll('.editor a')
         Object.keys(editorItem).map(e => {
           editorItem[e].addEventListener('click', (e) => {
+            
 
             // Restore selection
             e.preventDefault()
@@ -127,12 +138,24 @@
               case 'createLink':
                 document.querySelector('.create-link').classList.add('active')
                 break;
+
+              // ------------
+              // NOT: main.js'de konfigürasyonu var sonradan eklenebilir.
+              // ------------
+              // case 'custom':
+              //   var customButton = this.$cs_editor_buttons[e.target.dataset.index];
+              //   customButton.callback({
+              //     target : e.target,
+              //     exec : this.exec.bind(this),
+              //     selo : selo ,
+              //     sel : sel
+              //   })
+              // break;
+
               case 'formatBlock':
                 // this.boSelection.restoreSelection(this.savedSel); // restore the selection
                 // document.execCommand('formatBlock', false, `<${type}>`);
-                this.headingModal = true
-
-                // this.exec('formatBlock',`<H1>`)
+                this.exec('formatBlock',e.target.dataset.value)
               default:
                 // statements_def
                 this.exec(cmd)
@@ -141,6 +164,7 @@
 
             // Save selection
             sel = selo.saveSelection()
+
 
           })
         })
@@ -172,6 +196,7 @@
       exec(cmd,val = false) {
         selo.restoreSelection(sel)
         document.execCommand(cmd,false,val)
+        setActiveEditorButtons()
       }
       
     }

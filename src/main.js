@@ -17,7 +17,22 @@ Vue.use(plekan,{
   languages : ["tr","en"],
   modules:modules,
   // rows : mockup
+  // @TODO : Filter for editor buttons,
+  except : {},
+
   thumbnailPath : "/static/thumbnails/",
+  // cs_editor_buttons:{
+  //   test : {
+  //     name : 'test',
+  //     class : 'fa fa-cog',
+  //     callback (options) {
+  //       console.log(options.sel.toString())
+  //       // Modal 
+  //       options.selo.restoreSelection(options.sel)
+  //       options.exec('foreColor','#ccc')
+  //     }
+  //   }
+  // },
   plekan_buttons : {
   	save : {
   		text : "Save",
