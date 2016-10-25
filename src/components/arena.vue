@@ -1,78 +1,38 @@
 <template>
   <div class="_plekan_arena">
     
-    <div class="plekan-change-language plekan-clearfix">
-      <div class="plekan-container">
-        <div class="plekan-pull-left">
-          <span>Preview Language</span>
-          <select  v-model="store.state.currentLanguge">
-            <option v-for="l in languages" :value="l">{{l}}</option>
-          </select>
-        </div>
-        <div class="open-translate-arena">
-          <button @click="openTranslateMode"><i class="fa fa-language"></i></button>
-        </div>
-        <div class="plekan-pull-right" v-show="translateMode">
-          <span>Translate Language</span>
-          <select  v-model="store.state.translateLanguage">
-            <option v-for="l in languages" :value="l">{{l}}</option>
-          </select>
-        </div>
-      </div> 
-    </div> 
+ 
+    <change-language></change-language>
+  
 
     <div :class="{'translate-mode' : translateMode}" class="plekan-container">
-        <div class="translate-mode-column">
-          <div :class="{empty: !rows.length}" 
-              class="plekan-row-list" id="plekan_sortable_list">
-            <div class="plekan-row-item" v-for="(r,key) in rows" :key="r.index">
-              <div class="plekan-tools">
-                <span class="plekan-move-row"><i class="fa fa-hand-grab-o"></i></span>
-                <span @click="editAsHTMLRow(r,key,currentLanguge)"><i class="fa fa-html5"></i></span>
-                <span @click="deleteRow(r,key)"><i class="fa fa-remove"></i></span>
-                <span @click="dublicateRow(r,key)"><i class="fa fa-copy"></i></span>
-              </div>
-              <component  
-                          :is="r.name" 
-                          :index="key"
-                          :store="store" 
-                          :displayLanguage="currentLanguge">
-              </component>
-            </div>
-          </div>
-        </div> 
-        <div class="translate-mode-column" v-if="translateMode">
-          <div :class="{'empty translate': !rows.length}" 
-              class="plekan-row-list" id="plekan_sortable_list">
-            <div class="plekan-row-item" v-for="(r,key) in rows" :key="r.index">
-              <div class="plekan-tools">
-                <span @click="editAsHTMLRow(r,key,translateLanguage)"><i class="fa fa-html5"></i></span>
-              </div>
-              <component  
-                          :is="r.name" 
-                          :index="key"
-                          :store="store" 
-                          :displayLanguage="translateLanguage">
-              </component>
-            </div>
-          </div>
-        </div> 
-        
+     
+      <arena-column 
+        :rows="rows"
+        :editAsHTMLRow="editAsHTMLRow"
+        :language="currentLanguge">
+      </arena-column>
 
-          
-         <modal :show="editRow.row ? true : false" class="edit-modal">
-          <header slot="header">
-            <div class="title">Edit As Html</div>
-          </header>
-          <div slot="body" class="plekan-edit-as-html-modal-body">
-            <textarea 
-              v-model="editRow.html">
-            </textarea>
-          </div>
-          <footer slot="footer" class="plekan-clearfix">
-            <button @click.prevent="saveEditAsHtml">Save HTML</button>
-          </footer>
-        </modal>
+      <arena-column 
+        v-show="translateMode" 
+        :rows="rows"
+        :editAsHTMLRow="editAsHTMLRow" 
+        :language="translateLanguage">
+      </arena-column>
+
+     <modal :show="editRow.row ? true : false" class="edit-modal">
+      <header slot="header">
+        <div class="title">Edit As Html</div>
+      </header>
+      <div slot="body" class="plekan-edit-as-html-modal-body">
+        <textarea 
+          v-model="editRow.html">
+        </textarea>
+      </div>
+      <footer slot="footer" class="plekan-clearfix">
+        <button @click.prevent="saveEditAsHtml">Save HTML</button>
+      </footer>
+    </modal>
 
     </div>
 
@@ -92,32 +52,31 @@
   import modal from 'components/modal'
   import Sortable from 'sortablejs'
   import {arenaSortableOptions} from 'core/sortable_options'
+  import changeLanguage from 'components/changeLanguage'
+  import arenaColumn from 'components/arenaColumn'
 
   export default {
     props:[],
     data () {
       return {
         store : store,
-        
         editRow : {
-          lang:null,
-          html:null,
-          index:null,
-          row:null,
-        },
-
-        translateMode: false,
+          lang: null,
+          html: null,
+          index: null,
+          row: null,
+        }
       }
     },
     components: {
-      modal
+      modal,changeLanguage,arenaColumn
     },
     computed: {
+      translateMode: function () {
+        return this.store.state.translateMode;
+      },
       rows : function () {
         return this.store.state.rows
-      },
-      languages : function () {
-        return this.store.state.languages
       },
       currentLanguge: function () {
         return this.store.state.currentLanguge
@@ -128,8 +87,6 @@
       list : function () {
         return this.store.state.moduleList
       }
-    },
-    created(){
     },
     mounted(){
       /*
@@ -142,11 +99,10 @@
         onAdd:this.onAdd,
         onEnd:this.onEnd,
       });
+
     },
     methods:{
-      openTranslateMode(){
-        this.translateMode = !this.translateMode;
-      },
+     
       editAsHTMLRow(row,index,language){
 
         this.editRow.row = JSON.parse(JSON.stringify(row))
@@ -162,12 +118,6 @@
        
         Object.keys(this.editRow).map(e => this.editRow[e] = null)
         
-      },
-      deleteRow(row,index){
-        this.store.deleteRow(row,index)
-      },
-      dublicateRow(row,index){
-        this.store.dublicateRow(row,index)
       },
       // When drop module from list trigger
       onAdd(evt){

@@ -8,7 +8,9 @@ export default {
     currentLanguge: "",
     translateLanguage: "",
     moduleList: [],
-    rows: []
+    rows: [],
+
+    translateMode:false,
   },
   init (type, data) {
     this.state[type] = data;
@@ -23,9 +25,9 @@ export default {
     }else{
       this.state.rows.splice(i, 0, tmp);
     }
+
   },
   updateRows(index, row){
-    // console.log("update",index,row)
     let tmp = JSON.parse(JSON.stringify(this.state.rows));
     tmp[index] = row
     this.state.rows = tmp
@@ -38,7 +40,10 @@ export default {
   },
   sortRows(_new,old){
     this.state.rows.move(_new,old)
-  }
+  },
   /*----------------------------------------------*/
+  changeTranslateMode(){
+        this.state.translateMode = !this.state.translateMode;
+  }
 }
 
