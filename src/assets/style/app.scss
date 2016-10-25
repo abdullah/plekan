@@ -23,6 +23,8 @@
     // outline: thick;
   }
 }
+/*------------------------------------------*/
+
 ._plekan_arena{
   // -----------------------------------
   padding-top: 100px;
@@ -315,7 +317,7 @@
         &.stable-editor{
           top: 120px;
           left: 20px;
-          animation-name: fadeOutLeft;
+          // animation-name: fadeOutLeft;
           animation-duration: .0s!important;
           border-bottom: 0;
           
@@ -362,62 +364,62 @@
   
 }
 /* ------------------------------------- */
-   ._plekan_list{
-     position: fixed;
-     width: 200px;
-     height: 100%;
-     background-color: #f2f2f2;
-     right: 0;
-     padding: 10px;
-     top: 0; 
-     border-left: 1px solid $borderColorLight;
-     transition: all .3s;
-     z-index: 12;
-     box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
-     ._plekan_list_title{
-       text-align: center;
-       background-color: transparent;
-       border-bottom: 1px solid $borderColorLight;
-       padding-bottom: 15px;
-       display: inline-block;
-     }
-     .openModuleList{
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
-        border:0;
-        background-color: #f2f2f2;
-        font-size: 20px;
-        position: absolute;
-        left: -40px;
-        top: 80px;
-        border: 1px solid $borderColorLight;
-        border-right: 0 ;
-      }
-     span{
-       display: block;
+ ._plekan_list{
+   position: fixed;
+   width: 200px;
+   height: 100%;
+   background-color: #f2f2f2;
+   right: 0;
+   padding: 10px;
+   top: 0; 
+   border-left: 1px solid $borderColorLight;
+   transition: all .3s;
+   z-index: 12;
+   box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+   ._plekan_list_title{
+     text-align: center;
+     background-color: transparent;
+     border-bottom: 1px solid $borderColorLight;
+     padding-bottom: 15px;
+     display: inline-block;
+   }
+   .openModuleList{
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+      border:0;
+      background-color: #f2f2f2;
+      font-size: 20px;
+      position: absolute;
+      left: -40px;
+      top: 80px;
+      border: 1px solid $borderColorLight;
+      border-right: 0 ;
+    }
+   span{
+     display: block;
+     width: 100%;
+     background-color: #fff;
+     padding: 5px;
+     float: none;
+     cursor: pointer;
+     margin-bottom: 10px;
+     img{
        width: 100%;
-       background-color: #fff;
-       padding: 5px;
-       float: none;
-       cursor: pointer;
-       margin-bottom: 10px;
-       img{
-         width: 100%;
-       }
      }
-     &.active{
-      right: 0;
-     }
-     &.deactive{
-      right: -200px;
-      .openModuleList{
-        i{
-          transform: rotate(-180deg);
-        }
+   }
+   &.active{
+    right: 0;
+   }
+   &.deactive{
+    right: -200px;
+    .openModuleList{
+      i{
+        transform: rotate(-180deg);
       }
-     }
-  }
+    }
+   }
+}
 
 /*------------------------------------------*/
 .plekan-modal{
@@ -444,6 +446,7 @@
       padding: 20px;
       box-shadow: 0px 0px 63px 3px rgba(0,0,0,0.75);
       header{
+        border:0;
         .title{
           font-size: 20px;
           color: $primaryColor;
@@ -465,7 +468,7 @@
     }
   }
 }
-// 
+
 .edit-modal{
   .plekan-edit-as-html-modal-body{
     textarea{
@@ -478,6 +481,16 @@
       background-color: #f2f2f2;
       padding: 10px;
     }
+  }
+}
+
+.modal-color-body{
+  a{
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    float: left;
+    border: 1px solid #fff;
   }
 }
 
@@ -503,11 +516,7 @@
   }
 }
 
-@keyframes gradiendAnimation { 
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
+/*------------------------------------------*/
 
 pre {
   white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -516,4 +525,51 @@ pre {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+
+@keyframes gradiendAnimation { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@keyframes fadeInLeftCC {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-60%,-50%);
+    transform: translate(-60%,-50%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+}
+
+.fadeInLeftCC {
+  -webkit-animation-name: fadeInLeftCC;
+  animation-name: fadeInLeftCC;
+}
+
+@keyframes fadeOutLeftCC {
+  from {
+    opacity: 1;
+     -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate(-60%,-50%);
+    transform: translate(-60%,-50%);
+  }
+}
+
+.fadeOutLeftCC {
+  -webkit-animation-name: fadeOutLeftCC;
+  animation-name: fadeOutLeftCC;
+}
+
+
+
 

@@ -39,7 +39,7 @@ import plekanComponentMixin from 'core/mixin.js'
       store.init("rows", options.rows);
     }
     /*
-    * Set contents language
+    * Init Custom components
     */
     var mlist = JSON.parse(JSON.stringify(moduleList));
     if (typeof options.customComponents == "Array") {
@@ -48,8 +48,9 @@ import plekanComponentMixin from 'core/mixin.js'
         options.modules[c.info.name] = c.component  
       }) 
     }
-
-    
+    /*
+    * Set contents language
+    */
     var tmpDelete = [];
     mlist.map((m,i) => {
       if (options.modules[m.name]) {

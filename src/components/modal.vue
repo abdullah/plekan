@@ -1,31 +1,43 @@
 <template>
-  <div class="plekan-modal">
-      <div class="modal-arena-layout">
-        <div class="modal-arena">
-             <slot name="header"></slot>
-             <slot name="body"></slot>
-             <slot name="footer"></slot>
-        </div>
+  <transition
+    enter-active-class="animated fadeIn custom-classes-transition"
+    leave-active-class="animated fadeOut custom-classes-transition">
+      <div class="plekan-modal" v-show="layoutShow">
+        <transition
+            enter-active-class="animated fadeInLeftCC custom-classes-transition-child"
+            leave-active-class="animated  fadeOutLeftCC custom-classes-transition-child">
+                  <div v-show="bodyShow" class="modal-arena-layout">
+                    <div class="modal-arena">
+                         <slot name="header"></slot>
+                         <slot name="body"></slot>
+                         <slot name="footer"></slot>
+                    </div>
+                  </div>
+          </transition>
       </div>
-  </div>
+  </transition>
 </template>
 
 <script>
   export default {
-    props:["element"],
+    props:["element","show"],
     data () {
       return {
+        bodyShow:false,
+        layoutShow: false
       }
     },
-    components: {
+    updated(){
+      this.setShownVariable()
     },
-    beforeMount() {
-    },
-    mounted() {
-    },
-    beforeDestroy() {
+    created(){
+      this.setShownVariable()
     },
     methods:{
+      setShownVariable(){
+        this.layoutShow = this.show;
+        this.bodyShow = this.show
+      }
     }
   }
 </script>

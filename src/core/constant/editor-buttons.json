@@ -153,6 +153,13 @@
 			"icon" : "fa fa-subscript",
 			"value" : "",
 			"tagname":""
+		},
+		{
+			"code" : "color",
+			"tooltip" : "color",
+			"icon" : "fa fa-paint-brush",
+			"value" : "",
+			"tagname":""
 		}
 	]
 }

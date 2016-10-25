@@ -1,9 +1,8 @@
 <template>
-    <modal>
+    <modal :show="shown">
       <header slot="header">
         <div class="title">Edit</div>
       </header>
-      <!-- <pre>{{elementEditableProperties}}</pre> -->
       <div slot="body" v-for="e in getElementPropertyArray" class="editable-element-fields-container">
         <div class="editable-element-fields" v-if="elementEditableProperties[e.prop] != undefined">
           <span>{{e.title}}</span>
@@ -20,17 +19,17 @@
   import modal from 'components/modal'
 
   export default {
-    props:["element"],
+    props:["element","shown"],
     data () {
       return {
         event : null,
         getElementPropertyArray   : [
-          {title : "Text", prop  : "text" , placeholder : "Text"},
-          {title : "Source", prop  : "src" , placeholder : "source link"},
-          {title : "Alt Title", prop  : "alt", placeholder : "when the image error loaded shown text "},
-          {title : "Link", prop  : "href" , placeholder : "source link"},
-          {title : "Title", prop  : "title" , placeholder : "title text"},
-          {title : "Width", prop  : "width" , placeholder : "Width of video"},
+          {title : "Text",      prop  : "text" ,  placeholder : "Text"},
+          {title : "Source",    prop  : "src" ,   placeholder : "source link"},
+          {title : "Alt Title", prop  : "alt",    placeholder : "when the image error loaded shown text "},
+          {title : "Link",      prop  : "href" ,  placeholder : "source link"},
+          {title : "Title",     prop  : "title" , placeholder : "title text"},
+          {title : "Width",     prop  : "width" , placeholder : "Width of video"},
         ],
         elementEditableProperties : {}
       }
@@ -41,22 +40,23 @@
     beforeMount() {
       document.body.style.overflow = "hidden"
     },
-    mounted() {
+    watch:{
+      shown:function () {
+        this.event = new CustomEvent('domupdated');
 
+          if (!this.element) return ;
 
-      this.event = new CustomEvent('domupdated');
+          let el = this.element
+          let tmp = {};
 
-      let el = this.element
-      let tmp = {};
+          this.getElementPropertyArray.map((p,i) => {
+            if (el[p.prop] != undefined) {
+              tmp[p.prop] = el[p.prop];
+            }
+          })
 
-      this.getElementPropertyArray.map((p,i) => {
-        if (el[p.prop] != undefined) {
-          tmp[p.prop] = el[p.prop];
-        }
-      })
-
-      this.elementEditableProperties = tmp
-
+          this.elementEditableProperties = tmp
+      }
     },
     beforeDestroy() {
       document.body.style.overflow = ""

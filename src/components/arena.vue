@@ -17,7 +17,6 @@
           <select  v-model="store.state.translateLanguage">
             <option v-for="l in languages" :value="l">{{l}}</option>
           </select>
-          
         </div>
       </div> 
     </div> 
@@ -58,35 +57,33 @@
             </div>
           </div>
         </div> 
-     <transition
-        enter-active-class="animated fadeInUp custom-classes-transition"
-        leave-active-class="animated fadeOutDown custom-classes-transition">
-         <modal v-if="editableRow" class="edit-modal">
+        
+
+          
+         <modal :show="editRow.row ? true : false" class="edit-modal">
           <header slot="header">
             <div class="title">Edit As Html</div>
           </header>
           <div slot="body" class="plekan-edit-as-html-modal-body">
-            <textarea v-model="editableRow.contents[editableRowLanguage].html"></textarea>
+            <textarea 
+              v-model="editRow.html">
+            </textarea>
           </div>
           <footer slot="footer" class="plekan-clearfix">
             <button @click.prevent="saveEditAsHtml">Save HTML</button>
           </footer>
         </modal>
-      </transition>
+
     </div>
 
     <div class="plekan-container">
-      <hr>
-      <!-- <button class="plekan-save" @click="saveRows">Save</button> -->
       <button v-for="b in $plekan_buttons" 
               :class="b.class" 
               @click="b.callback(store.state.rows)">
               {{b.text}}
       </button>
-      <!-- <pre>
-        {{store.state.rows}}
-      </pre> -->
     </div>
+
   </div>
 </template>
 
@@ -102,8 +99,12 @@
       return {
         store : store,
         
-        editableRow : null,
-        editableRowLanguage : null,
+        editRow : {
+          lang:null,
+          html:null,
+          index:null,
+          row:null,
+        },
 
         translateMode: false,
       }
@@ -126,13 +127,6 @@
       },
       list : function () {
         return this.store.state.moduleList
-      },
-      editrow : function () {
-        if (this.editableRow) {
-          return this.editableRow.contents[this.store.state.currentLanguge].html
-        }else{
-          return "text"
-        }
       }
     },
     created(){
@@ -153,18 +147,21 @@
       openTranslateMode(){
         this.translateMode = !this.translateMode;
       },
-      // --
       editAsHTMLRow(row,index,language){
-        /**
-        *@TODO Open modal then bind data.
-        **/
-        this.editableRow = JSON.parse(JSON.stringify(row))
-        this.editableRowLanguage = language
-        this.editableRowIndex = index
+
+        this.editRow.row = JSON.parse(JSON.stringify(row))
+        this.editRow.lang = language
+        this.editRow.index = index
+        this.editRow.html = this.editRow.row.contents[this.store.state.currentLanguge].html
+        
       },
       saveEditAsHtml(){
-        this.store.updateRows(this.editableRowIndex,this.editableRow)
-        this.editableRow = null
+
+        this.editRow.row.contents[this.store.state.currentLanguge].html = this.editRow.html
+        this.store.updateRows(this.editRow.index,this.editRow.row)
+       
+        Object.keys(this.editRow).map(e => this.editRow[e] = null)
+        
       },
       deleteRow(row,index){
         this.store.deleteRow(row,index)

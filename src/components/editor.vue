@@ -47,11 +47,31 @@
       <!--  -->
       <button class="editable-elements-button" @click="openEditElement">Edit</button>
       <!--  -->
-      <transition
-        enter-active-class="animated fadeInUp custom-classes-transition"
-        leave-active-class="animated fadeOutDown custom-classes-transition">
-          <editelement v-if="editableModal" :element="editableModalElement"></editelement>    
-      </transition>
+      <editelement 
+                   :element="editableModalElement" 
+                   :shown="editableModal"></editelement>    
+      <!--  -->
+      <modal :show="showColorModal">
+        <header slot="header">
+          <div class="title">Set Color</div>
+        </header>
+        <div slot="body" class="modal-color-body">
+          <select v-model="colortype" class="form-control">
+            <option value="backColor">Background Color</option>
+            <option value="hiliteColor">Block Color</option>
+            <option value="foreColor">Text Color</option>
+          </select>
+          <hr>
+          <a 
+          v-for="c in colors"
+          @click="setColor(c)"
+          v-bind:style="{ backgroundColor: c}" 
+          ></a>
+        </div>
+        <footer slot="footer" class="plekan-clearfix">
+          <button @click="showColorModal = false">Close</button>
+        </footer>
+      </modal>
       <!--  -->
   </section>
 </template>
@@ -59,6 +79,7 @@
 <script>
   import editelement from 'components/editelement';
   import editorButtons from 'core/constant/editor-buttons.json'
+  import colors from 'core/constant/colors.json'
   import modal from 'components/modal'
 
   export default {
@@ -67,10 +88,14 @@
       return {
         editableModal: false,
         headingModal: false,
+        showColorModal: false,
 
         editableModalElement: null,
         linktext : "",
+        colortype:"foreColor",
+
         editorButtons : editorButtons,
+        colors : colors,
       }
     },
     components: {
@@ -151,7 +176,9 @@
               //     sel : sel
               //   })
               // break;
-
+              case 'color':
+                this.showColorModal = true
+              break;
               case 'formatBlock':
                 // this.boSelection.restoreSelection(this.savedSel); // restore the selection
                 // document.execCommand('formatBlock', false, `<${type}>`);
@@ -184,6 +211,9 @@
 
     },
     methods:{
+      setColor(color){
+        this.exec(this.colortype,color)
+      },
       openEditElement(){
         this.editableModal = true
       },

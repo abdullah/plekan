@@ -62,6 +62,7 @@ export default {
         document.addEventListener('mousedown',(e)=>{
             let target = e.target
             this.updatable =    childOf(target,window.editorElement) || 
+                                childOf(target,document.querySelector('.plekan-modal')) || 
                                 target.className == 'editor';
         })
 
