@@ -63,6 +63,16 @@
 			  languages : ["tr","en"],
 			  customComponents:customComponents,
 			  modules:plekanmodules,
+			  onFileUpload:function (cb) {
+			  	/*
+			  	* Simulate file upload
+			  	*/
+			  	 cb({
+			      src: "title",
+			      alt : "text",
+			      title : "link"
+			    })
+			  }
 			  thumbnailPath : "static/thumbnails/",
 			  plekan_buttons : {
 			  	save : {
