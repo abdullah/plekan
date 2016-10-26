@@ -82,7 +82,6 @@ window.setActiveEditorButtons = () => {
         var sc = document.querySelector('a[data-tagname="'+ e.tagName +'"]')
         if (sc) {
           sc.classList.add('active')
-          console.log(sc)
         }
       })
 }

@@ -55,18 +55,27 @@
         <header slot="header">
           <div class="title">Set Color</div>
         </header>
-        <div slot="body" class="modal-color-body">
-          <select v-model="colortype" class="form-control">
-            <option value="backColor">Background Color</option>
-            <option value="hiliteColor">Block Color</option>
-            <option value="foreColor">Text Color</option>
-          </select>
-          <hr>
-          <a 
-          v-for="c in colors"
-          @click="setColor(c)"
-          v-bind:style="{ backgroundColor: c}" 
-          ></a>
+        <div slot="body" class="modal-color-body plekan-clearfix">
+          <div class="plekan-color-type plekan-clearfix">
+             <select v-model="colortype" class="form-control">
+                <option value="backColor">Background Color</option>
+                <option value="hiliteColor">Block Color</option>
+                <option value="foreColor">Text Color</option>
+              </select>
+              <a href="" 
+                class="remove-color" 
+                @click.prevent="exec('removeFormat')">
+                <i class="fa fa-eraser"></i>
+              </a>
+          </div>
+          <div class="plekan-color-pallate plekan-clearfix">
+            <a 
+              href="#"
+              v-for="c in colors"
+              @click.prevent="setColor(c)"
+              v-bind:style="{ backgroundColor: c}" 
+              ></a>
+          </div>
         </div>
         <footer slot="footer" class="plekan-clearfix">
           <button @click="showColorModal = false">Close</button>
@@ -112,8 +121,13 @@
         let editButtonWidth   = editButton.clientWidth
         let editButtonHeight  = editButton.clientHeight
 
-        let target,tagname,calc,parents;
+        let target,tagname,calc,parents,editorIsVisible;
         document.addEventListener('mouseover',e => {
+
+          editorIsVisible = editorElementDynamic.className.indexOf('active') != -1
+
+          if (editorIsVisible) return
+
           target  = e.target;
           tagname = target.tagName;
           calc    = target.getBoundingClientRect();
@@ -200,8 +214,12 @@
         // ----------
         document.addEventListener('domupdated', (e) => { 
             this.editableModal = false
-        },false);
+        },false); 
 
+        document.addEventListener('requestHiddenModal', (e) => { 
+            this.showColorModal = false
+            this.editableModal = false
+        },false);
 
     },
     beforeDestroy() {

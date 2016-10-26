@@ -19,6 +19,20 @@
       outline: 1px dotted $primaryColor;
     }
   }
+  select{
+    display: inline-block;
+    float: left;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: $textColorDark;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid $borderColorLight;
+    border-radius: 4px;
+    outline: thick;
+  }
   *{
     // outline: thick;
   }
@@ -44,20 +58,6 @@
       float: left;
       margin-right: 10px;
       margin-top: 6px;
-    }
-    select{
-      display: inline-block;
-      float: left;
-      height: 34px;
-      padding: 6px 12px;
-      font-size: 14px;
-      line-height: 1.42857143;
-      color: $textColorDark;
-      background-color: #fff;
-      background-image: none;
-      border: 1px solid $borderColorLight;
-      border-radius: 4px;
-      outline: thick;
     }
     .open-translate-arena{
       display: inline-block;
@@ -102,7 +102,7 @@
       height: 40px;
       background: linear-gradient(270deg, $primaryColor, #3f702d, #76b91a, #3e5b6e);
       background-size: 800% 800%;
-      // animation: gradiendAnimation 30s ease infinite;
+      animation: gradiendAnimation 30s ease infinite;
       margin: 10px 0;
       *{
         display: none;
@@ -117,7 +117,7 @@
       background-color: #ccc;
       background: linear-gradient(270deg, $primaryColor, #3f702d, #76b91a, #3e5b6e);
       background-size: 800% 800%;
-      // animation: gradiendAnimation 30s ease infinite;
+      animation: gradiendAnimation 30s ease infinite;
       border-radius: 5px;
       &:after{
         content: "Preview Arena";
@@ -317,7 +317,7 @@
         &.stable-editor{
           top: 120px;
           left: 20px;
-          // animation-name: fadeOutLeft;
+          animation-name: fadeOutLeft;
           animation-duration: .0s!important;
           border-bottom: 0;
           
@@ -362,6 +362,46 @@
     }
   }
   
+  // .icon-header-one,
+  // .icon-header-two,
+  // .icon-header-three,
+  // .icon-header-four,
+  // .icon-header-five,
+  // .icon-header-six{
+  //   &:after{
+  //   }
+  // }
+
+  .icon-header-one{
+    &:after{
+      content: 'H1';
+    }
+  }
+  .icon-header-two{
+    &:after{
+      content: 'H2';
+    }
+  }
+  .icon-header-three{
+    &:after{
+      content: 'H3';
+    }
+  }
+  .icon-header-four{
+    &:after{
+      content: 'H4';
+    }
+  }
+  .icon-header-five{
+    &:after{
+      content: 'H5';
+    }
+  }
+  .icon-header-six{
+    &:after{
+      content: 'H6';
+    }
+  }
 }
 /* ------------------------------------- */
  ._plekan_list{
@@ -431,6 +471,7 @@
   overflow: auto;
   top: 0;
   left: 0;
+
   .modal-arena-layout{
     position: absolute;
     max-width: 700px;
@@ -445,6 +486,7 @@
       width: 100%;
       padding: 20px;
       box-shadow: 0px 0px 63px 3px rgba(0,0,0,0.75);
+      position: relative;
       header{
         border:0;
         .title{
@@ -462,6 +504,32 @@
           border:0;
           background-color: $primaryColor;
           color: #FFF;
+        }
+      }
+
+      .plekan-modal-close{
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #222;
+        border-radius: 50%;
+        &:before,&:after{
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          top: 50%;
+          margin-top: -10px;
+          width: 1px;
+          background-color: #fff;
+          transform: rotate(45deg);
+        }
+        &:after{
+          transform: rotate(-45deg);
         }
       }
     
@@ -485,12 +553,33 @@
 }
 
 .modal-color-body{
+  .plekan-color-type{
+    clear: both;
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 34px;
+    select{
+      width: 100%;
+    }
+    .remove-color{
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      padding: 0;
+      color: #444;
+    }
+  }
   a{
-    width: 33px;
-    height: 33px;
+    width: 10%;
+    padding: 14px;
     display: inline-block;
     float: left;
     border: 1px solid #fff;
+    cursor: pointer;
   }
 }
 

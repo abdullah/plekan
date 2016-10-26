@@ -8,7 +8,7 @@
           </select>
         </div>
         <div class="open-translate-arena">
-          <button @click="openTranslateMode"><i class="fa fa-language"></i></button>
+          <button @click="store.changeTranslateMode()"><i class="fa fa-language"></i></button>
         </div>
         <div class="plekan-pull-right" v-show="translateMode">
           <span>Translate Language</span>
@@ -39,9 +39,6 @@
       },
     },
     methods:{
-       openTranslateMode(){
-        this.store.changeTranslateMode()
-      },
     }
   }
 </script>

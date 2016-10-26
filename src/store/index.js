@@ -43,7 +43,7 @@ export default {
   },
   /*----------------------------------------------*/
   changeTranslateMode(){
-        this.state.translateMode = !this.state.translateMode;
+    this.state.translateMode = !this.state.translateMode;
   }
 }
 

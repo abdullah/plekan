@@ -61,8 +61,10 @@ export default {
         */
         document.addEventListener('mousedown',(e)=>{
             let target = e.target
+            let isModalElement = hasParent(target,'plekan-modal') ? true : false
+
             this.updatable =    childOf(target,window.editorElement) || 
-                                childOf(target,document.querySelector('.plekan-modal')) || 
+                                isModalElement || 
                                 target.className == 'editor';
         })
 

@@ -8,8 +8,10 @@
             leave-active-class="animated  fadeOutLeftCC custom-classes-transition-child">
                   <div v-show="bodyShow" class="modal-arena-layout">
                     <div class="modal-arena">
+                        <a class="plekan-modal-close" @click="makeBroadcast()"></a>
                          <slot name="header"></slot>
-                         <slot name="body"></slot>
+                         <slot name="body">
+                         </slot>
                          <slot name="footer"></slot>
                     </div>
                   </div>
@@ -19,21 +21,48 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+
   export default {
-    props:["element","show"],
+    props:["show"],
     data () {
       return {
         bodyShow:false,
-        layoutShow: false
+        layoutShow: false,
+        event:event
+      }
+    },
+    watch:{
+      show:function () {
+        this.setShownVariable()
       }
     },
     updated(){
-      this.setShownVariable()
+      // this.setShownVariable()
     },
     created(){
       this.setShownVariable()
     },
+    mounted(){
+      this.event = new CustomEvent('requestHiddenModal');
+      
+      document.onkeydown =  (e)  => {
+        if (e.key == "Escape") {
+          this.makeBroadcast()
+        }
+      }
+      
+      this.$el.onclick = (e) => {
+        if (e.target.className.indexOf('plekan-modal') != -1) {
+            this.makeBroadcast()
+        }
+      }
+
+    },
     methods:{
+      makeBroadcast(){
+          document.dispatchEvent(this.event);
+      },
       setShownVariable(){
         this.layoutShow = this.show;
         this.bodyShow = this.show

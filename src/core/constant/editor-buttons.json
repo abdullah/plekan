@@ -41,6 +41,13 @@
 			"icon" : "fa fa-unlink",
 			"value" : "",
 			"tagname":""
+		},
+		{
+			"code" : "formatBlock",
+			"tooltip" : "formatBlock",
+			"icon" : "fa fa-paragraph",
+			"value" : "p",
+			"tagname":"P"
 		}
 	],
 	"stable": [
@@ -48,49 +55,49 @@
 		{
 			"code" : "",
 			"tooltip" : "",
-			"icon" : "fa fa-cog",
+			"icon" : "fa fa-header",
 			"value" : "",
 			"tagname":"",
 			"sub":[
 				{
 					"code" : "formatBlock",
 					"tooltip" : "formatBlock",
-					"icon" : "fa fa-header",
+					"icon" : "icon-header-one",
 					"value" : "H1",
 					"tagname":"H1"
 				},
 				{
 					"code" : "formatBlock",
 					"tooltip" : "formatBlock",
-					"icon" : "fa fa-header",
+					"icon" : "icon-header-two",
 					"value" : "H2",
 					"tagname":"H2"
 				},
 				{
 					"code" : "formatBlock",
 					"tooltip" : "formatBlock",
-					"icon" : "fa fa-header",
+					"icon" : "icon-header-three",
 					"value" : "H3",
 					"tagname":"H3"
 				},
 				{
 					"code" : "formatBlock",
 					"tooltip" : "formatBlock",
-					"icon" : "fa fa-header",
+					"icon" : "icon-header-four",
 					"value" : "H4",
 					"tagname":"H4"
 				},
 				{
 					"code" : "formatBlock",
 					"tooltip" : "formatBlock",
-					"icon" : "fa fa-header",
+					"icon" : "icon-header-five",
 					"value" : "H5",
 					"tagname":"H5"
 				},
 				{
 					"code" : "formatBlock",
 					"tooltip" : "formatBlock",
-					"icon" : "fa fa-header",
+					"icon" : "icon-header-six",
 					"value" : "H6",
 					"tagname":"H6"
 				}
@@ -158,6 +165,13 @@
 			"code" : "color",
 			"tooltip" : "color",
 			"icon" : "fa fa-paint-brush",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "removeFormat",
+			"tooltip" : "removeFormat",
+			"icon" : "fa fa-eraser",
 			"value" : "",
 			"tagname":""
 		}
