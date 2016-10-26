@@ -81,6 +81,7 @@ import plekanComponentMixin from 'core/mixin.js'
     Vue.prototype.$plekan_buttons = options.plekan_buttons
     Vue.prototype.$cs_editor_buttons = options.cs_editor_buttons
     Vue.prototype.$thumbnailPath = options.thumbnailPath
+    Vue.prototype.$onFileUpload = options.onFileUpload
 
     /*
     * Source : 

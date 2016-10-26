@@ -47,7 +47,7 @@
       <!--  -->
       <button class="editable-elements-button" @click="openEditElement">Edit</button>
       <!--  -->
-      <editelement 
+      <editelement  
                    :element="editableModalElement" 
                    :shown="editableModal"></editelement>    
       <!--  -->
@@ -82,6 +82,19 @@
         </footer>
       </modal>
       <!--  -->
+      <modal :show="fileUploadModal">
+        <header slot="header">
+          <div class="title">File Upload</div>
+        </header>
+        <div slot="body" class="modal-color-body plekan-clearfix">
+          <input type="file">
+          {{file}}
+        </div>
+        <footer slot="footer" class="plekan-clearfix">
+          <button @click="onFileUpload">Upload</button>
+        </footer>
+      </modal>
+      <!--  -->
   </section>
 </template>
 
@@ -98,6 +111,7 @@
         editableModal: false,
         headingModal: false,
         showColorModal: false,
+        fileUploadModal: false,
 
         editableModalElement: null,
         linktext : "",
@@ -105,6 +119,7 @@
 
         editorButtons : editorButtons,
         colors : colors,
+        file : null,
       }
     },
     components: {
@@ -149,10 +164,7 @@
               editButton.style.display = "none"
             }
           }
-
         })
-
-
 
         // --------------------------------------------------------
         var editorItem = document.querySelectorAll('.editor a')
@@ -193,6 +205,9 @@
               case 'color':
                 this.showColorModal = true
               break;
+              case 'fileUpload':
+                this.fileUploadModal = true
+              break;
               case 'formatBlock':
                 // this.boSelection.restoreSelection(this.savedSel); // restore the selection
                 // document.execCommand('formatBlock', false, `<${type}>`);
@@ -219,6 +234,7 @@
         document.addEventListener('requestHiddenModal', (e) => { 
             this.showColorModal = false
             this.editableModal = false
+            this.fileUploadModal = false
         },false);
 
     },
@@ -229,6 +245,19 @@
 
     },
     methods:{
+      onFileUpload(){
+        /*
+        @TODO : Pass file
+        */
+        this.$onFileUpload({file:1}, (url) => {
+
+          this.exec('insertHTML', 
+          `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
+
+          this.fileUploadModal = false
+        })
+
+      },
       setColor(color){
         this.exec(this.colortype,color)
       },

@@ -19,7 +19,15 @@ Vue.use(plekan,{
   // rows : mockup
   // @TODO : Filter for editor buttons,
   except : {},
-
+  onFileUpload :  function (file,cb) {
+    // Fİle upload
+    console.log(file)
+    cb({
+      src: "title",
+      alt : "text",
+      title : "link"
+    })
+  },
   thumbnailPath : "/static/thumbnails/",
   // cs_editor_buttons:{
   //   test : {

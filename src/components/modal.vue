@@ -4,8 +4,8 @@
     leave-active-class="animated fadeOut custom-classes-transition">
       <div class="plekan-modal" v-show="layoutShow">
         <transition
-            enter-active-class="animated fadeInLeftCC custom-classes-transition-child"
-            leave-active-class="animated  fadeOutLeftCC custom-classes-transition-child">
+            enter-active-class="animated fadeIn custom-classes-transition-child"
+            leave-active-class="animated  fadeOut custom-classes-transition-child">
                   <div v-show="bodyShow" class="modal-arena-layout">
                     <div class="modal-arena">
                         <a class="plekan-modal-close" @click="makeBroadcast()"></a>
