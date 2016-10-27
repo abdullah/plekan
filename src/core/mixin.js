@@ -1,4 +1,14 @@
 
+/**
+ * Mixin plekan'a kayıt edilen her component için gereklidir
+ * props : mixin izole olduğu için dışardan alınır
+ * store eklentideki global store'dur
+ * gösterlicek dil'e göre row içindeki html gösterilir 
+ * yine gösterilecek dile göre update yapılır
+ * 
+*/
+
+
 var DEFAULT_CONTENT = `<div contenteditable="true">DEFAULT</div>`
 
 export default {
