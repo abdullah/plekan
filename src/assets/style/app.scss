@@ -548,8 +548,11 @@
     display: inline-block;
     min-height: 200px;
     outline: 1px solid $primaryColor;
-    // background-color: #f2f2f2;
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: rgba(0,0,0,.4);
     &.empty{
       &:after{
         content: "";
@@ -643,6 +646,10 @@
   margin-left: 10px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
+  &:disabled{
+    opacity: .4;
+    cursor: not-allowed;
+  }
   &:hover{
     transition: opacity .3s;
     opacity: .4;

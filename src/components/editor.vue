@@ -1,54 +1,18 @@
 <template>
   <section class="editor-arena">
       <div class="editor">
-        <ul class="dynamic-editor animated">
-          <li v-for="b in editorButtons.stick" >
-            <a href=""
-            :data-type="b.code"
-            :data-tagname="b.tagname"
-            :data-value="b.value"
-            :class="b.icon"
-            ></a>
-          </li>
-          <li class="create-link">
+        <editor-list cname="dynamic-editor" :list="editorButtons.stick">
+          <li class="create-link" slot="link">
             <input v-model="linktext" placeholder="http://example.com">
             <button @click="createLink"><i class="fa fa-check"></i></button>
-          </li>  
-        </ul>
-        <!-- -->
-        <ul class="stable-editor animated">
-           <li v-for="b in editorButtons.stable">
-             <a href=""  
-              :data-type="b.code"
-              :data-tagname="b.tagname"
-              :data-value="b.value"
-              :class="b.icon"
-              ></a>
-               <ul class="submenu" v-if="b.sub">
-                 <li v-for="s in b.sub">
-                   <a href=""  
-                    :data-type="s.code"
-                    :data-tagname="s.tagname"
-                    :data-value="s.value"
-                    :class="s.icon"
-                    ></a>
-                 </li>
-              </ul>
-           </li>
-
-            <!-- <a href="" v-for="(b,key) in $cs_editor_buttons" 
-            :data-type="b.code || 'custom'"
-            :data-tagname="s.tagname"
-            :data-index="key"
-            :class="b.class"
-            ></a> -->
-        </ul>
+          </li> 
+        </editor-list>
+        <editor-list cname="stable-editor" :list="editorButtons.stable"></editor-list>
       </div>
       <!--  -->
       <button class="editable-elements-button" @click="openEditElement">Edit</button>
       <!--  -->
-      <editelement  
-                   :element="editableModalElement" 
+      <editelement :element="editableModalElement" 
                    :shown="editableModal"></editelement>    
       <!--  -->
       <modal :show="showColorModal">
@@ -87,11 +51,14 @@
           <div class="title">File Upload</div>
         </header>
         <div slot="body" class="modal-color-body plekan-clearfix">
-          <input type="file">
-          {{file}}
+          <file-upload 
+            :fileChange="fileChange"></file-upload>
         </div>
         <footer slot="footer" class="plekan-clearfix">
-          <button @click="onFileUpload">Upload</button>
+          <button 
+            class="plekan-footer-button" 
+            @click="onFileUpload" 
+            :disabled="!file">Upload</button>
         </footer>
       </modal>
       <!--  -->
@@ -103,6 +70,8 @@
   import editorButtons from 'core/constant/editor-buttons.json'
   import colors from 'core/constant/colors.json'
   import modal from 'components/modal'
+  import fileUpload from 'components/fileUpload'
+  import editorList from 'components/editorList'
 
   export default {
     props:[],
@@ -124,14 +93,15 @@
     },
     components: {
       editelement,
-      modal
+      modal,
+      fileUpload,
+      editorList
     },
     mounted() {
         var editableTag = [
           "IFRAME","IMG","A"
         ]
         
-
         let editButton        = document.querySelector('.editable-elements-button');
         let editButtonWidth   = editButton.clientWidth
         let editButtonHeight  = editButton.clientHeight
@@ -225,7 +195,6 @@
           })
         })
 
-
         // ----------
         document.addEventListener('domupdated', (e) => { 
             this.editableModal = false
@@ -245,11 +214,14 @@
 
     },
     methods:{
+      fileChange(file){
+        this.file = file 
+      },
       onFileUpload(){
         /*
         @TODO : Pass file
         */
-        this.$onFileUpload({file:1}, (url) => {
+        this.$onFileUpload(this.file, (url) => {
 
           this.exec('insertHTML', 
           `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
