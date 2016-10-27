@@ -5,31 +5,31 @@ import 'src/helper'
 import moduleList from 'core/modules/list.json'
 import 'src/assets/style/app.scss'
 import plekanComponentMixin from 'core/mixin.js'
-
 ;(function () {
-
+  /** @type {Object} Eklentinin ta kendisi lol */
   var plekan = {};
-
+  /**
+   * @description Varsayılan seçenekler
+   * @type {Object}
+   */
   var plekanOptions = {
     languages       : [],
     defaultLanguage : "",
+    /** @type {Array} Ekrandaki gösterilen her bil satır. Uygulama genelinde rows olarak belirtirlir */
     rows : [],
-    modules:null,
-    customComponents:null,
+    /** @type {Object} Row olarak eklenebilen her component module olarak adlandırılır */
+    modules:{},
+    customComponents:[],
+    /** @type {Array} Özel butonlar  */
     cs_editor_buttons:[]
   }
-
   plekan.install = function (Vue, options) {
-    // Vue.transition('bounce', { enterClass: 'bounceIn', leaveClass: 'bounceOut'});
-
-    Vue.component('plekan',plekancomponent) 
-    /*
-    *@TODO : extends options to plekanOptions
-    */
+    /** plekan komponnetinin kayıt edilmesi */
+    Vue.component('plekan',plekancomponent)
     options = Object.assign({},plekanOptions,options)
     /*
-    * Register component initilaze
-    *@TODO : Validate template for existing ????? 
+     * Register component initilaze
+     * @TODO : Validate template for existing ????? 
     */
     store.init('languages',options.languages);
     /*
@@ -73,20 +73,18 @@ import plekanComponentMixin from 'core/mixin.js'
         mlist.splice(i, 1);
       }
     });
-
     store.init('moduleList',mlist);
     store.init('currentLanguge',options.defaultLanguage);
     store.init('translateLanguage',options.languages[1]);
-
     Vue.prototype.$plekan_buttons = options.plekan_buttons
     Vue.prototype.$cs_editor_buttons = options.cs_editor_buttons
     Vue.prototype.$thumbnailPath = options.thumbnailPath
     Vue.prototype.$onFileUpload = options.onFileUpload
-
-    /*
-    * Source : 
-    * http://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript
-    */
+    /**
+     * 
+     * http://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript
+     * @type {Object}
+     */
     Vue.prototype.$plekanutils = {
       makeUrl(url,prefix){
         var RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
@@ -96,10 +94,8 @@ import plekanComponentMixin from 'core/mixin.js'
             return prefix + url;
         }
       },
-    } 
-
+    }
   }
-
   /*----------------------------------------------------*/
   if (typeof exports == "object") {
     module.exports = {plekan,plekanComponentMixin}
@@ -108,5 +104,4 @@ import plekanComponentMixin from 'core/mixin.js'
   } else if (window.Vue) {
     Vue.use(plekan)
   }
-
 })()

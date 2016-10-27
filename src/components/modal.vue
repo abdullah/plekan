@@ -37,9 +37,6 @@
         this.setShownVariable()
       }
     },
-    updated(){
-      // this.setShownVariable()
-    },
     created(){
       this.setShownVariable()
     },

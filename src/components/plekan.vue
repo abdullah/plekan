@@ -32,11 +32,7 @@
       }
     },
     mounted() {
-      window.onload()
+      window.editorStart()
     },
-    beforeDestroy() {
-    },
-    methods:{
-    }
   }
 </script>

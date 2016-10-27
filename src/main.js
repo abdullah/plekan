@@ -12,6 +12,8 @@ Vue.use(VueResource);
 
 
 /* eslint-disable no-new */
+
+
 Vue.use(plekan,{
   defaultLanguage : "tr",
   languages : ["tr","en"],

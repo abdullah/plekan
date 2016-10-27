@@ -3,7 +3,7 @@ import selectionPolify from 'helper/selectionPolify'
 
 
 
-window.onload = () => {
+window.editorStart = () => {
 	
 	selectionPolify.start();
 

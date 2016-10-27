@@ -15,38 +15,5 @@
 <script>
   export default {
     props:["list","cname"],
-    data () {
-      return {
-
-      }
-    },
-    components: {
-
-    },
-    beforeCreate() {
-
-    },
-    created() {
-
-    },
-    beforeMount() {
-
-    },
-    mounted() {
-
-    },
-    beforeDestroy() {
-
-    },
-    destroyed() {
-
-    },
-    methods:{
-      
-    }
   }
 </script>
-
-<style>
-  
-</style>

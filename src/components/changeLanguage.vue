@@ -31,14 +31,23 @@
       }
     },
     computed:{
+      /**
+       * Global store'daki dil koleksiyonunu döndürür
+       * Dil koleksiyonundaki diller kadar seçenek sunar.
+       * @return {Array} 
+       */
       languages : function () {
         return this.store.state.languages
       },
+       /**
+        * Global store'daki çeviri modunun aktif olup olmadığını döndürür.
+        * Burdan dönen değere göre local template'te değişiklil yapılır
+        * Örnek : v-show="translateMode"
+        * @return {Boolean} 
+       */
       translateMode:function () {
           return this.store.state.translateMode;
       },
-    },
-    methods:{
     }
   }
 </script>

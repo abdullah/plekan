@@ -66,6 +66,13 @@
 </template>
 
 <script>
+  /**
+   * Bu component düzenlenebilir DOM elemenaları,
+   * Zengin editor: kalın yazı,link, vb component'leri içerir
+   *
+   * editor-list componet'i editor butonlarını listeler
+   * 
+   */
   import editelement from 'components/editelement';
   import editorButtons from 'core/constant/editor-buttons.json'
   import colors from 'core/constant/colors.json'
@@ -78,7 +85,6 @@
     data () {
       return {
         editableModal: false,
-        headingModal: false,
         showColorModal: false,
         fileUploadModal: false,
 
@@ -98,6 +104,7 @@
       editorList
     },
     mounted() {
+        /** @type {Array} Düzenlenebilir DOM elementleri */
         var editableTag = [
           "IFRAME","IMG","A"
         ]
@@ -107,6 +114,7 @@
         let editButtonHeight  = editButton.clientHeight
 
         let target,tagname,calc,parents,editorIsVisible;
+        /** editButton pozisyonu'nu hesaplar */
         document.addEventListener('mouseover',e => {
 
           editorIsVisible = editorElementDynamic.className.indexOf('active') != -1
@@ -122,11 +130,11 @@
 
             if (parents) {
               var st = document.getElementById('_plekan').scrollTop
-              this.editableModalElement = target
-              editButton.style.display = "block"
+              this.editableModalElement   = target
+              editButton.style.display    = "block"
               editButton.style.visibility = "visible"
-              editButton.style.top = `${(calc.height/2) + st + calc.top - (editButtonHeight/2)}px`
-              editButton.style.left = `${(calc.width/2) + calc.left - (editButtonWidth/2)}px`
+              editButton.style.top        = `${(calc.height/2) + st + calc.top - (editButtonHeight/2)}px`
+              editButton.style.left       = `${(calc.width/2) + calc.left - (editButtonWidth/2)}px`
             }
 
           }else{
@@ -136,30 +144,19 @@
           }
         })
 
-        // --------------------------------------------------------
-        var editorItem = document.querySelectorAll('.editor a')
-        Object.keys(editorItem).map(e => {
-          editorItem[e].addEventListener('click', (e) => {
-            
+        // 
+        var editorItems = document.querySelectorAll('.editor a')
 
-            // Restore selection
+        Object.keys(editorItems).map(e => {
+          editorItems[e].addEventListener('click', (e) => {
             e.preventDefault()
-            // selo.restoreSelection(sel)
-            /*
-            *@TODO control commad type
-            */
+
             let cmd = e.target.dataset.type;
-
-
-            // if (cmd == 'createLink') {
-            // }else{
-            // }
 
             switch (cmd) {
               case 'createLink':
                 document.querySelector('.create-link').classList.add('active')
                 break;
-
               // ------------
               // NOT: main.js'de konfigürasyonu var sonradan eklenebilir.
               // ------------
@@ -172,6 +169,8 @@
               //     sel : sel
               //   })
               // break;
+              // 
+              // 
               case 'color':
                 this.showColorModal = true
               break;
@@ -179,70 +178,114 @@
                 this.fileUploadModal = true
               break;
               case 'formatBlock':
-                // this.boSelection.restoreSelection(this.savedSel); // restore the selection
-                // document.execCommand('formatBlock', false, `<${type}>`);
                 this.exec('formatBlock',e.target.dataset.value)
               default:
-                // statements_def
                 this.exec(cmd)
-                break;
+              break;
             }
 
-            // Save selection
+            /**  
+             * Selo hakkında daha fazlası için : /src/core/plekan_editor.js
+             * @type {Selection Object}
+             */
             sel = selo.saveSelection()
-
-
           })
         })
 
-        // ----------
+        /**
+         * editelement.vue tarafından tetiklenir
+         * DOM element'inin değiştiğinde modal kapanır
+         */
         document.addEventListener('domupdated', (e) => { 
             this.editableModal = false
         },false); 
 
+        /**
+         * modal component'i kapatılmaya çalışıldığında gerekli
+         * değişkiklikleri yapıp modalı kapatır
+         * @todo 
+         *   1. Hangi modal'ın kapatıltığına göre işlem yapılması gerekir
+         *   2. Modal içindeki değişikler sağlanmalı  
+         */
         document.addEventListener('requestHiddenModal', (e) => { 
-            this.showColorModal = false
-            this.editableModal = false
-            this.fileUploadModal = false
+            this.showColorModal   = false
+            this.editableModal    = false
+            this.fileUploadModal  = false
         },false);
 
     },
-    beforeDestroy() {
-
-    },
-    destroyed() {
-
-    },
     methods:{
+      /**
+       * Bu method file-upload componentine property olarak pass edilir.
+       * file-upload'da geri dönen değer file objesi local scope'a alınır
+       *
+       * Daha fazlası için file-upload.vue'ye bakınız
+       * @param  {Object of File} file
+       * @return {void}
+     */
       fileChange(file){
         this.file = file 
       },
+      /**
+       * Upload button'nuna tıklandığında bu method çağrılır.
+       *
+       * Callback method'unden geri gelen değer ile link oluşturulur
+       *
+       * this.$onFileUpload fonksiyonu global'dir. Plekan.js
+       * #Vue.prototype.$onFileUpload tanımalasına bakınız
+       * @return {void} 
+      */
       onFileUpload(){
         /*
         @TODO : Pass file
         */
         this.$onFileUpload(this.file, (url) => {
 
-          this.exec('insertHTML', 
-          `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
-
+          this.exec('insertHTML', `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
           this.fileUploadModal = false
+
         })
 
       },
+      /**
+       * Color Modal'dan seçilen rengi ve tipi işlemini gerçekleştiri
+       * @param {String} color Renk tipi Hex biçimindedir
+       */
       setColor(color){
         this.exec(this.colortype,color)
       },
+      /**
+       * Editelement butonuna tıklandığında çalışır
+       * editelemen component'ini aktif/açmak için editableModal değişkenini true yapar   
+       * @return {void}
+       */
       openEditElement(){
         this.editableModal = true
       },
+      /**
+       * Editor içinde bulunan link butonuna tıklandığında editor içinde input ve buton'u aktif hale getirir
+       * Bu butona tıklandığında bu fonsksiyon tetiklenir
+       * @return {void} 
+       */
       createLink(){
-        // @TODO : text to link 
         this.exec('createLink',this.linktext)
         this.linktext = ""
         document.querySelector('.create-link').classList.remove('active')
       },
-      exec(cmd,val = false) {
+      /**
+       * Selo selectionend event'ini destekler Native olarak bu event
+       * desteklenmez Selo window'a eşittir
+       *
+       * Selo hakkında daha fazlası için : /src/core/plekan_editor.js
+       *
+       * document.execCommand çalıştırılmadan önce daha önceden kayıt edilmiş
+       * selection restore edilmelidir.
+       * @param  {String}   cmd
+       * @param  {Any}      val
+       * @return {void}
+       * https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
+       */
+      exec(cmd,val = null) {
         selo.restoreSelection(sel)
         document.execCommand(cmd,false,val)
         setActiveEditorButtons()

@@ -30,11 +30,22 @@
   import modal from 'components/modal'
   import fileUpload from 'components/fileUpload'
 
+  /**
+   * Bu component Editor.vue tarafından kullanılır, editable-elements-button'a
+   * tıklandığında açılır.
+   *
+   * Element objesi DOM'daki herhangi bir obje olabilir 
+   * bkz: Editor.vue line:101 #editableTag[]
+   *
+   * Shown özelliği modal'e özellik olarak tanımlanır bkz : Modal.vue line:36
+   * #show()
+   */
   export default {
     props:["element","shown"],
     data () {
       return {
         event : null,
+        /** @type {Array} DOM element'inin değiştirlebilir özellikleri  */
         getElementPropertyArray   : [
           {title : "Text",      prop  : "text" ,  placeholder : "Text"},
           {title : "Source",    prop  : "src" ,   placeholder : "source link"},
@@ -52,6 +63,10 @@
       document.body.style.overflow = "hidden"
     },
     watch:{
+      /**
+       * Her değişimde DOM element'inin özellikleri local scope'a alınır
+       * @return {void}
+       */
       shown:function () {
         this.event = new CustomEvent('domupdated');
           
@@ -74,24 +89,49 @@
       document.body.style.overflow = ""
     },
     methods:{
+      /**
+       * Bu method file-upload componentine property olarak pass edilir.
+       * file-upload'da geri dönen değer file objesi local scope'a alınır
+       *
+       * Daha fazlası için file-upload.vue'ye bakınız
+       * @param  {Object of File} file
+       * @return {void}
+       */
       fileChange(file){
         this.file = file 
       },
+      /**
+       * Upload button'nuna tıklandığında bu method çağrılır.
+       * this.$onFileUpload fonksiyonu global'dir. Plekan.js
+       * #Vue.prototype.$onFileUpload tanımalasına bakınız
+       * @return {void} 
+       */
       onFileUpload(){
         this.$onFileUpload(this.file, (obj) => {
           Object.keys(obj).map(e => {
               this.elementEditableProperties[e] = obj[e]
           })
         });
-      }, 
+      },
+      /**
+       * Değiştirilen özelliklerin DOM element'ine atanması ve kayıt edilmesi
+       * @return {void} 
+       */
       save(){
-        // Save 
         Object.keys(this.elementEditableProperties).map(e => {
           this.element[e] = this.elementEditableProperties[e]
         })
         
         this.makeABroadcast()
       },
+      /**
+       * Gerekli DOM manipülasyonu yapıldı yayını yapar
+       * Editor.vue veya başka bir component bu yayına göre işlemler yapabilir
+       * Örnek: Editelement modal'ini kapatmak gibi
+       * 
+       * @return {void}
+       * 
+       */
       makeABroadcast(){
         document.dispatchEvent(this.event);
       }

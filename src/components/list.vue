@@ -59,9 +59,6 @@
           }
         });
       },
-      /*
-      @index : NUMBER
-      */
       addRow(rowindex,sortindex){
         let tmprow = this.list[rowindex]
         this.store.addRow(tmprow,sortindex)
