@@ -18,7 +18,7 @@ Vue.use(plekan,{
   modules:modules,
   // rows : mockup
   // @TODO : Filter for editor buttons,
-  except : {},
+  exceptButtons : {},
   onFileUpload :  function (file,cb) {
     // Fİle upload
     console.log(file)

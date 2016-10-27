@@ -8,10 +8,6 @@
       :class="b.icon"
       ></a>
     </li>
-   <!--  <li class="create-link">
-      <input v-model="linktext" placeholder="http://example.com">
-      <button @click="createLink"><i class="fa fa-check"></i></button>
-    </li> -->  
    <slot name="link"></slot>
   </ul>
 </template>

@@ -118,14 +118,14 @@ new Vue({
 
 Olay listesi : 
 ```
-OnAdd(addedObject: row,list) 
-OnDelete(deletedObject: row,list)
-OnDuplicate(copyObject: row , list)
-OnChange(changeRow: row , list) 
-OnSort(row,newIndex,OldIndex,list)
-OnInit(void)
-OnFileUploaded(file,row,list)
-OnSourceChange(row,list)
+OnAdd(addedObject: row,list) //Not yet 
+OnDelete(deletedObject: row,list)//Not yet
+OnDuplicate(copyObject: row , list)//Not yet
+OnChange(changeRow: row , list) //Not yet
+OnSort(row,newIndex,OldIndex,list)//Not yet
+OnInit()//Not yet
+OnFileUploaded(file,row,list)//Not yet
+OnSourceChange(row,list)//Not yet
 ```
 Olayları iki farklı şekilde yakalayabilirsiniz.
 
@@ -156,14 +156,23 @@ Vue.use(plekan,{
   modules:modules, // Module listsi
   customComponents:[] // Plekan'ın için hazırlanmış modüller bkz: Özel modüller
   rows : [] // önceden plekan tarafından üretilmiş row'lar
-  OnAdd : function(){},
-  OnDelete : function(){},
-  OnDuplicate : function(){},
-  OnChange : function(){},
-  OnSort : function(){},
-  OnInit : function(){},
-  OnFileUploaded : function(){},
-  OnSourceChange : function(){},
+  exceptButtons : {}, // not Yet
+  OnAdd : function(){},//Not yet
+  OnDelete : function(){},//Not yet
+  OnDuplicate : function(){},//Not yet
+  OnChange : function(){},//Not yet
+  OnSort : function(){},//Not yet
+  OnInit : function(){},//Not yet
+  onFileUpload :  function (file,cb) {
+    // Bu kısımda dosya yükleme işlemi gerçekletirin..
+    // cb olarak bir foskyiona obje geçin sonraki kısmı biz halledeceğiz
+    cb({
+      src: "title",
+      alt : "text",
+      title : "link"
+    })
+  },
+  OnSourceChange : function(){},//Not yet
   plekan_buttons : { // Özel düğmeler
     save : {
       text : "Save",
@@ -278,11 +287,11 @@ Vue.use(plekan,{
 
 ####Yapılacaklar
 
- 1. Editör butonları çoğaltılcak
- 2. Editör butonları özelleştirilebilecek
- 3. Dosya Yükleme
+ 1. Editör butonları çoğaltılcak **✓**
+ 2. Editör butonları özelleştirilebilecek **✓**
+ 3. Dosya Yükleme **✓**
  4. Modül gruplama
- 5. Kısayol Tuşları
+ 5. Kısayol Tuşları **✓**
  6. Kod vurgulama
  7. Font değiştirme
  8. İkon ekleme

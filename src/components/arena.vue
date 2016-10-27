@@ -23,11 +23,13 @@
     </div>
     <!-- Arena Footer -->
     <div class="plekan-container">
-      <button v-for="b in $plekan_buttons" 
-              :class="b.class" 
-              @click="b.callback(store.state.rows)">
-              {{b.text}}
-      </button>
+      <div class="plekan-footer">
+        <button v-for="b in $plekan_buttons" 
+                :class="b.class" 
+                @click="b.callback(store.state.rows)">
+                {{b.text}}
+        </button>
+      </div>
     </div>
 
 <!--     <pre>
