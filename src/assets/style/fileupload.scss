@@ -1,0 +1,52 @@
+
+.file-upload-area{
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  label{
+    width: 100%;
+    display: inline-block;
+    min-height: 200px;
+    outline: 1px solid $primaryColor;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: rgba(0,0,0,.4);
+    &.empty{
+      &:after{
+        content: "";
+        background: linear-gradient(270deg, $primaryColor, #3f702d, #76b91a, #3e5b6e);
+        background-size: 800% 800%;
+        animation: gradiendAnimation 30s ease infinite;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      &:before{
+        content: "Click or Drag";
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        transform: translate(0%,-50%);
+        z-index: 2;
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 100;
+        letter-spacing: 4px;
+      }
+    }
+  }
+  input[type="file"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 4;
+  }
+}

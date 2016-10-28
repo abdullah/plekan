@@ -1,0 +1,56 @@
+._plekan_list{
+   position: fixed;
+   width: 200px;
+   height: 100%;
+   background-color: #f2f2f2;
+   right: 0;
+   padding: 10px;
+   top: 0; 
+   border-left: 1px solid $borderColorLight;
+   transition: all .3s;
+   z-index: 12;
+   box-shadow: 0px 3px 78px 0px rgba(0,0,0,0.1);
+   ._plekan_list_title{
+     text-align: center;
+     background-color: transparent;
+     border-bottom: 1px solid $borderColorLight;
+     padding-bottom: 15px;
+     display: inline-block;
+   }
+   .plekan-open-module-list{
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+      border:0;
+      background-color: #f2f2f2;
+      font-size: 20px;
+      position: absolute;
+      left: -40px;
+      top: 80px;
+      border: 1px solid $borderColorLight;
+      border-right: 0 ;
+    }
+   span{
+     display: block;
+     width: 100%;
+     background-color: #fff;
+     padding: 5px;
+     float: none;
+     cursor: pointer;
+     margin-bottom: 10px;
+     img{
+       width: 100%;
+     }
+   }
+   &.active{
+    right: 0;
+   }
+   &.deactive{
+    right: -200px;
+    .plekan-open-module-list{
+      i{
+        transform: rotate(-180deg);
+      }
+    }
+   }
+}

@@ -1,11 +1,11 @@
 <template>
     <modal :show="shown">
       <header slot="header">
-        <div class="title">Edit</div>
+        <div class="plekan-modal-title">Edit</div>
       </header>
       <div slot="body">
-        <div v-for="e in getElementPropertyArray" class="editable-element-fields-container">
-          <div class="editable-element-fields" v-show="elementEditableProperties[e.prop] != undefined">
+        <div v-for="e in getElementPropertyArray" class="plekan-editable-element-fields-container">
+          <div class="plekan-editable-element-fields" v-show="elementEditableProperties[e.prop] != undefined">
             <span>{{e.title}}</span>
             <input type="text" v-model="elementEditableProperties[e.prop]" :placeholder="e.placeholder">
           </div>
@@ -31,7 +31,7 @@
   import fileUpload from 'components/fileUpload'
 
   /**
-   * Bu component Editor.vue tarafından kullanılır, editable-elements-button'a
+   * Bu component Editor.vue tarafından kullanılır, plekan-editable-elements-button'a
    * tıklandığında açılır.
    *
    * Element objesi DOM'daki herhangi bir obje olabilir 

@@ -23,11 +23,10 @@ Vue.use(plekan,{
   exceptButtons : {},
   onFileUpload :  function (file,cb) {
     // Fİle upload
-    console.log(file)
     cb({
-      src: "title",
-      alt : "text",
-      title : "link"
+      src: "path/your/"+file.name,
+      alt : file.type,
+      title : file.size
     })
   },
   thumbnailPath : "/static/thumbnails/",

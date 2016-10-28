@@ -1,9 +1,9 @@
 <template>
-  <div class="_plekan_arena">
+  <div class="plekan-area">
     <!-- This components for Preview and Translate language change  -->
     <change-language></change-language>
     <!-- Arena Container  -->
-    <div :class="{'translate-mode' : translateMode}" class="plekan-container">
+    <div :class="{'plekan-translate-mode' : translateMode}" class="plekan-container">
       <!-- Arena Column - Preview  -->
       <arena-column :rows="rows" :editAsHTMLRow="editAsHTMLRow" :language="currentLanguge"></arena-column>
       <!-- Arena Column - Translate  -->
@@ -11,7 +11,7 @@
       <!-- Edit As HTML Modal  -->
       <modal :show="editRow.row ? true : false" class="edit-modal">
         <header slot="header">
-          <div class="title">Edit As Html</div>
+          <div class="plekan-modal-title">Edit As Html</div>
         </header>
         <div slot="body" class="plekan-edit-as-html-modal-body">
           <textarea v-model="editRow.html"></textarea>
@@ -138,7 +138,7 @@
       /*
        * Sortable options init , see: https://github.com/RubaXa/Sortable
       */
-      let el = document.getElementById("plekan_sortable_list");
+      let el = document.getElementById("plekan-sortable-list");
       Sortable.create(el,{
         ...arenaSortableOptions,
         onAdd:this.onAdd,

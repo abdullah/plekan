@@ -1,5 +1,5 @@
 <template>
-  <div id="_plekan">
+  <div id="plekan">
   	<Editor></Editor>
     <Arena></Arena>
     <List></List>

@@ -3,11 +3,11 @@
       <div class="plekan-container">
         <div class="plekan-pull-left">
           <span>Preview Language</span>
-          <select  v-model="store.state.currentLanguge">
+          <select  v-model="store.state.currentLanguge" class="plekan-form-control">
             <option v-for="l in languages" :value="l">{{l}}</option>
           </select>
         </div>
-        <div class="open-translate-arena">
+        <div class="plekan-open-translate-arena">
           <button @click="store.changeTranslateMode()"><i class="fa fa-language"></i></button>
         </div>
         <div class="plekan-pull-right" v-show="translateMode">

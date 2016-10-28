@@ -6,8 +6,8 @@
         <transition
             enter-active-class="animated fadeIn custom-classes-transition-child"
             leave-active-class="animated  fadeOut custom-classes-transition-child">
-                  <div v-show="bodyShow" class="modal-arena-layout">
-                    <div class="modal-arena">
+                  <div v-show="bodyShow" class="plekan-modal-arena-layout">
+                    <div class="plekan-modal-arena">
                         <a class="plekan-modal-close" @click="makeBroadcast()"></a>
                          <slot name="header"></slot>
                          <slot name="body">

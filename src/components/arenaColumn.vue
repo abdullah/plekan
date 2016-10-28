@@ -1,6 +1,6 @@
 <template>
- <div class="translate-mode-column">
-    <div :class="{empty: !rows.length}" class="plekan-row-list" id="plekan_sortable_list">
+ <div class="plekan-translate-mode-column">
+    <div :class="{empty: !rows.length}" class="plekan-row-list" id="plekan-sortable-list">
       <div class="plekan-row-item" v-for="(r,key) in rows" :key="r.index">
         <div class="plekan-tools">
           <span class="plekan-move-row"><i class="fa fa-hand-grab-o"></i></span>

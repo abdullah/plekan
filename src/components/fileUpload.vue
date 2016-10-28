@@ -5,6 +5,9 @@
               :class="{empty : file ? false : true}"
               :style="{ backgroundImage: 'url(' + image + ')' }"
               ></label>
+        <div class="plekan-file-information">
+          
+        </div>
        <input id="upload" type="file" @change="onFileChange">
   </div> 
 </template>
@@ -34,7 +37,15 @@
         if (!files.length)
           return;
 
-        this.createImage(files[0]);
+        var isImage = files[0].name.split('.').pop(-1).match( /(png|jpg|jpeg|JPEG|gif)/ ) != null ? true : false;
+
+        if (isImage) {
+          this.createImage(files[0]);
+        }else{
+          this.file = files[0]
+          this.fileChange(this.file)
+        }
+
       },
       createImage(file) {
         var image = new Image();

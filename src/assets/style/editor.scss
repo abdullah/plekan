@@ -1,0 +1,199 @@
+.plekan-editor-arena{
+  .plekan-editor{
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        z-index: 9;
+        position: fixed;
+        border-radius: 24px;
+        li {
+          clear: left;
+          a {
+            display: block;
+            overflow: hidden;
+            float: left;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+            background-color: #262625;
+            &.active{
+              background-color: #444;
+            }
+          }
+          ul{
+            list-style-type: none; 
+            float: left;
+            display: none;
+            padding: 0;
+            margin-left: 0px;
+            border-bottom: 0;
+            margin-top: 0px;
+            padding-left: 50px;
+            z-index: -1;
+            animation-duration: .2s!important;
+            animation-name: fadeInLeft;
+            
+            &:before{
+              content: "";
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              left: 0;
+              top: 0;
+              border: 1px solid #fff!important;
+              border-radius: 24px;
+            }
+            li{
+              display: inline; 
+              clear: none !important;
+            }
+          }
+          &:hover{
+            ul{
+              display: block;
+            }
+          }
+        }
+        &.dynamic-editor{
+          position: fixed;
+          top: 100px;
+          left: 100px;
+          transform: scale(0);
+          border-right: 0 ;
+          &.active{
+            transform: scale(1);
+            transition: all .2s;
+          }
+          li{
+            display: inline;
+            clear: left!important;
+            &.create-link{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: inherit;
+              top: 0;
+              left: 0;
+              padding-right: 39px;
+              display: none;
+              border-radius: 24px;
+              overflow: hidden;
+              background-color: #262625;
+              &.active{
+                display: block;
+              }
+              input{
+                width: 100%;
+                height: 100%;
+                padding-left: 10px;
+                background: inherit;
+                border:0;
+                color: #FFF;
+              }
+              button{
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 40px;
+                border:0;
+                background: inherit;
+                color: #ccc;
+                &:before{
+                  content: "";
+                  width: 1px;
+                  height: 20px;
+                  position: absolute;
+                  left: 0;
+                  top: 50%;
+                  margin-top: -10px;
+                  background-color: #ccc;
+                }
+              }
+            }
+          }
+        }
+        &.stable-editor{
+          top: 120px;
+          left: 20px;
+          animation-name: fadeOutLeft;
+          animation-duration: .0s!important;
+          border-bottom: 0;
+          
+          &.active{
+            animation-duration: .2s!important;
+            animation-name: fadeInLeft;
+          }
+        }
+      }
+
+  }
+  .plekan-editable-elements-button{
+    position: absolute;
+    left: 0;
+    top: 0;
+    border:0;
+    background-color: $primaryColor;
+    z-index: 11;
+    color: #FFF;
+    padding: 10px 20px;
+    visibility: hidden;
+  }
+  .plekan-editable-element-fields-container{
+    .plekan-editable-element-fields{
+      padding: 4px 0;
+      position: relative;
+      padding-left: 120px;
+      span{
+        width: 100px;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(0,-50%);
+      }
+      input{
+        width: 100%;
+        height: 32px;
+        padding-left: 10px;
+        outline: thick;
+      }
+    }
+  }
+
+  .icon-header-one{
+    &:after{
+      content: 'H1';
+    }
+  }
+  .icon-header-two{
+    &:after{
+      content: 'H2';
+    }
+  }
+  .icon-header-three{
+    &:after{
+      content: 'H3';
+    }
+  }
+  .icon-header-four{
+    &:after{
+      content: 'H4';
+    }
+  }
+  .icon-header-five{
+    &:after{
+      content: 'H5';
+    }
+  }
+  .icon-header-six{
+    &:after{
+      content: 'H6';
+    }
+  }
+}

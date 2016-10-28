@@ -17,7 +17,7 @@ window.editorStart = () => {
 
 	var left,top,width,gb,tw,th;
 
-	window.editorElement = document.querySelector('.editor');
+	window.editorElement = document.querySelector('.plekan-editor');
 	window.editorElementDynamic = document.querySelector('.dynamic-editor');
 	window.editorElementStable = document.querySelector('.stable-editor');
 

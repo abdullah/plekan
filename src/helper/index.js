@@ -29,7 +29,24 @@ window.childOf = (/*child node*/c, /*parent node*/p) => { //returns boolean
   }
 }
 
-
+/**
+ * Selo selectionend event'ini destekler Native olarak bu event
+ * desteklenmez Selo window'a eşittir
+ *
+ * Selo hakkında daha fazlası için : /src/core/plekan_editor.js
+ *
+ * document.execCommand çalıştırılmadan önce daha önceden kayıt edilmiş
+ * selection restore edilmelidir.
+ * @param  {String}   cmd
+ * @param  {Any}      val
+ * @return {void}
+ * https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
+ */
+window.exec = (cmd,val = null) =>  {
+    selo.restoreSelection(sel)
+    document.execCommand(cmd,false,val)
+    setActiveEditorButtons()
+}
 
 window.getParents = (el) =>{
   var a = el;
@@ -58,8 +75,6 @@ window.hasParent = (el,parentClassName) =>{
   return hasParent
 
   }
-
-
 
 window.setActiveEditorButtons = () => {
 

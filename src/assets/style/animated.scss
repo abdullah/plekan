@@ -14,6 +14,9 @@
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
+// ------------------------
+
 .custom-classes-transition{
   animation-duration: .4s!important;
 }
@@ -23,6 +26,51 @@
 }
 
 
+@keyframes gradiendAnimation { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@keyframes fadeInLeftCC {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-60%,-50%);
+    transform: translate(-60%,-50%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+}
+
+.fadeInLeftCC {
+  -webkit-animation-name: fadeInLeftCC;
+  animation-name: fadeInLeftCC;
+}
+
+@keyframes fadeOutLeftCC {
+  from {
+    opacity: 1;
+     -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate(-60%,-50%);
+    transform: translate(-60%,-50%);
+  }
+}
+
+.fadeOutLeftCC {
+  -webkit-animation-name: fadeOutLeftCC;
+  animation-name: fadeOutLeftCC;
+}
+
+// ------------------------
 .animated.infinite {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
