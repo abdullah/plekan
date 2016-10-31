@@ -12,7 +12,7 @@
         </div>
         <div class="plekan-pull-right" v-show="translateMode">
           <span>Translate Language</span>
-          <select  v-model="store.state.translateLanguage">
+          <select  v-model="store.state.translateLanguage" class="plekan-form-control">
             <option v-for="l in languages" :value="l">{{l}}</option>
           </select>
         </div>
