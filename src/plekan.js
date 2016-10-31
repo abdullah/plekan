@@ -5,6 +5,9 @@ import 'src/helper'
 import moduleList from 'core/modules/list.json'
 import 'src/assets/style/app.scss'
 import plekanComponentMixin from 'core/mixin.js'
+
+
+
 ;(function () {
   /** @type {Object} Eklentinin ta kendisi lol */
   var plekan = {};
@@ -24,12 +27,25 @@ import plekanComponentMixin from 'core/mixin.js'
     customEditorButtons:[],
     onFileUpload:null,
     allowedFileTypes:"",
-    plekan_buttons:{}
+    plekan_buttons:{},
+
+    plekanEvent: {
+      onAdd : () => {},
+      onDelete : () => {},
+      onSort : () => {},
+      onDuplicate : () => {},
+      onUpdate : () => {},
+      onInit : () => {},
+    }
   }
-  plekan.install = function (Vue, options) {
+  plekan.install = function (Vue, optionsOut) {
     /** plekan komponnetinin kayıt edilmesi */
+    
+    var options = Object.assign({},plekanOptions,optionsOut)
+        options.plekanEvent = Object.assign({},plekanOptions.plekanEvent,optionsOut.plekanEvent)
+
     Vue.component('plekan',plekancomponent)
-    options = Object.assign({},plekanOptions,options)
+
     /*
      * Register component initilaze
      * @TODO : Validate template for existing ????? 
@@ -84,6 +100,10 @@ import plekanComponentMixin from 'core/mixin.js'
     Vue.prototype.$thumbnailPath = options.thumbnailPath || "/"
     Vue.prototype.$onFileUpload = options.onFileUpload
     Vue.prototype.$allowedFileTypes = options.allowedFileTypes
+    Vue.prototype.$plekanEvent = options.plekanEvent
+
+
+
     /**
      * 
      * http://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript
@@ -99,6 +119,8 @@ import plekanComponentMixin from 'core/mixin.js'
         }
       },
     }
+
+
   }
   /*----------------------------------------------------*/
   if (typeof exports == "object") {

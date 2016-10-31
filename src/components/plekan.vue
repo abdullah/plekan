@@ -31,8 +31,12 @@
         this.store.init("rows",this.rows);
       }
     },
+    created(){
+      this.store.state.vm = this
+    },
     mounted() {
       window.editorStart()
+      this.$plekanEvent.onInit()
     },
   }
 </script>

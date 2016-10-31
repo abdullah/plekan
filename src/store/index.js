@@ -11,6 +11,7 @@ export default {
     rows: [],
 
     translateMode:false,
+    vm:null
   },
   init (type, data) {
     this.state[type] = data;
@@ -26,20 +27,25 @@ export default {
       this.state.rows.splice(i, 0, tmp);
     }
 
+   this.state.vm.$plekanEvent.onAdd(tmp)
   },
   updateRows(index, row){
     let tmp = JSON.parse(JSON.stringify(this.state.rows));
     tmp[index] = row
     this.state.rows = tmp
+    this.state.vm.$plekanEvent.onUpdate(tmp,index)
   },
   deleteRow(r,i){
-    this.state.rows.splice(i, 1);
+    var tmp = this.state.rows.splice(i, 1);
+    this.state.vm.$plekanEvent.onDelete(tmp,i)
   },
   dublicateRow(r,i){
     this.addRow(r,i)
+    this.state.vm.$plekanEvent.onDuplicate(r,i)
   },
   sortRows(_new,old){
     this.state.rows.move(_new,old)
+    this.state.vm.$plekanEvent.onSort(_new,old)
   },
   /*----------------------------------------------*/
   changeTranslateMode(){

@@ -51,15 +51,13 @@ Vue.use(plekan,{
   // 		callback : function (e) {
   // 			console.log(e)
   // 		}
-  // 	},
-  // 	// cancel : {
-  // 	// 	text : "Cancel",
-  // 	// 	class:"plekan-footer-button save",
-  // 	// 	callback : function (e) {
-  // 	// 		console.log(e)
-  // 	// 	}
-  // 	// }
+  // 	}
   // }
+  plekanEvent:{
+    onAdd(row){
+      console.log(row);
+    }
+  }
 })
 
 new Vue({

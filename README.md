@@ -118,14 +118,15 @@ new Vue({
 
 Olay listesi : 
 ```
-OnAdd(addedObject: row,list) //Not yet 
-OnDelete(deletedObject: row,list)//Not yet
-OnDuplicate(copyObject: row , list)//Not yet
-OnChange(changeRow: row , list) //Not yet
-OnSort(row,newIndex,OldIndex,list)//Not yet
-OnInit()//Not yet
-OnFileUploaded(file,row,list)//Not yet
-OnSourceChange(row,list)//Not yet
+plekanEvent: {
+    onAdd : () => {},
+    onDelete : () => {},
+    onSort : () => {},
+    onDuplicate : () => {},
+    onUpdate : () => {},
+    onInit : () => {},
+  }
+
 ```
 Olayları iki farklı şekilde yakalayabilirsiniz.
 
@@ -157,13 +158,14 @@ Vue.use(plekan,{
   customComponents:[] // Plekan'ın için hazırlanmış modüller bkz: Özel modüller
   rows : [] // önceden plekan tarafından üretilmiş row'lar
   exceptButtons : {}, // not Yet
-  OnAdd : function(){},//Not yet
-  OnDelete : function(){},//Not yet
-  OnDuplicate : function(){},//Not yet
-  OnChange : function(){},//Not yet
-  OnSort : function(){},//Not yet
-  OnInit : function(){},//Not yet
-  OnSourceChange : function(){},//Not yet
+  plekanEvent: {
+    onAdd : () => {},
+    onDelete : () => {},
+    onSort : () => {},
+    onDuplicate : () => {},
+    onUpdate : () => {},
+    onInit : () => {},
+  },
   allowedFileTypes : "png|jpg|jpeg", // yüklenebilir dosyalar
   onFileUpload :  function (file,cb) {
     // Bu kısımda dosya yükleme işlemi gerçekletirin..

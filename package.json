@@ -9,10 +9,11 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
     "start": "node web/index.js"
   },
-  "main":"release/plekan.js",
+  "main": "release/plekan.js",
   "dependencies": {
     "archiver": "^1.1.0",
     "archiver-json": "^0.1.1",
+    "assign-deep": "^0.4.5",
     "body-parser": "^1.15.2",
     "express": "^4.13.3",
     "md5": "^2.2.1",
