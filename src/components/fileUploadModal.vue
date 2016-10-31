@@ -4,7 +4,9 @@
         <div class="plekan-modal-title">File Upload</div>
       </header>
       <div slot="body" class="plekan-modal-color-body plekan-clearfix">
-        <file-upload :fileChange="fileChange"></file-upload>
+        <file-upload 
+        :types="$allowedFileTypes"
+        :fileChange="fileChange"></file-upload>
       </div>
       <footer slot="footer" class="plekan-clearfix">
         <button 

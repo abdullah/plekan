@@ -1,6 +1,6 @@
 <template>
   <ul class="animated" :class="cname">
-    <li v-for="b in list" >
+    <li v-for="b in buttons" >
       <a href=""
       :data-type="b.code"
       :data-tagname="b.tagname"
@@ -18,13 +18,32 @@
          </li>
       </ul>
     </li>
-
-   <slot name="link"></slot>
+    <li v-for="c in custom">
+      <a href="" v-for="(b,key) in $cs_editor_buttons" 
+        :data-type="b.code || 'custom'"
+        :data-index="key"
+        :class="b.class"
+      ></a>
+    </li>
+    <!-- {{$cs_editor_buttons}} -->
+    <slot name="link"></slot>
   </ul>
 </template>
 
 <script>
   export default {
-    props:["list","cname"],
+    props:["list","cname","custom"],
+    computed: {
+      buttons : function () {
+        if (!this.$onFileUpload) {
+          return this.list.filter(l => l.code != "fileUpload");
+        }
+
+        return this.list
+      }
+    },
+    mounted(){
+      // console.log(this.custom)
+    }
   }
 </script>

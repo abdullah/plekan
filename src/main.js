@@ -20,44 +20,46 @@ Vue.use(plekan,{
   modules:modules,
   // rows : mockup
   // @TODO : Filter for editor buttons,
-  exceptButtons : {},
-  onFileUpload :  function (file,cb) {
-    // Fİle upload
-    cb({
-      src: "path/your/"+file.name,
-      alt : file.type,
-      title : file.size
-    })
-  },
+  // exceptButtons : {},
+  allowedFileTypes : "png|jpg|jpeg",
+  // onFileUpload :  function (file,cb) {
+  //   // Fİle upload
+  //   cb({
+  //     src: "path/your/"+file.name,
+  //     alt : file.type,
+  //     title : file.size
+  //   })
+  // },
   thumbnailPath : "/static/thumbnails/",
-  // cs_editor_buttons:{
-  //   test : {
-  //     name : 'test',
+  // cs_editor_buttons:[
+  //   {
+  //     type : 'stable',
   //     class : 'fa fa-cog',
-  //     callback (options) {
-  //       console.log(options.sel.toString())
+  //     value : '',
+  //     callback (...options) {
+  //       alert("Clicked custom buttons")
+  //       console.info("Custom button ",options)
   //       // Modal 
-  //       options.selo.restoreSelection(options.sel)
-  //       options.exec('foreColor','#ccc')
+        
   //     }
   //   }
-  // },
-  plekan_buttons : {
-  	save : {
-  		text : "Save",
-  		class:"plekan-footer-button save",
-  		callback : function (e) {
-  			console.log(e)
-  		}
-  	},
-  	// cancel : {
-  	// 	text : "Cancel",
-  	// 	class:"plekan-footer-button save",
-  	// 	callback : function (e) {
-  	// 		console.log(e)
-  	// 	}
-  	// }
-  }
+  // ],
+  // plekan_buttons : {
+  // 	save : {
+  // 		text : "Save",
+  // 		class:"plekan-footer-button save",
+  // 		callback : function (e) {
+  // 			console.log(e)
+  // 		}
+  // 	},
+  // 	// cancel : {
+  // 	// 	text : "Cancel",
+  // 	// 	class:"plekan-footer-button save",
+  // 	// 	callback : function (e) {
+  // 	// 		console.log(e)
+  // 	// 	}
+  // 	// }
+  // }
 })
 
 new Vue({

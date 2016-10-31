@@ -21,7 +21,9 @@ import plekanComponentMixin from 'core/mixin.js'
     modules:{},
     customComponents:[],
     /** @type {Array} Özel butonlar  */
-    cs_editor_buttons:[]
+    cs_editor_buttons:[],
+    onFileUpload:null,
+    allowedFileTypes:"",
   }
   plekan.install = function (Vue, options) {
     /** plekan komponnetinin kayıt edilmesi */
@@ -78,8 +80,9 @@ import plekanComponentMixin from 'core/mixin.js'
     store.init('translateLanguage',options.languages[1]);
     Vue.prototype.$plekan_buttons = options.plekan_buttons
     Vue.prototype.$cs_editor_buttons = options.cs_editor_buttons
-    Vue.prototype.$thumbnailPath = options.thumbnailPath
+    Vue.prototype.$thumbnailPath = options.thumbnailPath || "/"
     Vue.prototype.$onFileUpload = options.onFileUpload
+    Vue.prototype.$allowedFileTypes = options.allowedFileTypes
     /**
      * 
      * http://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript

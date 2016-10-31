@@ -10,7 +10,8 @@
             <input type="text" v-model="elementEditableProperties[e.prop]" :placeholder="e.placeholder">
           </div>
         </div>
-        <file-upload 
+        <file-upload
+        types="png|jpg|jpeg|gif" 
         :fileChange="fileChange"
         v-if="elementIsImage"></file-upload> 
       </div>
@@ -18,7 +19,7 @@
         <button @click.prevent="save()" 
                 class="plekan-footer-button">Save</button>
         <button 
-        @click.prevent="onFileUpload" 
+        @click.prevent="onFileUpload"
         v-show="elementIsImage"
         :disabled="!file"
         class="plekan-footer-button">Upload</button>
@@ -31,11 +32,11 @@
   import fileUpload from 'components/fileUpload'
 
   /**
-   * Bu component Editor.vue tarafından kullanılır, plekan-editable-elements-button'a
-   * tıklandığında açılır.
+   * Bu component Editor.vue tarafından kullanılır,
+   * plekan-editable-elements-button'a tıklandığında açılır.
    *
-   * Element objesi DOM'daki herhangi bir obje olabilir 
-   * bkz: Editor.vue line:101 #editableTag[]
+   * Element objesi DOM'daki herhangi bir obje olabilir bkz: Editor.vue
+   * line:101 #editableTag[]
    *
    * Shown özelliği modal'e özellik olarak tanımlanır bkz : Modal.vue line:36
    * #show()
@@ -107,11 +108,19 @@
        * @return {void} 
        */
       onFileUpload(){
+        if (!this.$onFileUpload) {
+          this.elementEditableProperties["src"] = this.file.base64
+          return 
+        }
+
+
         this.$onFileUpload(this.file, (obj) => {
           Object.keys(obj).map(e => {
               this.elementEditableProperties[e] = obj[e]
           })
         });
+
+
       },
       /**
        * Değiştirilen özelliklerin DOM element'ine atanması ve kayıt edilmesi

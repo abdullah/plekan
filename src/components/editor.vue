@@ -1,13 +1,13 @@
 <template>
   <section class="plekan-editor-arena">
       <div class="plekan-editor">
-        <editor-list cname="dynamic-editor" :list="editorButtons.stick">
+        <editor-list cname="dynamic-editor" :list="editorButtons.stick" :custom="stickyCustomButtons">
           <li class="create-link" slot="link">
             <input v-model="linktext" placeholder="http://example.com">
             <button @click="createLink"><i class="fa fa-check"></i></button>
           </li> 
         </editor-list>
-        <editor-list cname="stable-editor" :list="editorButtons.stable"></editor-list>
+        <editor-list cname="stable-editor" :list="editorButtons.stable" :custom="stableCustomButtons"></editor-list>
       </div>
       <!--  -->
       <button class="plekan-editable-elements-button" @click="openEditElement">Edit</button>
@@ -17,7 +17,10 @@
       
       <color-modal :shown="showColorModal" :close="toogleColorModal"></color-modal>    
       <!--  -->
-      <file-upload-modal :shown="showFileUploadModal" :close="toggleFileUploadModal">
+      <file-upload-modal 
+      v-if="$onFileUpload" 
+      :shown="showFileUploadModal" 
+      :close="toggleFileUploadModal">
       </file-upload-modal>
   </section>
 </template>
@@ -52,6 +55,14 @@
     },
     components: {
       editelement,editorList,colorModal,fileUploadModal
+    },
+    computed: {
+        stableCustomButtons:function () {
+          return this.$cs_editor_buttons.filter(b => b.type == 'stable')
+        },
+        stickyCustomButtons:function () {
+          return this.$cs_editor_buttons.filter(b => b.type == 'sticky')
+        }
     },
     mounted() {
         /** @type {Array} Düzenlenebilir DOM elementleri */
@@ -110,15 +121,15 @@
               // ------------
               // NOT: main.js'de konfigürasyonu var sonradan eklenebilir.
               // ------------
-              // case 'custom':
-              //   var customButton = this.$cs_editor_buttons[e.target.dataset.index];
-              //   customButton.callback({
-              //     target : e.target,
-              //     exec : this.exec.bind(this),
-              //     selo : selo ,
-              //     sel : sel
-              //   })
-              // break;
+              case 'custom':
+                var customButton = this.$cs_editor_buttons[e.target.dataset.index];
+                customButton.callback({
+                  target : e.target,
+                  exec : window.exec,
+                  selo : selo ,
+                  sel : sel
+                })
+              break;
               // 
               // 
               case 'color':
@@ -161,7 +172,6 @@
             this.editableModal    = false
             this.showFileUploadModal  = false
         },false);
-
     },
     methods:{
       toogleColorModal(){
@@ -170,6 +180,7 @@
       toggleFileUploadModal(){
         this.showFileUploadModal = !this.showFileUploadModal
       },
+     
       /**
        * Editelement butonuna tıklandığında çalışır
        * editelemen component'ini aktif/açmak için editableModal değişkenini true yapar   

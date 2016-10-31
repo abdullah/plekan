@@ -93,18 +93,18 @@
     },
     mounted() {
       
-      this.$plekan_buttons.save.callback = (e) =>  {
+      // this.$plekan_buttons.save.callback = (e) =>  {
 
-        var tmprows = JSON.parse(JSON.stringify(e));
-        tmprows.map(r => {
-          Object.keys(r.contents).map(c => {
-            r.contents[c].html.replace(/contenteditable="true"/gm,"")
-          })
-        })
+      //   var tmprows = JSON.parse(JSON.stringify(e));
+      //   tmprows.map(r => {
+      //     Object.keys(r.contents).map(c => {
+      //       r.contents[c].html.replace(/contenteditable="true"/gm,"")
+      //     })
+      //   })
 
-        this.rows = tmprows
-        this.show = false
-      }
+      //   this.rows = tmprows
+      //   this.show = false
+      // }
 
       // this.$plekan_buttons.cancel.callback =  (e) => {
       //   this.show = false
