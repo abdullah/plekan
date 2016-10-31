@@ -163,6 +163,8 @@ Vue.use(plekan,{
   OnChange : function(){},//Not yet
   OnSort : function(){},//Not yet
   OnInit : function(){},//Not yet
+  OnSourceChange : function(){},//Not yet
+  allowedFileTypes : "png|jpg|jpeg", // yüklenebilir dosyalar
   onFileUpload :  function (file,cb) {
     // Bu kısımda dosya yükleme işlemi gerçekletirin..
     // cb olarak bir foskyiona obje geçin sonraki kısmı biz halledeceğiz
@@ -172,7 +174,6 @@ Vue.use(plekan,{
       title : "link"
     })
   },
-  OnSourceChange : function(){},//Not yet
   plekan_buttons : { // Özel düğmeler
     save : {
       text : "Save",

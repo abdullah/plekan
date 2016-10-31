@@ -24,6 +24,7 @@ import plekanComponentMixin from 'core/mixin.js'
     cs_editor_buttons:[],
     onFileUpload:null,
     allowedFileTypes:"",
+    plekan_buttons:{}
   }
   plekan.install = function (Vue, options) {
     /** plekan komponnetinin kayıt edilmesi */
