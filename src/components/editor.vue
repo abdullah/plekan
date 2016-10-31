@@ -3,7 +3,7 @@
       <div class="plekan-editor">
         <editor-list cname="dynamic-editor" :list="editorButtons.stick" :custom="stickyCustomButtons">
           <li class="create-link" slot="link">
-            <input v-model="linktext" placeholder="http://example.com">
+            <input v-model="linktext" placeholder="http://www.example.com">
             <button @click="createLink"><i class="fa fa-check"></i></button>
           </li> 
         </editor-list>
@@ -18,7 +18,7 @@
       <color-modal :shown="showColorModal" :close="toogleColorModal"></color-modal>    
       <!--  -->
       <file-upload-modal 
-      v-if="$onFileUpload" 
+      v-if="$plekanEvent.onFileUpload" 
       :shown="showFileUploadModal" 
       :close="toggleFileUploadModal">
       </file-upload-modal>
@@ -174,13 +174,14 @@
         },false);
     },
     methods:{
+      /** Renk modal'ini açar/kapar */
       toogleColorModal(){
         this.showColorModal = !this.showColorModal
       },
+      /** Dosya modal'ini açar/kapar */
       toggleFileUploadModal(){
         this.showFileUploadModal = !this.showFileUploadModal
       },
-     
       /**
        * Editelement butonuna tıklandığında çalışır
        * editelemen component'ini aktif/açmak için editableModal değişkenini true yapar   

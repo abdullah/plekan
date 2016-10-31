@@ -15,11 +15,19 @@
 <script>
   
   export default {
-    props:["fileChange","types"],
+    props:["fileChange","types","clean"],
     data () {
       return {
         image:null,
         file:null
+      }
+    },
+    watch:{
+      clean:function (n,o) {
+        if (n) {
+          this.image = null          
+          this.file = null          
+        }
       }
     },
     methods:{
@@ -31,7 +39,6 @@
         this.dropAllow(e)
         this.onFileChange(e)
       },
-      
       onFileChange(e) {
         var files = e.target.files || e.dataTransfer.files;
 

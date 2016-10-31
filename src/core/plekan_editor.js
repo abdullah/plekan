@@ -48,7 +48,6 @@ window.editorStart = () => {
 	})
 
 	document.addEventListener('selectionStart',function () {
-		console.log(12);
 		gb 		= selo.getPositionRange().getBoundingClientRect;
 
 

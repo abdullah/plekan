@@ -3,10 +3,10 @@
     <div :class="{empty: !rows.length}" class="plekan-row-list" id="plekan-sortable-list">
       <div class="plekan-row-item" v-for="(r,key) in rows" :key="r.index">
         <div class="plekan-tools">
-          <span class="plekan-move-row"><i class="fa fa-hand-grab-o"></i></span>
+          <span v-if="!isTranslate" class="plekan-move-row"><i class="fa fa-hand-grab-o"></i></span>
           <span @click="editAsHTMLRow(r,key,language)"><i class="fa fa-html5"></i></span>
-          <span @click="deleteRow(r,key)"><i class="fa fa-remove"></i></span>
-          <span @click="dublicateRow(r,key)"><i class="fa fa-copy"></i></span>
+          <span  v-if="!isTranslate" @click="deleteRow(r,key)"><i class="fa fa-remove"></i></span>
+          <span  v-if="!isTranslate" @click="dublicateRow(r,key)"><i class="fa fa-copy"></i></span>
         </div>
         <component  
                     :is="r.name" 
@@ -32,12 +32,13 @@
    * "index"           -> benzersiz kimiliği (mixin tarafından oluşturulur)
    * "store"           -> mixin global store'dan izoledir. Bu yüzden mixin'e global store pass edilir  /src/store/index.js
    * "displayLanguage" -> hangi dilde görüntüleneceği  https://github.com/abdullah/plekan#row-objesi
+   * "isTranslate"     -> translate mod'a geçtiğinde bazı butonların gözükmemesi için.
    */
   import store from 'store'
 
   export default {
     /** @type {Array} Arena.vue tarafından yönetilir. */
-    props:["rows","language","editAsHTMLRow"],
+    props:["rows","language","editAsHTMLRow","isTranslate"],
     data () {
       return {
         /** @type {Object} Global store */

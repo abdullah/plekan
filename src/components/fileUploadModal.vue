@@ -4,9 +4,11 @@
         <div class="plekan-modal-title">File Upload</div>
       </header>
       <div slot="body" class="plekan-modal-color-body plekan-clearfix">
-        <file-upload 
+        <file-upload
+        :clean="shown"
         :types="$allowedFileTypes"
         :fileChange="fileChange"></file-upload>
+
       </div>
       <footer slot="footer" class="plekan-clearfix">
         <button 
@@ -55,7 +57,7 @@
         /*
         @TODO : Pass file
         */
-        this.$onFileUpload(this.file, (url) => {
+        this.$plekanEvent.onFileUpload(this.file, (url) => {
 
           window.exec('insertHTML', `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
           

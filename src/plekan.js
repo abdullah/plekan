@@ -25,7 +25,6 @@ import plekanComponentMixin from 'core/mixin.js'
     customComponents:[],
     /** @type {Array} Özel butonlar  */
     customEditorButtons:[],
-    onFileUpload:null,
     allowedFileTypes:"",
     plekan_buttons:{},
 
@@ -36,6 +35,8 @@ import plekanComponentMixin from 'core/mixin.js'
       onDuplicate : () => {},
       onUpdate : () => {},
       onInit : () => {},
+      /** Bu kısım  comment out olmalı ki onFileUpload özelliğine göre butonlar gösteriliyor*/
+      // onFileUpload : () => {},
     }
   }
   plekan.install = function (Vue, optionsOut) {
@@ -95,13 +96,12 @@ import plekanComponentMixin from 'core/mixin.js'
     store.init('moduleList',mlist);
     store.init('currentLanguge',options.defaultLanguage);
     store.init('translateLanguage',options.languages[1]);
+
     Vue.prototype.$plekan_buttons = options.plekan_buttons
     Vue.prototype.$customEditorButtons = options.customEditorButtons
     Vue.prototype.$thumbnailPath = options.thumbnailPath || "/"
-    Vue.prototype.$onFileUpload = options.onFileUpload
     Vue.prototype.$allowedFileTypes = options.allowedFileTypes
     Vue.prototype.$plekanEvent = options.plekanEvent
-
 
 
     /**

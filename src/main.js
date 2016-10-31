@@ -21,15 +21,7 @@ Vue.use(plekan,{
   // rows : mockup
   // @TODO : Filter for editor buttons,
   // exceptButtons : {},
-  allowedFileTypes : "png|jpg|jpeg",
-  // onFileUpload :  function (file,cb) {
-  //   // Fİle upload
-  //   cb({
-  //     src: "path/your/"+file.name,
-  //     alt : file.type,
-  //     title : file.size
-  //   })
-  // },
+  // allowedFileTypes : "png|jpg|jpeg",
   thumbnailPath : "/static/thumbnails/",
   // customEditorButtons:[
   //   {
@@ -56,6 +48,13 @@ Vue.use(plekan,{
   plekanEvent:{
     onAdd(row){
       console.log(obj);
+    },
+    onFileUpload(file,cb){
+      cb({
+        src: "filesrc",
+        alt : "text",
+        title : "link"
+      }) 
     }
   }
 })

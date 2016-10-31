@@ -11,6 +11,7 @@
           </div>
         </div>
         <file-upload
+        :clean="shown"
         types="png|jpg|jpeg|gif" 
         :fileChange="fileChange"
         v-if="elementIsImage"></file-upload> 
@@ -108,13 +109,13 @@
        * @return {void} 
        */
       onFileUpload(){
-        if (!this.$onFileUpload) {
+        if (!this.$plekanEvent.onFileUpload) {
           this.elementEditableProperties["src"] = this.file.base64
           return 
         }
 
 
-        this.$onFileUpload(this.file, (obj) => {
+        this.$plekanEvent.onFileUpload(this.file, (obj) => {
           Object.keys(obj).map(e => {
               this.elementEditableProperties[e] = obj[e]
           })

@@ -35,7 +35,7 @@
     props:["list","cname","custom"],
     computed: {
       buttons : function () {
-        if (!this.$onFileUpload) {
+        if (!this.$plekanEvent.onFileUpload) {
           return this.list.filter(l => l.code != "fileUpload");
         }
 

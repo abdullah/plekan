@@ -5,9 +5,9 @@
     <!-- Arena Container  -->
     <div :class="{'plekan-translate-mode' : translateMode}" class="plekan-container">
       <!-- Arena Column - Preview  -->
-      <arena-column :rows="rows" :editAsHTMLRow="editAsHTMLRow" :language="currentLanguge"></arena-column>
+      <arena-column :isTranslate="false" :rows="rows" :editAsHTMLRow="editAsHTMLRow" :language="currentLanguge"></arena-column>
       <!-- Arena Column - Translate  -->
-      <arena-column :rows="rows" :editAsHTMLRow="editAsHTMLRow" :language="translateLanguage" v-show="translateMode"></arena-column>
+      <arena-column :isTranslate="true" :rows="rows" :editAsHTMLRow="editAsHTMLRow"  :language="translateLanguage" v-show="translateMode"></arena-column>
       <!-- Edit As HTML Modal  -->
       <modal :show="editRow.row ? true : false" class="edit-modal">
         <header slot="header">
@@ -176,7 +176,8 @@
         this.editRow.row    = JSON.parse(JSON.stringify(row))
         this.editRow.lang   = language
         this.editRow.index  = index
-        this.editRow.html   = this.editRow.row.contents[this.store.state.currentLanguge].html
+        this.editRow.html   = this.editRow.row.contents[language].html
+
       },
       /**
        * editRow objesi store'daki asıl obje ile değiştirilir editRow objesi
@@ -184,7 +185,7 @@
        * @return {void} 
        */
       saveEditAsHtml(){
-        this.editRow.row.contents[this.store.state.currentLanguge].html = this.editRow.html
+        this.editRow.row.contents[this.editRow.lang].html = this.editRow.html
         this.store.updateRows(this.editRow.index,this.editRow.row)
         /*1*/
         Object.keys(this.editRow).map(e => this.editRow[e] = null)
