@@ -29,7 +29,7 @@
       return {
         bodyShow:false,
         layoutShow: false,
-        event:event
+        event:null
       }
     },
     watch:{

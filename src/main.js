@@ -55,7 +55,7 @@ Vue.use(plekan,{
   // }
   plekanEvent:{
     onAdd(row){
-      console.log(row);
+      console.log(obj);
     }
   }
 })

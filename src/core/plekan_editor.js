@@ -1,12 +1,6 @@
 import Selo from 'selo'
-import selectionPolify from 'helper/selectionPolify'
-
-
 
 window.editorStart = () => {
-	
-	selectionPolify.start();
-
 
 	var el = document.getElementById('_plekan');
 
@@ -54,7 +48,9 @@ window.editorStart = () => {
 	})
 
 	document.addEventListener('selectionStart',function () {
+		console.log(12);
 		gb 		= selo.getPositionRange().getBoundingClientRect;
+
 
 		left 	= gb.left
 		top 	= gb.top
