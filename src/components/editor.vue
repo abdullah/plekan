@@ -58,10 +58,10 @@
     },
     computed: {
         stableCustomButtons:function () {
-          return this.$cs_editor_buttons.filter(b => b.type == 'stable')
+          return this.$customEditorButtons.filter(b => b.type == 'stable')
         },
         stickyCustomButtons:function () {
-          return this.$cs_editor_buttons.filter(b => b.type == 'sticky')
+          return this.$customEditorButtons.filter(b => b.type == 'sticky')
         }
     },
     mounted() {
@@ -122,7 +122,7 @@
               // NOT: main.js'de konfigürasyonu var sonradan eklenebilir.
               // ------------
               case 'custom':
-                var customButton = this.$cs_editor_buttons[e.target.dataset.index];
+                var customButton = this.$customEditorButtons[e.target.dataset.index];
                 customButton.callback({
                   target : e.target,
                   exec : window.exec,

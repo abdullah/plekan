@@ -19,13 +19,13 @@
       </ul>
     </li>
     <li v-for="c in custom">
-      <a href="" v-for="(b,key) in $cs_editor_buttons" 
+      <a href="" v-for="(b,key) in $customEditorButtons" 
         :data-type="b.code || 'custom'"
         :data-index="key"
         :class="b.class"
       ></a>
     </li>
-    <!-- {{$cs_editor_buttons}} -->
+    <!-- {{$customEditorButtons}} -->
     <slot name="link"></slot>
   </ul>
 </template>

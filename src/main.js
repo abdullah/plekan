@@ -31,7 +31,7 @@ Vue.use(plekan,{
   //   })
   // },
   thumbnailPath : "/static/thumbnails/",
-  // cs_editor_buttons:[
+  // customEditorButtons:[
   //   {
   //     type : 'stable',
   //     class : 'fa fa-cog',
