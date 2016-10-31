@@ -125,6 +125,7 @@ plekanEvent: {
     onDuplicate : () => {},
     onUpdate : () => {},
     onInit : () => {},
+    onFileUpload(){}
   }
 
 ```
@@ -165,17 +166,17 @@ Vue.use(plekan,{
     onDuplicate : () => {},
     onUpdate : () => {},
     onInit : () => {},
+    onFileUpload :  function (file,cb) {
+      // Bu kısımda dosya yükleme işlemi gerçekletirin..
+      // cb olarak bir foskyiona obje geçin sonraki kısmı biz halledeceğiz
+      cb({
+        src: "title",
+        alt : "text",
+        title : "link"
+      })
+    },
   },
   allowedFileTypes : "png|jpg|jpeg", // yüklenebilir dosyalar
-  onFileUpload :  function (file,cb) {
-    // Bu kısımda dosya yükleme işlemi gerçekletirin..
-    // cb olarak bir foskyiona obje geçin sonraki kısmı biz halledeceğiz
-    cb({
-      src: "title",
-      alt : "text",
-      title : "link"
-    })
-  },
   plekan_buttons : { // Özel düğmeler
     save : {
       text : "Save",
