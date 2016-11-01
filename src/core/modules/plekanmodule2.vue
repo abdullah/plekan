@@ -1,5 +1,5 @@
 <template>
-  <div class="plekan-template" v-html="content" contenteditable="true"></div>
+  <div class="plekan-template" v-html="_content" contenteditable="true"></div>
 </template>
 
 <script>

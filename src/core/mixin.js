@@ -16,21 +16,20 @@ export default {
     data() {
         return {
             DEFAULT_CONTENT: DEFAULT_CONTENT,
-            activeEditor:false,
-            updatable:null,
+            _updatable:null,
         }
     },
     computed: {
-        languages: function() {
+        _languages: function() {
             return this.store.state.languages
         },
-        currentLanguge: function() {
-            return this.store.state.currentLanguge
-        },
+        // currentLanguge: function() {
+        //     return this.store.state.currentLanguge
+        // },
         me: function() {
             return this.store.state.rows[this.index];
         },
-        content: function() {
+        _content: function() {
             let c = this.me.contents[this.displayLanguage].html;
             return c ? c : this.DEFAULT_CONTENT
         }
@@ -45,7 +44,7 @@ export default {
         /**
         * Initial html content
         */
-        this.languages.map(l => {
+        this._languages.map(l => {
             try {
                 let html = this.me.contents[l].html;
                 this.me.contents[l].html = html ? html :  this.DEFAULT_CONTENT
@@ -63,7 +62,7 @@ export default {
         /**
         * Editable arena event set
         */
-        this.setEditable();
+        this._setEditable();
         /*
         * Reletad target
         * Source : http://stackoverflow.com/questions/11544554/get-the-clicked-object-that-triggered-jquery-blur-event
@@ -73,26 +72,26 @@ export default {
             let target = e.target
             let isModalElement = hasParent(target,'plekan-modal') ? true : false
 
-            this.updatable =    childOf(target,window.editorElement) || 
+            this._updatable =    childOf(target,window.editorElement) || 
                                 isModalElement || 
                                 target.className == 'editor';
         })
 
         document.addEventListener('mouseup',(e)=>{
-            this.updatable = null;
+            this._updatable = null;
         })
 
 
         // this.attachEvent()
         document.addEventListener('domupdated', (e) => { 
-            this.updateHTML()
+            this._updateHTML()
         },false);
 
        
 
     },
     updated() {
-        this.setEditable()
+        this._setEditable()
         /*
         * Error an image
         *@TODO : Check image 
@@ -108,14 +107,14 @@ export default {
         
     },
     methods: {
-        setEditable() {
+        _setEditable() {
             this.$el.onfocus = (evt) => {
                 window.editorElementStable.classList.add('active')
             }
 
             this.$el.onblur = (evt) => {
-                if (!this.updatable) {
-                    this.updateHTML()
+                if (!this._updatable) {
+                    this._updateHTML()
                     window.editorElementDynamic.classList.remove('active');
                     window.editorElementStable.classList.remove('active')
                     // Link content 
@@ -123,7 +122,7 @@ export default {
             }
 
         },
-        updateHTML(){
+        _updateHTML(){
             this.me.contents[this.displayLanguage].html = this.$el.innerHTML.trim();
         }
     }
