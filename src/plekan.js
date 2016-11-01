@@ -62,7 +62,8 @@ import plekanComponentMixin from 'core/mixin.js'
     * Init Custom components
     */
     var mlist = JSON.parse(JSON.stringify(moduleList));
-    if (typeof options.customComponents == "Array") {
+
+    if (options.customComponents) {
       options.customComponents.map(c => {
         mlist.push(c.info)
         options.modules[c.info.name] = c.component  

@@ -36,43 +36,11 @@
 		<script src="plekanmodules.js"></script>
 		<script>
 
-			var newComponent = Vue.component('xx',{
-				mixins:[plekan.plekanComponentMixin],
-				data:function () {
-					return {
-						DEFAULT_CONTENT : '<div contenteditable="true" >Hi</div>'
-					}	
-				},
-				template :'#xx'
-			})
-
-			var customComponents = [
-				{
-					info : {
-						"name" 			: "xx",
-						"group" 		: "image",
-						"thumbnail" 	: "https://vuejs.org/images/logo.png"
-					},
-					component : newComponent 
-				}
-			]
-
 
 			Vue.use(plekan.plekan,{
 			  defaultLanguage : "tr",
 			  languages : ["tr","en"],
-			  customComponents:customComponents,
 			  modules:plekanmodules,
-			  onFileUpload:function (file,cb) {
-			  	/*
-			  	* Simulate file upload
-			  	*/
-			  	 cb({
-			      src: "title",
-			      alt : "text",
-			      title : "link"
-			    })
-			  },
 			  thumbnailPath : "static/thumbnails/",
 			  plekan_buttons : {
 			  	save : {
@@ -82,13 +50,6 @@
 			  			console.log(e)
 			  		}
 			  	},
-			  	// cancel : {
-			  	// 	text : "Cancel",
-			  	// 	class:"plekan-footer-button save",
-			  	// 	callback : function (e) {
-			  	// 		console.log(e)
-			  	// 	}
-			  	// }
 			  }
 			})
 
@@ -101,7 +62,6 @@
 			  	}
 			  },
 			  mounted(){
-
 
 			      this.$plekan_buttons.save.callback = function (e)  {
 

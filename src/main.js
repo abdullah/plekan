@@ -22,6 +22,7 @@ Vue.use(plekan,{
   // @TODO : Filter for editor buttons,
   // exceptButtons : {},
   // allowedFileTypes : "png|jpg|jpeg",
+  // customComponents:[]
   thumbnailPath : "/static/thumbnails/",
   // customEditorButtons:[
   //   {
