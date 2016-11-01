@@ -23,6 +23,7 @@
     </div>
     <!-- Arena Footer -->
     <div class="plekan-container">
+    <!-- <pre>{{store.state.rows}}</pre> -->
       <div class="plekan-footer">
         <button v-for="b in $plekan_buttons"
                 :class="b.class"

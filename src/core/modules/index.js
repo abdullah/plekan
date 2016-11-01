@@ -1,24 +1,22 @@
-import imagetext from './imagetext.vue'
-import imagetextreverse from './imagetextreverse.vue'
-import pvideo from './pvideo.vue'
-import twocolumntext from './twocolumntext.vue'
-import onlyimage from './onlyimage.vue'
-import imageontext from './imageontext.vue'
-import threeimage from './threeimage.vue'
-import twoimage from './twoimage.vue'
-import videoandtext from './videoandtext.vue'
+import plekanmodule1 from './plekanmodule1.vue'
+import plekanmodule2 from './plekanmodule2.vue'
+import plekanmodule3 from './plekanmodule3.vue'
+import plekanmodule4 from './plekanmodule4.vue'
+import plekanmodule5 from './plekanmodule5.vue'
+import plekanmodule6 from './plekanmodule6.vue'
+import plekanmodule7 from './plekanmodule7.vue'
+import plekanmodule8 from './plekanmodule8.vue'
 
 ;(function () {
 	var modules = 	{
-    imagetext ,
-    imagetextreverse ,
-    pvideo ,
-    twocolumntext ,
-    onlyimage ,
-    imageontext ,
-    threeimage ,
-    twoimage ,
-    videoandtext ,
+    plekanmodule1,
+    plekanmodule2,
+    plekanmodule3,
+    plekanmodule4,
+    plekanmodule5,
+    plekanmodule6,
+    plekanmodule7,
+    plekanmodule8,
 	}
 
   /*----------------------------------------------------*/

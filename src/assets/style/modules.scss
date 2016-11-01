@@ -6,64 +6,60 @@
 		display: table;
 		float: none;
 	}	
-}
-
-section.plekan-image-text,section.plekan-image-text-reverse{
-	img{
-		display: block;
-		margin: auto;
-		width: 100%;
-	}
-}
-
-section.plekan-video{
-	blockquote{
-		font-style: italic;
-	}
-}
-section.plekan-two-column-text{
-}
-
-section.plekan-only-image{
+	font-family: 'Titillium Web', sans-serif;
 	img{
 		width: 100%;
-	}
-}
-section.plekan-image-on-text{
-	position: relative;
-	img{
-		width: 100%;
-	}
-	p{
-		position: absolute;
-		background-color: rgba(0,0,0,.6);
-		top: 50%;
-		left: 50%;
-		width: 100%;
-        transform: translate(-50%,-50%);
-        text-align: center;
-        padding: 10px;
-        color: #FFF;
-        font-size: 30px;
-        font-weight: 100;
-	}
-}
-section.plekan-three-image{
-	img{
 		max-width: 100%;
-		margin: auto;
 	}
+}
+
+.p-text-center{
+	text-align: center;
+}
+
+section.plekan-module-1{
+}
+
+section.plekan-module-2{
+}
+
+section.plekan-module-3{
 	.desc{
 		text-align: center;
-		line-height: normal;
-		margin-top: 4px;
+		p{
+			margin-bottom: 0;
+		}
 	}
-}
-section.plekan-two-image{
 	img{
-		max-width: 100%;
+		display: block;
+		width: 100px;
+		margin: auto;
+		-webkit-border-radius: 50%;
+		        border-radius: 50%;
 	}
 }
-section.plekan-video-and-text{
-	
+
+section.plekan-module-4{
+	img{
+		width: 200px;
+		-webkit-border-radius: 50%;
+		        border-radius: 50%;
+	    display: block;
+	    margin: auto;
+	}
+	h4{
+		display: inline-block;
+		margin-bottom: 0;
+		border-bottom: 1px solid #444;
+		padding-bottom: 6px;
+	}
+}
+
+section.plekan-module-5{
+}
+
+section.plekan-module-6{
+}
+
+section.plekan-module-7{
 }

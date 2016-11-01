@@ -15,8 +15,8 @@ Vue.use(VueResource);
 
 
 Vue.use(plekan,{
-  defaultLanguage : "tr",
-  languages : ["tr","en"],
+  defaultLanguage : "en",
+  languages : ["en","tr"],
   modules:modules,
   // rows : mockup
   // @TODO : Filter for editor buttons,
@@ -46,16 +46,16 @@ Vue.use(plekan,{
   // 	}
   // }
   plekanEvent:{
-    onAdd(row){
-      console.log(obj);
-    },
-    onFileUpload(file,cb){
-      cb({
-        src: "filesrc",
-        alt : "text",
-        title : "link"
-      }) 
-    }
+    // onAdd(row){
+    //   console.log(obj);
+    // },
+    // onFileUpload(file,cb){
+    //   cb({
+    //     src: "filesrc",
+    //     alt : "text",
+    //     title : "link"
+    //   }) 
+    // }
   }
 })
 

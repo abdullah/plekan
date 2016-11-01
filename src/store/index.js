@@ -44,8 +44,9 @@ export default {
     this.state.vm.$plekanEvent.onDuplicate(r,i)
   },
   sortRows(_new,old){
-    this.state.rows.move(_new,old)
+    this.state.rows.move(old,_new)
     this.state.vm.$plekanEvent.onSort(_new,old)
+    // 
   },
   /*----------------------------------------------*/
   changeTranslateMode(){
