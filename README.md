@@ -13,7 +13,7 @@
 * 👍  Provide content for mobile device
 * ❤   Simple
 
-![Plekan ss](https://cdn.rawgit.com/abdullah/plekan/master/docfile/plekanswf.gif)
+![Plekan ss](https://cdn.rawgit.com/abdullah/plekan/master/docfile/plekanss.png)
 
 
 Read [Documentation and examples](https://github.com/abdullah/plekan/wiki)
