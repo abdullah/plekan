@@ -73,8 +73,8 @@ app.post('/',function (req,res) {
 			archive.append( content, { name: file })
 		})
 		
-		archive.append( fs.createReadStream(__dirname+"/../release/index.html"), { name: "index.html" })
-		archive.append( fs.createReadStream(__dirname+"/../node_modules/vue/dist/vue.min.js"), { name: "vue.js" })
+		// archive.append( fs.createReadStream(__dirname+"/../docs/index.html"), { name: "index.html" })
+		// archive.append( fs.createReadStream(__dirname+"/../node_modules/vue/dist/vue.min.js"), { name: "vue.js" })
 		archive.directory( __dirname+"/../static","static")
 		archive.finalize()
 	})

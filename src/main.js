@@ -12,12 +12,18 @@ Vue.use(VueResource);
 
 
 /* eslint-disable no-new */
-
 Vue.use(plekan,{
   defaultLanguage : "en",
   languages : ["en","tr"],
   modules:modules,
   thumbnailPath : "/static/thumbnails/",
+  plekan_buttons : { // Special buttons 
+    save : {
+      text : "Save",
+      class:"plekan-footer-button cancel",
+      callback : null
+    }
+  }
 })
 
 new Vue({

@@ -1,0 +1,12 @@
+build/
+config/
+dist/
+docfile/
+docs/
+index.html
+LICENSE
+node_modules/
+src/
+static/
+turkish.md
+web/

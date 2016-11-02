@@ -46,6 +46,10 @@ import plekanComponentMixin from 'core/mixin.js'
 
     Vue.component('plekan',plekancomponent)
 
+    if (!options.languages || !options.languages.length) throw new Error("languages is not set");
+    if (!options.defaultLanguage) throw new Error("defaultLanguage is not set..");
+    if (!options.modules) throw new Error("modules is not set..");
+    
     /*
      * Register component initilaze
      * @TODO : Validate template for existing ????? 
@@ -62,6 +66,12 @@ import plekanComponentMixin from 'core/mixin.js'
     */
     var mlist = JSON.parse(JSON.stringify(moduleList));
 
+    /**
+     *
+     * @param  {Array} options.customComponents
+     * @return {Void}
+     * 
+     */
     if (options.customComponents) {
       options.customComponents.map(c => {
         mlist.push(c.info)
@@ -69,7 +79,7 @@ import plekanComponentMixin from 'core/mixin.js'
       }) 
     }
     /*
-    * Set contents language
+    * Set contents language and extra modules remove
     */
     var tmpDelete = [];
     mlist.map((m,i) => {
@@ -82,17 +92,10 @@ import plekanComponentMixin from 'core/mixin.js'
           m.contents[l]["fields"] = {}
         })
       }else{
-        tmpDelete.push(i)
+        mlist.splice(i);
       }
     });
-    /*
-    * Remove extra list item
-    */
-    mlist.map((e,i) => { 
-      if (tmpDelete.indexOf(i) != -1) {
-        mlist.splice(i, 1);
-      }
-    });
+  
     store.init('moduleList',mlist);
     store.init('currentLanguge',options.defaultLanguage);
     store.init('translateLanguage',options.languages[1]);
@@ -102,7 +105,6 @@ import plekanComponentMixin from 'core/mixin.js'
     Vue.prototype.$thumbnailPath = options.thumbnailPath || "/"
     Vue.prototype.$allowedFileTypes = options.allowedFileTypes
     Vue.prototype.$plekanEvent = options.plekanEvent
-
 
     /**
      * 

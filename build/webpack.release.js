@@ -15,11 +15,11 @@ baseWebpackConfig.entry = {
   'plekanmodules': './src/core/modules/index.js'
 }
 
-var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
-console.log(assetsPath);
-// rm('-rf', assetsPath)
-// mkdir('-p', assetsPath)
-cp('-R', 'static/*', 'release/static/')
+// var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+// console.log(assetsPath);
+// // rm('-rf', assetsPath)
+// // mkdir('-p', assetsPath)
+// cp('-R', 'static/*', 'release/static/')
 
 
 var webpackConfig = merge(baseWebpackConfig, {
