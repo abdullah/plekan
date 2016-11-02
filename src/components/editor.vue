@@ -38,6 +38,8 @@
   import editorList from 'components/editorList'
   import colorModal from 'components/colorModal.vue'
   import fileUploadModal from 'components/fileUploadModal.vue'
+  import {hasParent,exec} from 'helper'
+  import globalElements from 'core/globalElements'
 
   export default {
     props:[],
@@ -78,7 +80,7 @@
         /** editButton pozisyonu'nu hesaplar */
         document.addEventListener('mouseover',e => {
 
-          editorIsVisible = editorElementDynamic.className.indexOf('active') != -1
+          editorIsVisible = globalElements.editorElementDynamic.className.indexOf('active') != -1
 
           if (editorIsVisible) return;
 
@@ -125,9 +127,9 @@
                 var customButton = this.$customEditorButtons[e.target.dataset.index];
                 customButton.callback({
                   target : e.target,
-                  execCommand : window.exec,
-                  selection : selo ,
-                  savedSelection : sel
+                  execCommand : exec,
+                  selection : globalElements.selo ,
+                  savedSelection : globalElements.sel
                 })
               break;
               // 
@@ -139,16 +141,16 @@
                 this.toggleFileUploadModal()
               break;
               case 'formatBlock':
-                window.exec('formatBlock',e.target.dataset.value)
+                exec('formatBlock',e.target.dataset.value)
               default:
-                window.exec(cmd)
+                exec(cmd)
               break;
             }
             /**  
              * Selo hakkında daha fazlası için : /src/core/plekan_editor.js
              * @type {Selection Object}
              */
-            sel = selo.saveSelection()
+            globalElements.sel = globalElements.selo.saveSelection()
           })
         })
 
@@ -196,7 +198,7 @@
        * @return {void} 
        */
       createLink(){
-        window.exec('createLink',this.linktext)
+        exec('createLink',this.linktext)
         this.linktext = ""
         document.querySelector('.create-link').classList.remove('active')
       }

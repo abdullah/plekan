@@ -20,6 +20,7 @@
 <script>
   import modal from 'components/modal'
   import fileUpload from 'components/fileUpload'
+  import {exec} from 'helper'
 
   export default {
     props:["shown","close"],
@@ -59,7 +60,7 @@
         */
         this.$plekanEvent.onFileUpload(this.file, (url) => {
 
-          window.exec('insertHTML', `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
+          exec('insertHTML', `<a href="${url.src}" target="_blank">${url.title || url.src}</a>` );
           
           this.close()
 

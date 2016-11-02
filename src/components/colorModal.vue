@@ -34,6 +34,7 @@
 <script>
   import colors from 'core/constant/colors.json'
   import modal from 'components/modal'
+  import {exec} from 'helper'
 
   export default {
     props:["shown","close"],
@@ -54,7 +55,7 @@
        * @param {String} color Renk tipi Hex biçimindedir
        */
       setColor(color){
-        window.exec(this.colortype,color)
+        exec(this.colortype,color)
       }
     }
   }

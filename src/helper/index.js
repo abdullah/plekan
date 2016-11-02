@@ -1,3 +1,4 @@
+import globalElements from 'core/globalElements'
 
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
@@ -26,7 +27,7 @@ Array.prototype.move = function (old_index, new_index) {
 /*
 * Source : http://stackoverflow.com/questions/2234979/how-to-check-in-javascript-if-one-element-is-contained-within-another
 */
-window.childOf = (/*child node*/c, /*parent node*/p) => { //returns boolean
+export const childOf = (/*child node*/c, /*parent node*/p) => { //returns boolean
   try{
   	while((c=c.parentNode)&&c!==p); 
   	return !!c; 
@@ -48,13 +49,13 @@ window.childOf = (/*child node*/c, /*parent node*/p) => { //returns boolean
  * @return {void}
  * https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
  */
-window.exec = (cmd,val = null) =>  {
-    selo.restoreSelection(sel)
+export const exec = (cmd,val = null) =>  {
+    globalElements.selo.restoreSelection(globalElements.sel)
     document.execCommand(cmd,false,val)
     setActiveEditorButtons()
 }
 
-window.getParents = (el) =>{
+export const getParents = (el) =>{
   var a = el;
   var parents = [];
   
@@ -65,7 +66,7 @@ window.getParents = (el) =>{
   return parents;
 }
 
-window.hasParent = (el,parentClassName) =>{
+export const hasParent = (el,parentClassName) =>{
   let parents = getParents(el)
   let hasParent = null
 
@@ -82,9 +83,9 @@ window.hasParent = (el,parentClassName) =>{
 
   }
 
-window.setActiveEditorButtons = () => {
+export const setActiveEditorButtons = () => {
 
-      let el = selo.selection.focusNode.parentNode;
+      let el = globalElements.selo.selection.focusNode.parentNode;
       let parents = getParents(el);
 
       var allAnchorTag = document.getElementsByTagName('a')
@@ -94,11 +95,7 @@ window.setActiveEditorButtons = () => {
       })
 
      parents.map((e)=> {
-        
-        // if (e.tagName == 'A') {
-        //   // this.linkText = e.href;
-        // }
-
+      
         var sc = document.querySelector('a[data-tagname="'+ e.tagName +'"]')
         if (sc) {
           sc.classList.add('active')

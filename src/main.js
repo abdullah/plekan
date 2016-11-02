@@ -13,51 +13,11 @@ Vue.use(VueResource);
 
 /* eslint-disable no-new */
 
-
 Vue.use(plekan,{
   defaultLanguage : "en",
   languages : ["en","tr"],
   modules:modules,
-  // rows : mockup
-  // @TODO : Filter for editor buttons,
-  // exceptButtons : {},
-  // allowedFileTypes : "png|jpg|jpeg",
-  // customComponents:[]
   thumbnailPath : "/static/thumbnails/",
-  // customEditorButtons:[
-  //   {
-  //     type : 'stable',
-  //     class : 'fa fa-cog',
-  //     value : '',
-  //     callback (...options) {
-  //       alert("Clicked custom buttons")
-  //       console.info("Custom button ",options)
-  //       // Modal 
-        
-  //     }
-  //   }
-  // ],
-  // plekan_buttons : {
-  // 	save : {
-  // 		text : "Save",
-  // 		class:"plekan-footer-button save",
-  // 		callback : function (e) {
-  // 			console.log(e)
-  // 		}
-  // 	}
-  // }
-  plekanEvent:{
-    // onAdd(row){
-    //   console.log(obj);
-    // },
-    // onFileUpload(file,cb){
-    //   cb({
-    //     src: "filesrc",
-    //     alt : "text",
-    //     title : "link"
-    //   }) 
-    // }
-  }
 })
 
 new Vue({

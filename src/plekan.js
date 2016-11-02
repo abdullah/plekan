@@ -27,7 +27,6 @@ import plekanComponentMixin from 'core/mixin.js'
     customEditorButtons:[],
     allowedFileTypes:"",
     plekan_buttons:{},
-
     plekanEvent: {
       onAdd : () => {},
       onDelete : () => {},
