@@ -125,9 +125,9 @@
                 var customButton = this.$customEditorButtons[e.target.dataset.index];
                 customButton.callback({
                   target : e.target,
-                  exec : window.exec,
-                  selo : selo ,
-                  sel : sel
+                  execCommand : window.exec,
+                  selection : selo ,
+                  savedSelection : sel
                 })
               break;
               // 

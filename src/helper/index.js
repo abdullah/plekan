@@ -89,16 +89,15 @@ window.setActiveEditorButtons = () => {
 
       var allAnchorTag = document.getElementsByTagName('a')
 
-      // console.log(allAnchorTag,parents)
       Object.keys(allAnchorTag).map((index) => {
         allAnchorTag[index].classList.remove('active')
       })
 
      parents.map((e)=> {
         
-        if (e.tagName == 'A') {
-          // this.linkText = e.href;
-        }
+        // if (e.tagName == 'A') {
+        //   // this.linkText = e.href;
+        // }
 
         var sc = document.querySelector('a[data-tagname="'+ e.tagName +'"]')
         if (sc) {
