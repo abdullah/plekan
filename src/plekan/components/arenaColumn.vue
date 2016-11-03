@@ -34,7 +34,7 @@
    * "displayLanguage" -> hangi dilde görüntüleneceği  https://github.com/abdullah/plekan#row-objesi
    * "isTranslate"     -> translate mod'a geçtiğinde bazı butonların gözükmemesi için.
    */
-  import store from 'store'
+  import store from 'plekan/store'
 
   export default {
     /** @type {Array} Arena.vue tarafından yönetilir. */

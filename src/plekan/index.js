@@ -1,10 +1,10 @@
-import plekancomponent from 'components/plekan'
-import store from 'store'
-import plekanEditor from 'core/plekan_editor.js'
-import 'src/helper'
-import moduleList from 'core/modules/list.json'
-import 'src/assets/style/app.scss'
-import plekanComponentMixin from 'core/mixin.js'
+import plekancomponent from 'plekan/components/plekan'
+import store from 'plekan/store'
+import plekanEditor from 'plekan/core/plekan_editor.js'
+import 'plekan/helper'
+import moduleList from 'plekan/core/modules/list.json'
+import 'plekan/assets/style/app.scss'
+import plekanComponentMixin from 'plekan/core/mixin.js'
 
 
 

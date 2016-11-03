@@ -35,12 +35,12 @@
   </div>
 </template>
 <script>
-  import store from 'store'
-  import modal from 'components/modal'
+  import store from 'plekan/store'
+  import modal from 'plekan/components/modal'
   import Sortable from 'sortablejs'
-  import {arenaSortableOptions} from 'core/sortable_options'
-  import changeLanguage from 'components/changeLanguage'
-  import arenaColumn from 'components/arenaColumn'
+  import {arenaSortableOptions} from 'plekan/core/sortable_options'
+  import changeLanguage from 'plekan/components/changeLanguage'
+  import arenaColumn from 'plekan/components/arenaColumn'
 
   /**
    * NOTE FOR DEVELOPERS *****

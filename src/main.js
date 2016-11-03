@@ -2,10 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
-import {plekan} from './plekan.js';
-import mockup from 'core/mockup';
-import modules from 'core/modules';
-import 'assets/style/site/index.scss';
+import {plekan} from 'plekan';
+import mockup from 'plekan/core/mockup';
+import modules from 'plekan/core/modules';
+// import 'assets/style/site/index.scss';
 import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
@@ -21,7 +21,9 @@ Vue.use(plekan,{
     save : {
       text : "Save",
       class:"plekan-footer-button cancel",
-      callback : null
+      callback : function (rows) {
+        console.log(rows)
+      }
     }
   }
 })

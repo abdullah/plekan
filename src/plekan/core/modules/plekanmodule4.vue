@@ -2,9 +2,8 @@
   <div class="plekan-template" v-html="_content" contenteditable="true"></div>
 </template>
 
-plekanmodule1
 <script>
-  import mixinComponent from 'core/mixin'
+  import mixinComponent from 'plekan/core/mixin'
 
 
 

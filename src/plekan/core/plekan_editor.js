@@ -1,6 +1,6 @@
 import Selo from 'selo'
-import {setActiveEditorButtons} from 'helper'
-import globalElements from 'core/globalElements'
+import {setActiveEditorButtons} from 'plekan/helper'
+import globalElements from 'plekan/core/globalElements'
 
 globalElements.editorStart = () => {
 

@@ -18,9 +18,9 @@
 </template>
 
 <script>
-  import modal from 'components/modal'
-  import fileUpload from 'components/fileUpload'
-  import {exec} from 'helper'
+  import modal from 'plekan/components/modal'
+  import fileUpload from 'plekan/components/fileUpload'
+  import {exec} from 'plekan/helper'
 
   export default {
     props:["shown","close"],

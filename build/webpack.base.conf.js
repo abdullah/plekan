@@ -22,7 +22,8 @@ module.exports = {
       'core': path.resolve(__dirname, '../src/core'),
       'store': path.resolve(__dirname, '../src/store'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'plekan': path.resolve(__dirname, '../src/plekan')
     }
   },
   resolveLoader: {

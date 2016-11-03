@@ -10,8 +10,8 @@
 
 
 var DEFAULT_CONTENT = `<div contenteditable="true">DEFAULT</div>`
-import {hasParent,childOf} from 'helper'
-import globalElements from 'core/globalElements'
+import {hasParent,childOf} from 'plekan/helper'
+import globalElements from 'plekan/core/globalElements'
 
 export default {
     props: ['store','index', 'displayLanguage'],

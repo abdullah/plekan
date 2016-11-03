@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import mixinComponent from 'core/mixin'
+  import mixinComponent from 'plekan/core/mixin'
 
   var DEFAULT_CONTENT = `<section class="plekan-module-1">
         <div class="plekan-xs-12 plekan-sm-12 plekan-md-12 plekan-lg-12">

@@ -8,11 +8,11 @@
 
 
 <script>
-  import Arena from 'components/arena'
-  import List from 'components/list'
-  import Editor from 'components/editor'
-  import globalElements from 'core/globalElements'
-  import store from 'store'
+  import Arena from 'plekan/components/arena'
+  import List from 'plekan/components/list'
+  import Editor from 'plekan/components/editor'
+  import globalElements from 'plekan/core/globalElements'
+  import store from 'plekan/store'
 
   export default {
     props:["rows"],

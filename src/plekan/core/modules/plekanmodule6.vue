@@ -2,9 +2,8 @@
   <div class="plekan-template" v-html="_content" contenteditable="true"></div>
 </template>
 
-plekanmodule1
 <script>
-  import mixinComponent from 'core/mixin'
+  import mixinComponent from 'plekan/core/mixin'
 
   var DEFAULT_CONTENT = `   <section class="plekan-module-6">
         <div class="plekan-xs-4 plekan-sm-4 plekan-md-4 plekan-lg-4">

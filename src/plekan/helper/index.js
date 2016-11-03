@@ -1,4 +1,4 @@
-import globalElements from 'core/globalElements'
+import globalElements from 'plekan/core/globalElements'
 
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);

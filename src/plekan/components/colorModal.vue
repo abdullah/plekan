@@ -32,9 +32,9 @@
 </template>
 
 <script>
-  import colors from 'core/constant/colors.json'
-  import modal from 'components/modal'
-  import {exec} from 'helper'
+  import colors from 'plekan/core/constant/colors.json'
+  import modal from 'plekan/components/modal'
+  import {exec} from 'plekan/helper'
 
   export default {
     props:["shown","close"],

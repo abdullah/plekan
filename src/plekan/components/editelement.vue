@@ -29,8 +29,8 @@
 </template>
 
 <script>
-  import modal from 'components/modal'
-  import fileUpload from 'components/fileUpload'
+  import modal from 'plekan/components/modal'
+  import fileUpload from 'plekan/components/fileUpload'
 
   /**
    * Bu component Editor.vue tarafından kullanılır,

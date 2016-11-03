@@ -33,13 +33,13 @@
    * editor-list componet'i editor butonlarını listeler
    * 
    */
-  import editelement from 'components/editelement';
-  import editorButtons from 'core/constant/editor-buttons.json'
-  import editorList from 'components/editorList'
-  import colorModal from 'components/colorModal.vue'
-  import fileUploadModal from 'components/fileUploadModal.vue'
-  import {hasParent,exec} from 'helper'
-  import globalElements from 'core/globalElements'
+  import editelement from 'plekan/components/editelement';
+  import editorButtons from 'plekan/core/constant/editor-buttons.json'
+  import editorList from 'plekan/components/editorList'
+  import colorModal from 'plekan/components/colorModal.vue'
+  import fileUploadModal from 'plekan/components/fileUploadModal.vue'
+  import {hasParent,exec} from 'plekan/helper'
+  import globalElements from 'plekan/core/globalElements'
 
   export default {
     props:[],

@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  import store from 'store'
+  import store from 'plekan/store'
   import Sortable from 'sortablejs'
-  import {listSortableOptions} from 'core/sortable_options'
+  import {listSortableOptions} from 'plekan/core/sortable_options'
 
   export default {
     data () {

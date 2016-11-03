@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import store from 'store'
+  import store from 'plekan/store'
 
   export default {
     props:[],
