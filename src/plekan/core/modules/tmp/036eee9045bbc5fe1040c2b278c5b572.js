@@ -1,7 +1,7 @@
 
 		;(function () {
 			var modules = 	{
-				plekanmodule1:require('../plekanmodule1.vue'),
+				plekanmodule4:require('../plekanmodule4.vue'),
 			}
 
 		  if (typeof exports == "object") {

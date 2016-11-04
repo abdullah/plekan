@@ -1,7 +1,7 @@
 
 		;(function () {
 			var modules = 	{
-				twocloumn:require('../twocloumn.vue'),imagetext:require('../imagetext.vue'),
+				plekanmodule3:require('../plekanmodule3.vue'),plekanmodule4:require('../plekanmodule4.vue'),plekanmodule5:require('../plekanmodule5.vue'),
 			}
 
 		  if (typeof exports == "object") {

@@ -30,7 +30,7 @@ function modulesGenerate(list) {
 
 	
 	var filename = md5(writableString);
-	var file = 'src/core/modules/tmp/'+filename+'.js';
+	var file = 'src/plekan/core/modules/tmp/'+filename+'.js';
 
 	var exists = fs.existsSync(file);
 

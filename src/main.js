@@ -5,7 +5,7 @@ import App from './App';
 import {plekan} from 'plekan';
 import mockup from 'plekan/core/mockup';
 import modules from 'plekan/core/modules';
-// import 'assets/style/site/index.scss';
+import 'assets/index.scss';
 import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
@@ -19,7 +19,7 @@ Vue.use(plekan,{
   thumbnailPath : "/static/thumbnails/",
   plekan_buttons : { // Special buttons 
     save : {
-      text : "Save",
+      text : "Show Result",
       class:"plekan-footer-button cancel",
       callback : function (rows) {
         console.log(rows)

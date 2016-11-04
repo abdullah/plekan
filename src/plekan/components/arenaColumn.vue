@@ -1,7 +1,7 @@
 <template>
  <div class="plekan-translate-mode-column">
     <div :class="{empty: !rows.length,translate:isTranslate}" class="plekan-row-list" id="plekan-sortable-list">
-      <div class="plekan-row-item" v-for="(r,key) in rows" :key="r.index">
+      <div class="plekan-row-item animated fadeInLeft transition-component" v-for="(r,key) in rows" :key="r.index">
         <div class="plekan-tools">
           <span v-if="!isTranslate" class="plekan-move-row"><i class="fa fa-hand-grab-o"></i></span>
           <span @click="editAsHTMLRow(r,key,language)"><i class="fa fa-html5"></i></span>

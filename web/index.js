@@ -25,13 +25,10 @@ app.use(function(req, res, next) {
 app.use(require('connect-history-api-fallback')())
 app.use(express.static('dist'));
 
-
-
-
 app.post('/',function (req,res) {
 	
 	var listFromClient = req.body.map( e => e.name)
-	console.log(listFromClient);
+	console.log(listFromClient , new Date());
 	
 	if (!listFromClient.length) {
 		

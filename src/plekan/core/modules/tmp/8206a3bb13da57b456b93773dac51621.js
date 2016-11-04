@@ -1,7 +1,7 @@
 
 		;(function () {
 			var modules = 	{
-				imagetext:require('../imagetext.vue'),
+				plekanmodule1:require('../plekanmodule1.vue'),plekanmodule2:require('../plekanmodule2.vue'),plekanmodule3:require('../plekanmodule3.vue'),plekanmodule4:require('../plekanmodule4.vue'),plekanmodule5:require('../plekanmodule5.vue'),plekanmodule7:require('../plekanmodule7.vue'),
 			}
 
 		  if (typeof exports == "object") {
