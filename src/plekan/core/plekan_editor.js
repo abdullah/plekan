@@ -1,30 +1,30 @@
 import Selo from 'selo'
 import {setActiveEditorButtons} from 'plekan/helper'
-import globalElements from 'plekan/core/globalElements'
+import store from 'plekan/store'
 
-globalElements.editorStart = () => {
+store.state.editorStart = () => {
 
-	globalElements.selo = new Selo({
+	store.state.selo = new Selo({
 		els:"[contenteditable]", // if you don't set el property, this property set as body by Selo
 		log:true, // if you don't want to see log you can pass log:true
 	});
 
 	var left,top,width,gb,tw,th;
 
-	globalElements.editorElement = document.querySelector('.plekan-editor');
-	globalElements.editorElementDynamic = document.querySelector('.dynamic-editor');
-	globalElements.editorElementStable = document.querySelector('.stable-editor');
+	store.state.editorElement = document.querySelector('.plekan-editor');
+	store.state.editorElementDynamic = document.querySelector('.dynamic-editor');
+	store.state.editorElementStable = document.querySelector('.stable-editor');
 
-	if (globalElements.editorElementDynamic) {
-		tw 		= globalElements.editorElementDynamic.clientWidth;
-		th 		= globalElements.editorElementDynamic.clientHeight;
+	if (store.state.editorElementDynamic) {
+		tw 		= store.state.editorElementDynamic.clientWidth;
+		th 		= store.state.editorElementDynamic.clientHeight;
 	}
 	
-	globalElements.sel = null;
+	store.state.sel = null;
 
 	document.addEventListener('selectionEnd',function () {
 
-		globalElements.editorElementDynamic.classList.add('active');
+		store.state.editorElementDynamic.classList.add('active');
 		
 
 		// This operation disabled overflow for  out of window
@@ -39,28 +39,28 @@ globalElements.editorStart = () => {
 
 		_left = _left > possibleLeft  ? possibleLeft : _left;
 
-		globalElements.editorElementDynamic.style.left = _left+'px';
-		globalElements.editorElementDynamic.style.top = _top+'px'
+		store.state.editorElementDynamic.style.left = _left+'px';
+		store.state.editorElementDynamic.style.top = _top+'px'
 
 		setActiveEditorButtons();
-		globalElements.sel = globalElements.selo.saveSelection()
+		store.state.sel = store.state.selo.saveSelection()
 
 	})
 
 	document.addEventListener('selectionStart',function () {
-		gb 		= globalElements.selo.getPositionRange().getBoundingClientRect;
+		gb 		= store.state.selo.getPositionRange().getBoundingClientRect;
 
 
 		left 	= gb.left
 		top 	= gb.top
 		width 	= gb.width
 
-		if (globalElements.editorElementDynamic.className.indexOf('active') == -1) {
-			globalElements.editorElementDynamic.style.left = left+(width/2)-(tw/2)+'px';
-			globalElements.editorElementDynamic.style.top = top-th+'px';
+		if (store.state.editorElementDynamic.className.indexOf('active') == -1) {
+			store.state.editorElementDynamic.style.left = left+(width/2)-(tw/2)+'px';
+			store.state.editorElementDynamic.style.top = top-th+'px';
 		}
 
-		globalElements.sel = globalElements.selo.saveSelection()
+		store.state.sel = store.state.selo.saveSelection()
 
 	});
 

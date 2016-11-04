@@ -1,4 +1,4 @@
-import globalElements from 'plekan/core/globalElements'
+import store from 'plekan/store'
 
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
@@ -50,7 +50,7 @@ export const childOf = (/*child node*/c, /*parent node*/p) => { //returns boolea
  * https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
  */
 export const exec = (cmd,val = null) =>  {
-    globalElements.selo.restoreSelection(globalElements.sel)
+    store.state.selo.restoreSelection(store.state.sel)
     document.execCommand(cmd,false,val)
     setActiveEditorButtons()
 }
@@ -85,7 +85,7 @@ export const hasParent = (el,parentClassName) =>{
 
 export const setActiveEditorButtons = () => {
 
-      let el = globalElements.selo.selection.focusNode.parentNode;
+      let el = store.state.selo.selection.focusNode.parentNode;
       let parents = getParents(el);
 
       var allAnchorTag = document.getElementsByTagName('a')

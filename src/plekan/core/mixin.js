@@ -11,7 +11,6 @@
 
 var DEFAULT_CONTENT = `<div contenteditable="true">DEFAULT</div>`
 import {hasParent,childOf} from 'plekan/helper'
-import globalElements from 'plekan/core/globalElements'
 
 export default {
     props: ['store','index', 'displayLanguage'],
@@ -74,7 +73,7 @@ export default {
             let target = e.target
             let isModalElement = hasParent(target,'plekan-modal') ? true : false
 
-            this._updatable =    childOf(target,globalElements.editorElement) || 
+            this._updatable =    childOf(target,this.store.state.editorElement) || 
                                 isModalElement || 
                                 target.className == 'editor';
         })
@@ -111,14 +110,14 @@ export default {
     methods: {
         _setEditable() {
             this.$el.onfocus = (evt) => {
-                globalElements.editorElementStable.classList.add('active')
+                this.store.state.editorElementStable.classList.add('active')
             }
 
             this.$el.onblur = (evt) => {
                 if (!this._updatable) {
                     this._updateHTML()
-                    globalElements.editorElementDynamic.classList.remove('active');
-                    globalElements.editorElementStable.classList.remove('active')
+                    this.store.state.editorElementDynamic.classList.remove('active');
+                    this.store.state.editorElementStable.classList.remove('active')
                     // Link content 
                 }
             }

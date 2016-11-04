@@ -1,7 +1,7 @@
 export default {
   debug: true,
   state: {
-  	plekanShow: false,
+  	plekanShow: true,
   	moduleModal: false,
   	customizeShow: true,
 

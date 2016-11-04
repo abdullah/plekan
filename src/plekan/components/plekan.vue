@@ -11,7 +11,6 @@
   import Arena from 'plekan/components/arena'
   import List from 'plekan/components/list'
   import Editor from 'plekan/components/editor'
-  import globalElements from 'plekan/core/globalElements'
   import store from 'plekan/store'
 
   export default {
@@ -35,7 +34,7 @@
       this.store.state.vm = this
     },
     mounted() {
-      globalElements.editorStart()
+      this.store.state.editorStart()
       this.$plekanEvent.onInit()
     },
   }

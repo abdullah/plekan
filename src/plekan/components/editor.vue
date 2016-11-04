@@ -39,7 +39,7 @@
   import colorModal from 'plekan/components/colorModal.vue'
   import fileUploadModal from 'plekan/components/fileUploadModal.vue'
   import {hasParent,exec} from 'plekan/helper'
-  import globalElements from 'plekan/core/globalElements'
+  import store from 'plekan/store'
 
   export default {
     props:[],
@@ -53,6 +53,8 @@
         linktext : "",
 
         editorButtons : editorButtons,
+
+        store:store
       }
     },
     components: {
@@ -80,7 +82,7 @@
         /** editButton pozisyonu'nu hesaplar */
         document.addEventListener('mouseover',e => {
 
-          editorIsVisible = globalElements.editorElementDynamic.className.indexOf('active') != -1
+          editorIsVisible = this.store.state.editorElementDynamic.className.indexOf('active') != -1
 
           if (editorIsVisible) return;
 
@@ -128,8 +130,8 @@
                 customButton.callback({
                   target : e.target,
                   execCommand : exec,
-                  selection : globalElements.selo ,
-                  savedSelection : globalElements.sel
+                  selection : this.store.state.selo ,
+                  savedSelection : this.store.state.sel
                 })
               break;
               // 
@@ -150,7 +152,7 @@
              * Selo hakkında daha fazlası için : /src/core/plekan_editor.js
              * @type {Selection Object}
              */
-            globalElements.sel = globalElements.selo.saveSelection()
+            this.store.state.sel = this.store.state.selo.saveSelection()
           })
         })
 

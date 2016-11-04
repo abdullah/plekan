@@ -11,7 +11,13 @@ export default {
     rows: [],
 
     translateMode:false,
-    vm:null
+    vm:null,
+    
+    editorStart : null,
+    selo : null,
+    editorElement:null,
+    editorElementDynamic:null,
+    editorElementStable:null,
   },
   init (type, data) {
     this.state[type] = data;
