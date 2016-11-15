@@ -23,7 +23,6 @@
     </div>
     <!-- Arena Footer -->
     <div class="plekan-container">
-    {{store.state.languages.length}}
     <!-- <pre>{{store.state.rows}}</pre> -->
       <div class="plekan-footer">
         <button v-for="b in $plekan_buttons"
