@@ -16,7 +16,7 @@ Vue.use(plekan,{
   defaultLanguage : "tr",
   languages : ["tr"],
   modules:modules,
-  thumbnailPath : "plekan/static/thumbnails/",
+  thumbnailPath : "/static/thumbnails/",
   plekan_buttons : { // Special buttons 
     save : {
       text : "Show Result",
