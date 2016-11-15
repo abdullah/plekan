@@ -3,7 +3,7 @@
     <nav>
       <ul>
         <li><a href="#" @click.prevent="togglePlekan">Try Plekan</a></li>
-        <li><a href="#" @click.prevent="toggleCustomize">Custom Build</a></li>
+        <!-- <li><a href="#" @click.prevent="toggleCustomize">Custom Build</a></li> -->
         <li><a href="https://github.com/abdullah/plekan/" target="_blank">Github</a></li> 
         <li><a href="https://github.com/abdullah/plekan/wiki"target="blank">Doc</a></li>
       </ul>

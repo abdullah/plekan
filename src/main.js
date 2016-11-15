@@ -20,6 +20,13 @@ Vue.use(plekan,{
   plekan_buttons : { // Special buttons 
     save : {
       text : "Show Result",
+      class:"plekan-footer-button save",
+      callback : function (rows) {
+        console.log(rows)
+      }
+    },    
+    cancel : {
+      text : "Cancel",
       class:"plekan-footer-button cancel",
       callback : function (rows) {
         console.log(rows)

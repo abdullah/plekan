@@ -27,7 +27,7 @@
     },
     beforeMount() {
       if (this.rows) {
-        this.store.init("rows",this.rows);
+        this.store.init("rows",JSON.parse(JSON.stringify(this.rows)));
       }
     },
     created(){

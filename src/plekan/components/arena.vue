@@ -27,7 +27,7 @@
       <div class="plekan-footer">
         <button v-for="b in $plekan_buttons"
                 :class="b.class"
-                @click="b.callback(store.state.rows)">
+                @click="b.callback(returnStoreRows)">
                 {{b.text}}
         </button>
       </div>
@@ -79,6 +79,13 @@
       arenaColumn
     },
     computed: {
+      /**
+       * Clean observable object
+       * @return {Array} Store rows
+       */
+      returnStoreRows(){
+        return JSON.parse(JSON.stringify(this.store.state.rows))
+      },
       /**
        * This method return a boolean value for split arena of which preview
        * language

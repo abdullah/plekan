@@ -1,13 +1,16 @@
 <template>
   <div id="app">
   	<navigation></navigation>
-	 <hr>
+	  <!-- <hr>
     <transition
 		enter-active-class="animated fadeIn"
 		leave-active-class="animated  fadeOut">
 		<module-list v-show="store.state.customizeShow"></module-list>
-	</transition>
-  	
+	</transition> -->
+  	<div class="result" style="padding:30px">
+      <h4>Result of rows</h4>
+     <pre>{{this.store.state.resultRows}}</pre> 
+    </div>
     <transition
     enter-active-class="animated fadeIn"
     leave-active-class="animated  fadeOut">
@@ -51,10 +54,13 @@
 
     },
     mounted() {
+      this.$plekan_buttons.cancel.callback =  (rows) => {
+        this.store.state.plekanShow = false
+      }
       this.$plekan_buttons.save.callback =  (rows) => {
         this.store.state.plekanShow = false
         setTimeout( () => {
-          this.store.state.moduleModal = true
+          // this.store.state.moduleModal = true
           this.store.state.resultRows = rows
         },300)
       }

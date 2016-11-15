@@ -62,7 +62,11 @@
     },
     components: {modal,fileUpload},
     beforeMount() {
-      document.body.style.overflow = "hidden"
+      // document.body.style.overflow = "hidden"
+    },
+    updated(){
+      
+      document.body.style.overflow = this.shown ?  "hidden" : ""
     },
     watch:{
       /**
@@ -86,9 +90,6 @@
 
           this.elementEditableProperties = tmp
       }
-    },
-    beforeDestroy() {
-      document.body.style.overflow = ""
     },
     methods:{
       /**
