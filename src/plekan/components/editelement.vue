@@ -18,11 +18,13 @@
       </div>
       <footer slot="footer" class="plekan-clearfix">
         <button @click.prevent="save()" 
+                type="button"
                 class="plekan-footer-button">Save</button>
         <button 
         @click.prevent="onFileUpload"
         v-show="elementIsImage"
         :disabled="!file"
+        type="button"
         class="plekan-footer-button">Upload</button>
       </footer>
     </modal>

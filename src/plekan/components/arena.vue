@@ -17,7 +17,7 @@
           <textarea v-model="editRow.html"></textarea>
         </div>
         <footer slot="footer" class="plekan-clearfix">
-          <button @click.prevent="saveEditAsHtml">Save HTML</button>
+          <button type="button" @click.prevent="saveEditAsHtml">Save HTML</button>
         </footer>
       </modal>
     </div>
@@ -26,6 +26,7 @@
     <!-- <pre>{{store.state.rows}}</pre> -->
       <div class="plekan-footer">
         <button v-for="b in $plekan_buttons"
+                type="button" 
                 :class="b.class"
                 @click="b.callback(returnStoreRows)">
                 {{b.text}}

@@ -26,7 +26,7 @@
         </div>
       </div>
       <footer slot="footer" class="plekan-clearfix">
-        <button @click="close">Close</button>
+        <button type="button" @click="close">Close</button>
       </footer>
     </modal>
 </template>

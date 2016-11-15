@@ -4,13 +4,13 @@
         <editor-list cname="dynamic-editor" :list="editorButtons.stick" :custom="stickyCustomButtons">
           <li class="create-link" slot="link">
             <input v-model="linktext" placeholder="http://www.example.com">
-            <button @click="createLink"><i class="fa fa-check"></i></button>
+            <button type="button" @click="createLink"><i class="fa fa-check"></i></button>
           </li> 
         </editor-list>
         <editor-list cname="stable-editor" :list="editorButtons.stable" :custom="stableCustomButtons"></editor-list>
       </div>
       <!--  -->
-      <button class="plekan-editable-elements-button" @click="openEditElement">Edit</button>
+      <button type="button" class="plekan-editable-elements-button" @click="openEditElement">Edit</button>
       <!--  -->
       <editelement :element="editableModalElement" 
                    :shown="editableModal"></editelement>
