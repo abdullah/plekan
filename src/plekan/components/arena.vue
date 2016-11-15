@@ -1,13 +1,13 @@
 <template>
   <div class="plekan-area">
     <!-- This components for Preview and Translate language change  -->
-    <change-language></change-language>
+    <change-language v-if="store.state.languages.length > 2"></change-language>
     <!-- Arena Container  -->
     <div :class="{'plekan-translate-mode' : translateMode}" class="plekan-container">
       <!-- Arena Column - Preview  -->
       <arena-column :isTranslate="false" :rows="rows" :editAsHTMLRow="editAsHTMLRow" :language="currentLanguge"></arena-column>
       <!-- Arena Column - Translate  -->
-      <arena-column :isTranslate="true" :rows="rows" :editAsHTMLRow="editAsHTMLRow"  :language="translateLanguage" v-show="translateMode"></arena-column>
+      <arena-column v-if="store.state.languages.length > 2" :isTranslate="true" :rows="rows" :editAsHTMLRow="editAsHTMLRow"  :language="translateLanguage" v-show="translateMode"></arena-column>
       <!-- Edit As HTML Modal  -->
       <modal :show="editRow.row ? true : false" class="edit-modal">
         <header slot="header">
@@ -23,6 +23,7 @@
     </div>
     <!-- Arena Footer -->
     <div class="plekan-container">
+    {{store.state.languages.length}}
     <!-- <pre>{{store.state.rows}}</pre> -->
       <div class="plekan-footer">
         <button v-for="b in $plekan_buttons"

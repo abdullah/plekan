@@ -13,10 +13,10 @@ Vue.use(VueResource);
 
 /* eslint-disable no-new */
 Vue.use(plekan,{
-  defaultLanguage : "en",
-  languages : ["en","tr"],
+  defaultLanguage : "tr",
+  languages : ["tr"],
   modules:modules,
-  thumbnailPath : "/static/thumbnails/",
+  thumbnailPath : "static/thumbnails/",
   plekan_buttons : { // Special buttons 
     save : {
       text : "Show Result",
