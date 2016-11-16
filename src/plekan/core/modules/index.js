@@ -4,7 +4,6 @@ import plekanmodule3 from './plekanmodule3.vue'
 import plekanmodule4 from './plekanmodule4.vue'
 import plekanmodule5 from './plekanmodule5.vue'
 import plekanmodule6 from './plekanmodule6.vue'
-import plekanmodule7 from './plekanmodule7.vue'
 import plekanmodule8 from './plekanmodule8.vue'
 
 ;(function () {
@@ -15,7 +14,6 @@ import plekanmodule8 from './plekanmodule8.vue'
     plekanmodule4,
     plekanmodule5,
     plekanmodule6,
-    plekanmodule7,
     plekanmodule8,
 	}
 

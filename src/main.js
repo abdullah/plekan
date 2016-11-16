@@ -14,7 +14,7 @@ Vue.use(VueResource);
 /* eslint-disable no-new */
 Vue.use(plekan,{
   defaultLanguage : "tr",
-  languages : ["tr"],
+  languages : ["tr","en"],
   modules:modules,
   thumbnailPath : "/static/thumbnails/",
   plekan_buttons : { // Special buttons 

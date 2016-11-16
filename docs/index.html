@@ -1,1 +1,89 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>plekan</title><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css><link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&amp;subset=latin-ext" rel=stylesheet><link href=static/css/app.b5b620e09ea4341797fa9c2774caef4e.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=static/js/manifest.379bafff83c8e0269c97.js></script><script type=text/javascript src=static/js/vendor.0c9926b88a7496161c8e.js></script><script type=text/javascript src=static/js/app.3ea8f27013e98923cf4a.js></script></body></html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+	<link rel="stylesheet" href="static/plekan.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script src="plekan.js"></script>
+	<script src="plekanmodules.js"></script>
+	<style>
+		body{
+				background-color: #f2f2f2;
+			
+		}
+		.container{
+			margin: 10px;
+			padding: 10px;
+			background-color: #FFF;
+		}
+		.container b{
+			
+			padding: 10px;
+		}
+		.container a {
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	
+	<main id="app">
+		<div class="container">
+			<b>Result</b>
+			<a href="" @click.prevent="plekanShow = true">Try again</a>
+			<pre>{{result}}</pre>
+		</div>
+		<plekan v-show="plekanShow"></plekan>
+	</main>
+
+	<script>
+		Vue.use(plekan.plekan,{
+		  defaultLanguage : "tr",
+		  languages : ["tr","en"],
+		  modules:plekanmodules,
+		  thumbnailPath : "/static/thumbnails/",
+		  plekan_buttons : { // Special buttons 
+		    save : {
+		      text : "Show Result",
+		      class:"plekan-footer-button save",
+		      callback : function (rows) {
+		        console.log(rows)
+		      }
+		    },    
+		    cancel : {
+		      text : "Cancel",
+		      class:"plekan-footer-button cancel",
+		      callback : function (rows) {
+		        console.log(rows)
+		      }
+		    }
+		  }
+		})
+
+
+		new Vue({
+		  el: '#app',
+		  data : function () {
+		  	return {
+		  		result: null,
+		  		plekanShow: false
+		  	}
+		  },
+		  mounted(){
+		  	console.log(this.$plekan_buttons.cancel);
+			this.$plekan_buttons.save.callback = function (rows) {
+				this.result = rows
+				this.plekanShow = false
+			}.bind(this)
+
+			this.$plekan_buttons.cancel.callback = function (rows) {
+				this.plekanShow = false
+			}.bind(this)
+
+		  },
+		})
+
+	</script>
+</body>
+</html>
