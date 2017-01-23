@@ -1,0 +1,69 @@
+@import "./grid.scss";
+@import "./animated.scss";
+@import "./var.scss";
+@import "./modules.scss";
+@import "./arena.scss";
+@import "./editor.scss";
+@import "./list.scss";
+@import "./fileupload.scss";
+@import "./modal.scss";
+
+#plekan{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  z-index: 99;
+  background-color: #fff;
+  [contenteditable='true']{
+    &:focus{
+      outline: 1px dotted $primaryColor;
+    }
+  }
+  select.plekan-form-control{
+    display: inline-block;
+    float: left;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: $textColorDark;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid $borderColorLight;
+    border-radius: 4px;
+    outline: thick;
+  }
+  *{
+    // outline: thick;
+  }
+}
+
+/*------------------------------------------*/
+.plekan-footer-button{
+  float: right;
+  display: inline-block;
+  border:0;
+  background-color: $primaryColor;
+  color: #FFF;
+  padding: 10px 50px;  
+  margin-left: 10px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  &:disabled{
+    opacity: .4;
+    cursor: not-allowed;
+  }
+  &:hover{
+    transition: opacity .3s;
+    opacity: .4;
+  }
+  &.cancel{
+    background-color: green;
+  }
+  &.save{
+    background-color: #4EA81E;
+  }
+}
