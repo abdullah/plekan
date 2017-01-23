@@ -50,6 +50,7 @@
         /** @type {Array} DOM element'inin değiştirlebilir özellikleri  */
         getElementPropertyArray   : [
           {title : "Text",      prop  : "text" ,  placeholder : "Text"},
+          {title : "Class",     prop  : "className" ,  placeholder : "Class"},
           {title : "Source",    prop  : "src" ,   placeholder : "source link"},
           {title : "Alt Title", prop  : "alt",    placeholder : "when the image error loaded shown text "},
           {title : "Link",      prop  : "href" ,  placeholder : "source link"},

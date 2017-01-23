@@ -2,10 +2,8 @@ import plekancomponent from 'components/plekan'
 import store from 'store'
 import plekanEditor from 'src/core/plekan_editor.js'
 import 'src/helper'
-// import moduleList from 'src/core/modules/list.json'
 import 'src/assets/style/app.scss'
 import plekanComponentMixin from 'src/core/mixin.js'
-import buttonTest from 'src/core/constant/buttons.js'
 
 
 
@@ -95,7 +93,6 @@ import buttonTest from 'src/core/constant/buttons.js'
 
     Vue.prototype.$plekan_buttons = options.plekan_buttons
     Vue.prototype.$customEditorButtons = options.customEditorButtons
-    // Vue.prototype.$customEditorButtons =  buttonTest
     Vue.prototype.$thumbnailPath = options.thumbnailPath || "/"
     Vue.prototype.$allowedFileTypes = options.allowedFileTypes
     Vue.prototype.$plekanEvent = options.plekanEvent

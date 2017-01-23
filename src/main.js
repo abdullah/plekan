@@ -13,7 +13,10 @@ Vue.use(VueResource);
 Vue.use(plekan,{
   defaultLanguage : "en",
   languages : ["en","tr"],
-  modules:modules,
+  modules:[
+    modules[0],
+    modules[1],
+  ],
   thumbnailPath : "/static/thumbnails/",
   plekan_buttons : { // Special buttons 
     save : {
