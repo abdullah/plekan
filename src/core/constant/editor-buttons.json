@@ -1,0 +1,179 @@
+{
+	"stick":[
+		{
+			"code" : "bold",
+			"tooltip" : "Bold",
+			"icon" : "fa fa-bold",
+			"value" : "",
+			"tagname":"B"
+		},
+		{
+			"code" : "italic",
+			"tooltip" : "italic",
+			"icon" : "fa fa-italic",
+			"value" : "",
+			"tagname":"I"
+		},
+		{
+			"code" : "createLink",
+			"tooltip" : "createLink",
+			"icon" : "fa fa-link",
+			"value" : "",
+			"tagname":"A"
+		},
+		{
+			"code" : "underline",
+			"tooltip" : "underline",
+			"icon" : "fa fa-underline",
+			"value" : "",
+			"tagname":"U"
+		},
+		{
+			"code" : "strikeThrough",
+			"tooltip" : "strikeThrough",
+			"icon" : "fa fa-strikethrough",
+			"value" : "",
+			"tagname":"STRIKE"
+		},
+		{
+			"code" : "unlink",
+			"tooltip" : "unlink",
+			"icon" : "fa fa-unlink",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "formatBlock",
+			"tooltip" : "formatBlock",
+			"icon" : "fa fa-paragraph",
+			"value" : "p",
+			"tagname":"P"
+		}
+	],
+	"stable": [
+
+		{
+			"code" : "",
+			"tooltip" : "",
+			"icon" : "fa fa-header",
+			"value" : "",
+			"tagname":"",
+			"sub":[
+				{
+					"code" : "formatBlock",
+					"tooltip" : "formatBlock",
+					"icon" : "icon-header-one",
+					"value" : "H1",
+					"tagname":"H1"
+				},
+				{
+					"code" : "formatBlock",
+					"tooltip" : "formatBlock",
+					"icon" : "icon-header-two",
+					"value" : "H2",
+					"tagname":"H2"
+				},
+				{
+					"code" : "formatBlock",
+					"tooltip" : "formatBlock",
+					"icon" : "icon-header-three",
+					"value" : "H3",
+					"tagname":"H3"
+				},
+				{
+					"code" : "formatBlock",
+					"tooltip" : "formatBlock",
+					"icon" : "icon-header-four",
+					"value" : "H4",
+					"tagname":"H4"
+				},
+				{
+					"code" : "formatBlock",
+					"tooltip" : "formatBlock",
+					"icon" : "icon-header-five",
+					"value" : "H5",
+					"tagname":"H5"
+				},
+				{
+					"code" : "formatBlock",
+					"tooltip" : "formatBlock",
+					"icon" : "icon-header-six",
+					"value" : "H6",
+					"tagname":"H6"
+				}
+			]
+		},
+		{
+			"code" : "insertOrderedList",
+			"tooltip" : "insertOrderedList",
+			"icon" : "fa fa-list-ol",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "insertUnorderedList",
+			"tooltip" : "insertUnorderedList",
+			"icon" : "fa fa-list-ul",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "",
+			"tooltip" : "",
+			"icon" : "fa fa-align-left",
+			"value" : "",
+			"tagname":"",
+			"sub":[
+				{
+					"code" : "justifyLeft",
+					"tooltip" : "justifyLeft",
+					"icon" : "fa fa-align-left",
+					"value" : "",
+					"tagname":""
+				},
+				{
+					"code" : "justifyCenter",
+					"tooltip" : "justifyCenter",
+					"icon" : "fa fa-align-center",
+					"value" : "",
+					"tagname":""
+				},
+				{
+					"code" : "justifyRight",
+					"tooltip" : "justifyRight",
+					"icon" : "fa fa-align-right",
+					"value" : "",
+					"tagname":""
+				}
+			]
+		},
+		{
+			"code" : "superscript",
+			"tooltip" : "superscript",
+			"icon" : "fa fa-superscript",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "subscript",
+			"tooltip" : "subscript",
+			"icon" : "fa fa-subscript",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "color",
+			"tooltip" : "color",
+			"icon" : "fa fa-paint-brush",
+			"value" : "",
+			"tagname":""
+		},
+		{
+			"code" : "removeFormat",
+			"tooltip" : "removeFormat",
+			"icon" : "fa fa-eraser",
+			"value" : "",
+			"tagname":""
+		}
+	]
+}

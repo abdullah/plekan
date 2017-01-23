@@ -11,8 +11,7 @@ var env = config.build.env
 
 
 baseWebpackConfig.entry = {
-  'plekan':'./src/plekan/index.js',
-  'plekanmodules': './src/plekan/core/modules/index.js'
+  'plekan':'./src/index.js',
 }
 
 var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
