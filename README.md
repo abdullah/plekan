@@ -1,11 +1,11 @@
 
 
 
-###Plekan is a agile and scaleble content builder for Vue.js 2.x.
+### Plekan is a agile and scaleble content builder for Vue.js 2.x.
 
 [![npm version](https://badge.fury.io/js/plekan.svg)](https://badge.fury.io/js/plekan)
 
-#####Features
+##### Features
 
 * 💯  More than 100 components
 * 🌏  Multi language
@@ -20,7 +20,7 @@ Read [Documentation and examples](https://github.com/abdullah/plekan/wiki)
 
 ---
 
-###Browser Support
+### Browser Support
 
 This plugin works seamlessly with, Safari, Firefox, Chrome and all other modern browsers.
 
@@ -28,7 +28,7 @@ This plugin works seamlessly with, Safari, Firefox, Chrome and all other modern 
 
 ---
 
-###License
+### License
 
 MIT License
 
