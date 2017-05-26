@@ -1,5 +1,4 @@
 @import "./grid.scss";
-@import "./animated.scss";
 @import "./var.scss";
 @import "./modules.scss";
 @import "./arena.scss";
@@ -48,7 +47,7 @@
   border:0;
   background-color: $primaryColor;
   color: #FFF;
-  padding: 10px 50px;  
+  padding: 10px 50px;
   margin-left: 10px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
