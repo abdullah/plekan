@@ -21,8 +21,6 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-
   export default {
     props:["show"],
     data () {
@@ -42,13 +40,13 @@
     },
     mounted(){
       this.event = new CustomEvent('requestHiddenModal');
-      
+
       document.onkeydown =  (e)  => {
         if (e.key == "Escape") {
           this.makeBroadcast()
         }
       }
-      
+
       this.$el.onclick = (e) => {
         if (e.target.className.indexOf('plekan-modal') != -1) {
             this.makeBroadcast()
@@ -69,5 +67,5 @@
 </script>
 
 <style>
-  
+
 </style>
