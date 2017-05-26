@@ -2,10 +2,18 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#" @click.prevent="togglePlekan">Try Plekan</a></li>
-        <!-- <li><a href="#" @click.prevent="toggleCustomize">Custom Build</a></li> -->
-        <li><a href="https://github.com/abdullah/plekan/" target="_blank">Github</a></li> 
-        <li><a href="https://github.com/abdullah/plekan/wiki"target="blank">Doc</a></li>
+        <li>
+          <a href="#"
+             @click.prevent="togglePlekan">Try Plekan</a>
+        </li>
+        <li>
+          <a href="https://github.com/abdullah/plekan/"
+             target="_blank">Github</a>
+        </li>
+        <li>
+          <a href="https://github.com/abdullah/plekan/wiki"
+             target="blank">Doc</a>
+        </li>
       </ul>
     </nav>
     <div class="plekan-container">
@@ -18,26 +26,22 @@
 </template>
 
 <script>
-  import store from 'store'
+import store from 'store';
 
-  export default {
-    props:[],
-    data () {
-      return {
-        store: store
-      }
+export default {
+  props: [],
+  data() {
+    return {
+      store,
+    };
+  },
+  methods: {
+    togglePlekan() {
+      this.store.state.plekanShow = !this.store.state.plekanShow;
     },
-    methods:{
-      togglePlekan(){
-        this.store.state.plekanShow = !this.store.state.plekanShow
-      },
-      toggleCustomize(){
-        this.store.state.customizeShow = !this.store.state.customizeShow
-      }
-    }
-  }
+    toggleCustomize() {
+      this.store.state.customizeShow = !this.store.state.customizeShow;
+    },
+  },
+};
 </script>
-
-<style>
-  
-</style>

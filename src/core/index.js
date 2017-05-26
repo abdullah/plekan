@@ -1,6 +1,5 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_modules"] }]*/
 
-import 'src/core/plekan_editor';
 import plekancomponent from 'components/plekan';
 import store from 'store';
 import 'src/helper';
