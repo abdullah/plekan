@@ -1,13 +1,14 @@
 {
   "name": "plekan",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
+  "version": "1.2.0",
+  "description": "Agile and scaleble content builder for Vue.js",
   "author": "Abdullah Mara <zull.mara00@gmail.com>",
-  "private": true,
+  "private": false,
+  "main": "docs/plekan.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js",
+    "release": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
