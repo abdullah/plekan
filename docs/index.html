@@ -1,33 +1,38 @@
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
-	<link rel="stylesheet" href="static/plekan.css">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.5/vue.min.js"></script>
+	<link rel="stylesheet" href="static/css/plekan.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	 crossorigin="anonymous">
 	<script src="plekan.js"></script>
 	<script src="plekanmodules.js"></script>
 	<style>
-		body{
-				background-color: #f2f2f2;
-			
+		body {
+			background-color: #f2f2f2;
 		}
-		.container{
+
+		.container {
 			margin: 10px;
 			padding: 10px;
 			background-color: #FFF;
 		}
-		.container b{
-			
+
+		.container b {
+
 			padding: 10px;
 		}
+
 		.container a {
 			float: right;
 		}
 	</style>
 </head>
+
 <body>
-	
+
 	<main id="app">
 		<div class="container">
 			<b>Result</b>
@@ -38,52 +43,51 @@
 	</main>
 
 	<script>
-		Vue.use(plekan.plekan,{
-		  defaultLanguage : "tr",
-		  languages : ["tr","en"],
-		  modules:plekanmodules,
-		  thumbnailPath : "static/thumbnails/",
-		  plekan_buttons : { // Special buttons 
-		    save : {
-		      text : "Show Result",
-		      class:"plekan-footer-button save",
-		      callback : function (rows) {
-		        console.log(rows)
-		      }
-		    },    
-		    cancel : {
-		      text : "Cancel",
-		      class:"plekan-footer-button cancel",
-		      callback : function (rows) {
-		        console.log(rows)
-		      }
-		    }
-		  }
+		Vue.use(plekan.plekan, {
+			defaultLanguage: "tr",
+			languages: ["tr", "en"],
+			modules: plekanmodules.default,
+			thumbnailPath: "static/thumbnails/",
+			plekan_buttons: { // Special buttons
+				save: {
+					text: "Show Result",
+					class: "plekan-footer-button save",
+					callback: function (rows) {
+						console.log(rows)
+					}
+				},
+				cancel: {
+					text: "Cancel",
+					class: "plekan-footer-button cancel",
+					callback: function (rows) {
+						console.log(rows)
+					}
+				}
+			}
 		})
 
 
 		new Vue({
-		  el: '#app',
-		  data : function () {
-		  	return {
-		  		result: null,
-		  		plekanShow: true
-		  	}
-		  },
-		  mounted(){
-		  	console.log(this.$plekan_buttons.cancel);
-			this.$plekan_buttons.save.callback = function (rows) {
-				this.result = rows
-				this.plekanShow = false
-			}.bind(this)
+			el: '#app',
+			data: function () {
+				return {
+					result: null,
+					plekanShow: true
+				}
+			},
+			mounted() {
+				this.$plekan_buttons.save.callback = function (rows) {
+					this.result = rows
+					this.plekanShow = false
+				}.bind(this)
 
-			this.$plekan_buttons.cancel.callback = function (rows) {
-				this.plekanShow = false
-			}.bind(this)
+				this.$plekan_buttons.cancel.callback = function (rows) {
+					this.plekanShow = false
+				}.bind(this)
 
-		  },
+			},
 		})
-
 	</script>
 </body>
+
 </html>
