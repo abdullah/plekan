@@ -173,10 +173,10 @@ export default {
      * olaydinlemesi güvenli çıkış olarak kullanılabilir.
      * @TODO : Move function in requestHiddenModal from to  new function
     */
-    document.addEventListener('requestHiddenModal', (e) => {
+    document.addEventListener('requestHiddenModal', () => {
       if (this.editRow.row) {
         /* eslint-disable */
-        Object.keys(this.editRow).map(() => this.editRow[e] = null);
+        Object.keys(this.editRow).map((e) => this.editRow[e] = null);
         /* eslint-enable */
       }
     }, false);
