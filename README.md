@@ -31,8 +31,8 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# relase for production with minification
-npm run relase
+# release for production with minification
+npm run release
 
 ```
 
