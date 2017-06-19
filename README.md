@@ -1,6 +1,6 @@
 ### Plekan is a agile and scaleble content builder for Vue.js 2.1.x
 
-[![npm version](https://badge.fury.io/js/plekan.svg)](https://badge.fury.io/js/plekan)
+[![NPM](https://nodei.co/npm/plekan.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/plekan/)
 
 ##### Features
 
