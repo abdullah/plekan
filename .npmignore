@@ -2,7 +2,6 @@ build/
 config/
 dist/
 docfile/
-docs/
 index.html
 LICENSE
 node_modules/
