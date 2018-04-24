@@ -1,4 +1,4 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["_modules"] }]*/
+/* eslint no-underscore-dangle: ["error", { "allow": ["_modules"] }] */
 
 import 'src/core/plekan_editor';
 import plekancomponent from 'components/plekan';
@@ -33,7 +33,7 @@ const plekanOptions = {
     onDuplicate: () => {},
     onUpdate: () => {},
     onInit: () => {},
-    /** Bu kısım  comment out olmalı ki onFileUpload özelliğine göre yükleme yapıyor*/
+    /** Bu kısım  comment out olmalı ki onFileUpload özelliğine göre yükleme yapıyor */
     // onFileUpload : () => {},
   },
 };

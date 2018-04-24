@@ -1,4 +1,4 @@
-/* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }]*/
+/* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }] */
 
 /**
  * Mixin plekan'a kayıt edilen her component için gereklidir
